@@ -19,8 +19,8 @@
 	--color_light_purple: #99A8FF;
 	--color_medium_gray: #939393;
 	--color_purple: #6B0DFF;
-  --logo: url(/assets/img/slint-logo.svg);
-	--logo-white: url(/assets/img/slint-logo-dark.svg);
+  --logo: url(/assets/img/madewithslint-logo-dark.svg);
+	--logo-white: url(/assets/img/madewithslint-logo-light.svg);
   --max_wrap_width: 1506px;
 	--max_wrap_width_narrow: 1160px;
 	--max_wrap_width_medium_narrow: 800px;
