@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="author" content="SixtyFPS GmbH" />
+
+        <!--====== Favicon Icon ======-->
+        <link rel="shortcut icon" href="/assets/img/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="/assets/img/favicon.svg">
+
+        <!-- ===== All CSS files ===== -->
+        <link rel="stylesheet" href="/assets/css/style.css?v=1.3.0" />
+
+        <!-- ===== Header from individual pages ===== -->
+        
+        <title>Design to Deploy — Slint</title>
+        <meta property="og:image" content="/assets/img/responsive.png" />
+        <meta property="og:title" content="Slint: Declarative GUI for Rust, C++ and JavaScript" />
+        <meta property="og:url" content="https://slint.dev/" />
+        <meta property="og:type" content="website" />
+        <meta name="description" content="Slint, the declarative GUI toolkit for Rust, C++, and JavaScript" />
+    
+    </head>
+
+    <body>
+        <script>
+            /* Check if dark theme is selected */
+            if (localStorage.getItem('theme') === 'dark') {
+              document.documentElement.classList.add('dark');
+            }
+            else if (localStorage.getItem('theme') === 'light') {
+              document.documentElement.classList.add('light');
+            }
+          </script>
+
+        <div class="wrap">
+            <!-- ====== Header Start ====== -->
+            <header class="top">
+                <div class="header-wrap">
+
+                    <a href="" class="logo">Slint</a>
+
+                    <nav class="main-navi">
+
+                        <ul>
+                            <li id="use-cases"><a href="/use-cases.html">Use Cases</a></li>
+                            <li id="docs"><a href="/docs.html">Docs</a></li>
+                            <li id="pricing"><a href="/pricing.html">Pricing</a></li>
+                            <li id="community"><a href="/community.html">Community</a></li>
+                            <li id="blog"><a href="/blog">Blog</a></li>
+                            <!-- <li class="search"><a href="/search-results.html">Search</a></li> -->
+                            <li class="theme theme-light"><a href="#">Theme</a></li>
+                            <li class="btn"><a href="/get-started.html">Get Started</a></li>
+                        </ul>
+
+                    </nav>
+
+                    <!-- <a href="/search-results.html" class="search-mobile">Search</a> -->
+
+                    <button class="hamburger" aria-label="menu" aria-expanded="false" aria-controls="nav">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                </div><!-- .header-wrap -->
+            </header>
+            <!-- ====== Header End ====== -->
+
+            
+        <main>
+
+            <!--
+        Section blocks on this page:
+        - banner-light-blue (e.g. github)
+        - col-2-img-txt (2 column layout with an image and text + title on top)
+        - col-2-txt-img (2 column layout with text and an image + title on top)
+        - feedback
+        - hero (banner on the top of the page)
+        - partners (title and logos)
+        - testimonials (blue boxes)
+        - tabs (blue links with icons)
+        -->
+
+            <section class="hero line pointer">
+                <h1>Design to Deploy</h1>
+                <p>Build native user interfaces with Slint</p>
+                <p><a href="/demos.html" class="btn">See Demos</a></p>
+            </section>
+
+            <section class="banner-light-blue">
+                <p><a href="https://github.com/slint-ui/slint/"  target="_blank">Proudly Open Source <span class="banner-img"><img src="/assets/img/github.svg" alt="Github" width="58" height="58" class="github"><img src="/assets/img/heart.svg" alt="Github" width="22" height="28" class="heart"></span></a></p>
+            </section>
+
+            <section id="features" class="feature-wrap">
+
+                <section class="tabs">
+                    <nav>
+                        <ul>
+                            <li class="design" tab><a href="#design">Design</a></li>
+                            <li class="develop" tab><a href="#develop">Develop</a></li>
+                            <li class="deploy" tab><a href="#deploy">Deploy</a></li>
+                        </ul>
+                    </nav>
+                </section>
+
+                <div id="design">
+
+                    <!-- <section class="col-2-txt-img" hidden>
+                        <h2>Co-Create</h2>
+                        <div class="col-wrap">
+                            <div class="col-2">
+                                <p>Slint represents designs in a human readable user interface description language that acts as a single source of truth. This allows co-creation as stakeholders, such as designers and developers, can simultaneously work on a design as any modifications by a stakeholder is immediately visible to the rest.</p>
+                                <p><a href="#" class="btn">Read more</a></p>
+                            </div>
+                            <div class="col-2">
+                                <img src="/assets/img/01Co-Create.png" alt="Co-Create" width="650" height="420" data-darkimg="/assets/img/01Co-Create-dark.png" data-lightimg="/assets/img/01Co-Create.png">
+                            </div>
+                        </div>
+                    </section> -->
+
+                    <!-- <section class="col-2-img-txt" hidden>
+                        <h2>Live Design</h2>
+                        <div class="col-wrap">
+                            <div class="col-2">
+                                <img src="/assets/img/live-design.png" alt="Live design" width="599" height="420">
+                            </div>
+                            <div class="col-2">
+                                <p>Why spend time creating mockups when you can create live designs? With Slint, your designs are the actual frontend of your application and not prototypes. You can validate your designs on the target platforms and iterate on them until you are satisfied.</p>
+                                <p><a href="#" class="btn">Read more</a></p>
+                            </div>
+                        </div>
+                    </section> -->
+
+                    <section class="col-2-img-txt" category="design">
+                        <h2>Live-Preview</h2>
+                        <div class="col-wrap">
+                            <div class="col-2">
+                                <video preload="none" autoplay loop muted playsinline src="https://user-images.githubusercontent.com/959326/229467391-553bfbfa-fda6-4bfc-b405-63972c308f23.mp4" alt="Live-Preview" width="650" height="420" poster="/assets/img/live-preview.jpeg"></video>
+                            </div><!-- .col-2 -->
+                            <div class="col-2">
+                                <p>Complete your UI design through quick iterations using Live-Preview. Tweak everything, like colors, animations, geometries, or text. and verify the changes instantly.</p>
+                            </div><!-- .col-2 -->
+                        </div><!-- .col-wrap -->
+                    </section>
+
+                    <section class="col-2-txt-img" category="design">
+                        <h2>Responsive</h2>
+                        <div class="col-wrap">
+                            <div class="col-2">
+                                <p>Build a responsive UI from a single design. Target different screen resolution and sizes with flexible layouts.</p>
+                            </div><!-- .col-2 -->
+                            <div class="col-2">
+                                <img src="/assets/img/responsive.png" alt="Responsive" width="650" height="420">
+                            </div><!-- .col-2 -->
+                        </div><!-- .col-wrap -->
+                    </section>
+
+                    <!-- <section class="col-2-txt-img" hidden>
+                        <h2>Mock Data <span class="small">BETA</span></h2>
+                        <div class="col-wrap">
+                            <div class="col-2">
+                                <p>Make use of various data sources that comes with Slint to test your designs. You can also create your own custom data sources.</p>
+                                <p><a href="#" class="btn">Read more</a></p>
+                            </div>
+                            <div class="col-2">
+                                <img src="/assets/img/mock-data.png" alt="Mock Data" width="650" height="420" data-darkimg="/assets/img/mock-data-dark.png" data-lightimg="/assets/img/mock-data.png">
+                            </div>
+                        </div>
+                    </section> -->
+
+                </div><!-- #design -->
+
+                <div id="develop">
+
+                    <section class="col-2-img-txt" category="develop">
+                        <h2>Multi-language support</h2>
+                        <div class="col-wrap">
+                            <div class="col-2">
+                                <img src="/assets/img/multi-language-support-2.svg" data-darkimg="/assets/img/multi-language-support-2-dark.svg" data-lightimg="/assets/img/multi-language-support-2.svg" alt="Multi-language support" width="650" height="420">
+                            </div><!-- .col-2 -->
+                            <div class="col-2">
+                                <p>Redesign your UI while using the same code base and engineering team. Integrate your business logic implemented in C++, JavaScript, or Rust.</p>
+                                <p class="cta"><a href="/docs.html" class="btn">Browse Slint APIs</a></p>
+                            </div><!-- .col-2 -->
+                        </div><!-- .col-wrap -->
+                    </section>
+
+                    <section class="col-2-txt-img" category="develop">
+                        <h2>Code Editors Integrations</h2>
+                        <div class="col-wrap">
+                            <div class="col-2">
+                                <p>Keep using your favourite IDE. Choose between our generic language server and VS Code extension: Enjoy code completion, live-preview, code navigation, diagnostics, and syntax highlighting.</p>
+                                <div style="display: flex; flex-flow: column wrap;">
+                                    <p class="cta"><a href="/get-started.html#vscode" class="btn">Use with Visual Studio Code</a></p>
+                                    <p class="cta"><a href="/get-started.html#other-ide" class="btn">Use with other Editors</a></p>
+                                </div>
+                            </div><!-- .col-2 -->
+                            <div class="col-2">
+                                <img src="/assets/img/code-editors.png" data-darkimg="/assets/img/code-editors-dark.png" data-lightimg="/assets/img/code-editors.png" alt="Code Editors & IDEs" width="650" height="420">
+                            </div><!-- .col-2 -->
+                        </div><!-- .col-wrap -->
+                    </section>
+
+                    <section class="col-2-img-txt" category="develop">
+                        <h2>Native</h2>
+                        <div class="col-wrap">
+                            <div class="col-2">
+                                <img src="/assets/img/native-style.png" alt="Native" width="594" height="420">
+                            </div><!-- .col-2 -->
+                            <div class="col-2">
+                                <p>Enjoy flexibility that only a native application can provide: Access full operating system APIs, utilize all CPU and GPU cores, connect to any peripheral. Slint compiles your UI design to machine code.</p>
+                            </div><!-- .col-2 -->
+                        </div><!-- .col-wrap -->
+                    </section>
+
+                    <!-- <section class="col-2-img-txt" hidden>
+                        <h2>Live-Preview</h2>
+                        <div class="col-wrap">
+                            <div class="col-2">
+                                <img src="/assets/img/live-preview.png" alt="Live-Preview" width="650" height="420">
+                            </div>
+                            <div class="col-2">
+                                <p>Speed up your front end development by instantly validating changes to your Slint based design on your host platform as well as on your target platform.</p>
+                                <p><a href="#" class="btn">Read more</a></p>
+                            </div>
+                        </div>
+                    </section> -->
+
+                </div><!-- #develop -->
+
+                <div id="deploy">
+
+                    <section class="col-2-txt-img" category="deploy">
+                        <h2>Lightweight</h2>
+                        <div class="col-wrap">
+                            <div class="col-2">
+                                <p>Achieve low footprint and minimal resource consumption. The Slint runtime fits in less than 300KiB RAM, features a reactive property system, and is built with Rust.</p>
+                                <p class="cta"><a href="/videos.html#slint-rp2040" class="btn">Watch Video</a></p>
+                            </div><!-- .col-2 -->
+                            <div class="col-2">
+                                <img src="/assets/img/multi-os.png" alt="Multi-OS, Multi-Processor" width="650" height="420" data-darkimg="/assets/img/multi-os-dark.png" data-lightimg="/assets/img/multi-os.png">
+                            </div><!-- .col-2 -->
+                        </div><!-- .col-wrap -->
+                    </section>
+
+                    <section class="col-2-img-txt" category="deploy">
+                        <h2>Performant</h2>
+                        <div class="col-wrap">
+                            <div class="col-2">
+                                <img src="/assets/img/performance.png" alt="Performance" width="650" height="420">
+                            </div><!-- .col-2 -->
+                            <div class="col-2">
+                                <p>Deliver a smooth user experience. Slint uses the optimal graphics rendering method: GPU accelerated, DMA2D, Framebuffer, or Linebuffer.</p>
+                            </div><!-- .col-2 -->
+                        </div><!-- .col-wrap -->
+                    </section>
+
+                </div><!-- #deploy -->
+
+            </section><!-- .feature-wrap -->
+
+            <section id="partners" class="partners">
+                <h2>Global Partner Network</h2>
+                <div style="display: flex; align-items: center; justify-content: center;"><img style="filter: none; display: block; border-radius: 8px;" src="/assets/img/world-map-4.svg" alt="World map" width="1160"></div>
+                <div class="col-wrap" style="margin-top: 50px;">
+                    <div class="col-1">
+                        <a href="/service-partners.html#crossware"><img src="/assets/img/crossware.png" width="165" height="117" alt="Crossware"></a>
+                        <a href="/service-partners.html#cynetis-embedded"><img src="/assets/img/cynetis-embedded.png" width="163" height="47" alt="Cynetics Embedded"></a>
+                        <a href="/service-partners.html#koan"><img src="/assets/img/koan.png" width="190" height="97" alt="Koan"></a>
+                        <a href="/service-partners.html#kdab"><img src="/assets/img/kdab.png" width="98" height="86" alt="KDAB"></a>
+                        <a href="/service-partners.html#spyrosoft"><img src="/assets/img/spyrosoft.png" width="144" height="34" alt="Spyrosoft"></a>
+                        <a href="/service-partners.html#tqcs"><img src="/assets/img/tqcs.png" width="168" height="37" alt="TQCS"></a>
+                        <a href="/silicon-partners.html#st"><img src="/assets/img/st.svg" width="128" height="84" alt="ST Microelectronics"></a>
+                        <a href="/silicon-partners.html#espressif"><img src="/assets/img/espressif.svg" width="290" height="53" alt="Espressif"></a>
+                        <a href="/silicon-partners.html#raspberry-pi"><img src="/assets/img/raspberry-pi.png" width="55" alt="Raspberry Pi" data-darkimg="/assets/img/raspberry-pi-dark.png" data-lightimg="/assets/img/raspberry-pi.png"></a>
+                        <a href="/silicon-partners.html#toradex"><img src="/assets/img/toradex.svg" width="300" height="80" alt="Toradex"></a>
+                    </div><!-- .col-1 -->
+                </div><!-- .col-wrap -->
+            </section><!-- .partners -->
+
+            <section class="banner-transparent">
+                <a href="https://foundation.rust-lang.org/members/" target="_blank"><h4>Silver Member of Rust Foundation <span class="banner-img"><img src="/assets/img/rust-foundation.svg" alt="Rust Foundation" width="182" height="58"></span></h4></a>
+            </section><!-- .banner-transparent -->
+
+            <section id="testimonials" class="feedback">
+                <h2>Testimonials</h2>
+                <div class="col-wrap">
+                    <div class="col-2">
+                        <img src="/assets/img/cole-lawrence.jpeg" alt="picture of cole lawrence">
+                    </div><!-- .col-2 -->
+                    <div class="col-2">
+                        <blockquote>
+                            <p>"I'm building "Here Now", an open source virtual office-space for helping remote teams feel more connected. Slint has made it easier to prototype and share ideas directly in Slint markup including breakpoints, animations, and layout logic much more easily than the equivalent in CSS/HTML/JS."</p>
+                            <p class="name">Cole Lawrence</p>
+                            <p class="company">colelawrence.com</p>
+                        </blockquote>
+                    </div><!-- .col-2 -->
+                </div><!-- .col-wrap -->
+            </section><!-- .feedback -->
+
+            <section class="testimonials">
+                <div class="col-wrap">
+                    <div class="testimonial-item">
+                        <p>"Slint is replacing our HMI written in Qt QML and has reduced or eliminated bugs, improved performance, and made it much easier to rapidly design the UI."</p>
+                        <div class="testimonial-person">
+                            <div class="testimonial-person-img">
+                                <img src="/assets/img/generic-profile-icon.svg">
+                            </div>
+                            <div class="testimonial-person-name">
+                                <p class="testimonial-name">Luke Jones</p>
+                                <p class="testimonial-company">Jasic Technology Europe</p>
+                            </div>
+                        </div>
+                    </div><!-- .testimonial-item -->
+                    <div class="testimonial-item">
+                        <p>“We used Slint on QNX with Rust bindings. A definite recommendation for embedded graphical applications, especially if you are using Rust.”</p>
+                        <div class="testimonial-person">
+                            <div class="testimonial-person-img">
+                                <img src="/assets/img/jonathan-pallant.jpg">
+                            </div>
+                            <div class="testimonial-person-name">
+                                <p class="testimonial-name">Jonathan Pallant</p>
+                                <p class="testimonial-company">Senior Engineer<br>Ferrous Systems</p>
+                            </div>
+                        </div>
+                    </div><!-- .testimonial-item -->
+                    <div class="testimonial-item">
+                        <p>“Slint empowers even smaller companies to access the top-notch UI development experience previously exclusive to larger players.”</p>
+                        <div class="testimonial-person">
+                            <div class="testimonial-person-img">
+                                <img src="/assets/img/dawid-sliwa.png">
+                            </div>
+                            <div class="testimonial-person-name">
+                                <p class="testimonial-name">Dawid Słiwa</p>
+                                <p class="testimonial-company">CEO<br>OakDevices</p>
+                            </div>
+                        </div>
+                    </div><!-- .testimonial-item -->
+                    <div class="testimonial-item">
+                        <p>"Slint provides us with the flexibility and features we need, the performance is good and the service and support has been outstanding."</p>
+                        <div class="testimonial-person">
+                            <div class="testimonial-person-img">
+                                <img src="/assets/img/generic-profile-icon.svg">
+                            </div>
+                            <div class="testimonial-person-name">
+                                <p class="testimonial-name">Harald K.</p>
+                                <p class="testimonial-company">Product Manager<br>Nordic OEM</p>
+                            </div>
+                        </div>
+                    </div><!-- .testimonial-item -->
+                </div><!-- .col-wrap -->
+            </section><!-- .testimonials -->
+
+            <section id="users" class="users">
+                <h2>Used by</h2>
+                <div class="col-wrap">
+                    <div class="col-1">
+                        <a href="#"><img src="./assets/img/customers/Nexter_Robotics.png" width="356" height="136" alt="Nexter Robotics"></a>
+                        <a href="#"><img src="./assets/img/customers/embex.svg" width="150" height="93" alt="Embex GmbH"></a>
+                        <a href="#"><img src="./assets/img/customers/HOP_Logo.png" width="144" height="34" alt="HOP Technologies"></a>
+                        <a href="#"><img src="./assets/img/customers/MK-Logo-Black.svg" width="100" height="100" alt="MK Audio Inc."></a>
+                        <a href="#"><img src="./assets/img/customers/arc_logo.svg" width="110" height="40" alt="Arc Vehicle"></a>
+                        <a href="#"><img src="./assets/img/customers/emilogo.png" width="230" height="54" alt="Endres Machining Innovations"></a>
+                        <a href="#"><img src="./assets/img/customers/xap_logo.png" width="167" height="64" alt="Xaplos"></a>
+                        <a href="#"><img src="./assets/img/customers/allwinnerkorea_grey.gif" width="165" height="75" alt="All Winner Korea"></a>
+                        <a href="#"><img src="./assets/img/customers/WesAudioLogo-min.png" width="229" height="100" alt="Wes Audio"></a>
+                        <a href="#"><img src="./assets/img/customers/picofinity.svg" width="380" height="234" alt="PicoFinity Inc."></a>
+                        <a href="#"><img src="./assets/img/customers/Crprobot.png" width="664" height="56" alt="CRP Robot"></a>
+                    </div><!-- .col-1 -->
+                </div><!-- .col-wrap -->
+            </section><!-- .users -->
+
+            <section class="one-column" style="padding: 100px 0;">
+                <p><a href="/get-started.html" class="btn btn-center" style="	background-color: var(--color_blue);
+                    border-radius: 4px;
+                    font-weight: 600; color: #fff;">Get Started with Slint</a></p>
+            </section>
+
+        </main>
+    
+
+            <!-- ====== Footer Start ====== -->
+            <footer>
+                <div class="col-wrap">
+                    <div class="col-6">
+                        <p><img src="/assets/img/slint-logo.svg" alt="Slint" width="141" height="47" class="footer-logo"></p>
+                        <p class="some-links">
+                            <a href="https://twitter.com/slint_ui"><img src="/assets/img/icon-twitter.svg" alt="Twitter" width="40" height="40"></a>
+                            <a href="https://www.linkedin.com/company/slint-ui/"><img src="/assets/img/icon-linkedin.svg" alt="Linkedin" width="40" height="40"></a>
+                            <a href="https://fosstodon.org/@slint"><img src="/assets/img/icon-mastodon.svg" alt="Mastodon" width="40" height="40"></a>
+                            <!-- <a href="https://github.com/slint-ui/slint/discussions"><img src="/assets/img/icon-github.svg" alt="Github Discussions" width="40" height="40"></a> -->
+                            <!-- <a href="https://chat.slint.dev/"><img src="/assets/img/icon-some.svg" alt="" width="40" height="40"></a> -->
+                        </p>
+                        <p><img src="/assets/img/annual-ross-index.svg" data-darkimg="/assets/img/annual-ross-index-light.svg" data-lightimg="/assets/img/annual-ross-index.svg" alt="Annual Ross index" width="260" height="52" class="annual-ross"></p>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">About</dt>
+                            <dd><a href="/about-us.html">Us</a></dd>
+                            <dd><a href="/investors.html">Investors</a></dd>
+                            <dd><a href="/events.html">Events</a></dd>
+                            <dd><a href="/careers.html">Careers</a></dd>
+                            <dd><a href="/imprint.html">Imprint &amp; Privacy</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Explore</dt>
+                            <dd><a href="/docs.html">Documentation</a></dd>
+                            <dd><a href="/demos.html">Demos</a></dd>
+                            <dd><a href="/videos.html">Videos</a></dd>
+                            <dd><a href="/service-partners.html">Service Partners</a></dd>
+                            <dd><a href="/silicon-partners.html">Silicon Partners</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Resources</dt>
+                            <dd><a href="/pricing.html">Pricing</a></dd>
+                            <dd><a href="/community.html">Community</a></dd>
+                            <dd><a href="/blog">Blog</a></dd>
+                            <dd><a href="/thisweek">Weekly</a></dd>
+                            <dd><a href="/supported-boards.html">Supported Boards</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Compare</dt>
+                            <dd><a href="/alternative-to-qt.html">Qt</a></dd>
+                            <dd><a href="/alternative-to-lvgl.html">LVGL</a></dd>
+                            <dd><a href="/alternative-to-flutter.html">Flutter</a></dd>
+                            <dd><a href="/alternative-to-electron.html">Electron</a></dd>
+                            <dd><a href="/declarative-rust-gui.html">Other Rust GUI Toolkits</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Contact us</dt>
+                            <dd><a href="mailto:sales@slint.dev?subject=Contact from Website">Email</a></dd>
+                            <dd><a href="https://chat.slint.dev">Chat</a></dd>
+                            <dd><a href="https://github.com/slint-ui/slint">GitHub</a></dd>
+                            <dd hidden><a href="#">Schedule meeting</a></dd>
+                            <dd hidden><a href="#">Github discussion</a></dd>
+                            <dd hidden><a href="#">Twitter</a></dd>
+                            <dd hidden><a href="#">Mastodon</a></dd>
+                            <dd hidden><a href="#">Linkedin</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                </div>
+                <div class="col-wrap">
+                    <div class="col-1">
+                        <p>Copyright &copy; 2023 SixtyFPS GmbH</p>
+                    </div><!-- .col-1 -->
+                </div>
+            </footer>
+            <!-- ====== Footer End ====== -->
+        </div><!-- .wrap -->
+
+        <!-- ====== All Javascript Files ====== -->
+        <script src="/assets/js/script.js?ver=1.2.5"></script>
+    </body>
+
+</html>
