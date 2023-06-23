@@ -193,10 +193,32 @@ videoElements.forEach(videoElement => {
 const root = document.documentElement;
 const menuItem = document.querySelector('li.theme > a');
 let theme = window.getComputedStyle(root).getPropertyValue('--light') === ' ' ? 'dark' : 'light';
+const mobileThemeMenuItem = document.querySelector('.theme-mobile');
+
 /* if ( theme === 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches )
   root.classList.add(theme); */
 
 menuItem.addEventListener('click', function(e) {
+  e.preventDefault();
+  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isMacOSDarkMode = window.matchMedia('(prefers-color-scheme: light) and (not (-webkit-appearance: none))').matches;
+  const storedTheme = localStorage.getItem('theme');
+  let theme = storedTheme || 'dark';
+  if ((prefersDarkMode || isMacOSDarkMode) && !storedTheme) {
+    theme = 'dark';
+  }
+  root.classList.remove(theme);
+  theme = (theme === 'dark') ? 'light' : 'dark';
+  localStorage.setItem('theme', theme);
+  root.classList.add(theme);
+  /* root.classList.remove(theme);
+  theme = (theme === 'dark') ? 'light' : 'dark';
+  localStorage.setItem('theme', theme);
+  root.classList.add(theme); */
+  updateImageSources();
+});
+
+mobileThemeMenuItem.addEventListener('click', function(e) {
   e.preventDefault();
   const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const isMacOSDarkMode = window.matchMedia('(prefers-color-scheme: light) and (not (-webkit-appearance: none))').matches;
@@ -220,9 +242,9 @@ menuItem.addEventListener('click', function(e) {
 // Toggle mobile navigation
 const hamburgerButton = document.querySelector('button.hamburger');
 
-hamburgerButton.addEventListener('click', function() {
-  document.body.classList.toggle('navi-open');
-});
+// hamburgerButton.addEventListener('click', function() {
+//   document.body.classList.toggle('navi-open');
+// });
 // //Toggle mobile navigation
 
 // Mobile navi, sub navi buttons
