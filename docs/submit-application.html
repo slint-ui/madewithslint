@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="author" content="SixtyFPS GmbH" />
+
+        <!--====== Favicon Icon ======-->
+        <link rel="shortcut icon" href="/assets/img/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="/assets/img/favicon.svg">
+
+        <!-- ===== All CSS files ===== -->
+        <link rel="stylesheet" href="/assets/css/style.css?v=1.6.0" />
+
+        <!-- ===== Header from individual pages ===== -->
+
+        <title>Submit Application Form</title>
+        <meta name="description" content="Awesome applications built with Slint, the declarative GUI toolkit for Rust, C++, and JavaScript" />
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileCb"></script>
+        <style>
+            body {
+                background-size: cover;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <script>
+            /* Check if dark theme is selected */
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+            else if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.add('light');
+            }
+        </script>
+
+        <div class="wrap">
+            <!-- ====== Header Start ====== -->
+            <header class="top">
+                <div class="header-wrap">
+
+                    <nav class="main-navi">
+
+                        <ul>
+                            <li class="theme theme-light"><a href="#">Theme</a></li>
+                            <li class="btn"><a href="https://slint.dev/get-started.html">Get Started</a></li>
+                        </ul>
+
+                    </nav>
+
+                    <!-- <a href="https://slint.dev/search-results.html" class="search-mobile">Search</a> -->
+                    <a href="#" class="theme-mobile">Theme</a>
+
+                    <!-- <button class="hamburger" aria-label="menu" aria-expanded="false" aria-controls="nav">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button> -->
+
+                </div><!-- .header-wrap -->
+            </header>
+            <!-- ====== Header End ====== -->
+
+
+            <main>
+
+                <!--
+            Section blocks on this page:
+            - one-column
+            - one-column (with blue background)
+            -->
+
+                <script>
+                    function enableSubmit() {
+                        let inputs = document.getElementsByClassName('required');
+                        let btn = document.querySelector('input[type="submit"]');
+                        let isValid = true;
+                        for (var i = 0; i < inputs.length; i++) {
+                            isValid &= inputs[i].checkValidity();
+                        }
+                        btn.disabled = !isValid;
+                    }
+
+                    window.addEventListener('load', () => {
+                        let inputs = document.getElementsByClassName('required');
+                        for (var i = 0; i < inputs.length; i++) {
+                            inputs[i].oninput = enableSubmit;
+                        }
+                    }, false);
+
+                    function turnstileCb() {
+                        let theme = 'light';
+                        /* Check if dark theme is selected */
+                        if (localStorage.getItem('theme') === 'dark') {
+                            theme = 'dark';
+                        }
+                        turnstile.render('#turnstileWidget', {
+                            sitekey: '0x4AAAAAAAFbqFTievSLziNt',
+                            theme: theme,
+                        });
+                    }
+                </script>
+
+                <section class="one-column medium-narrow">
+                    <h1>Submit Application Form</h1>
+                    <p class="intro"><small>Add your application by submitting a PR or by entering information in the form below.</small></p>
+                    <h2>Option 1. Submit a PR</h2>
+                    <p>Follow <a href="https://github.com/slint-ui/madewithslint/tree/main#add-a-new-entry">the instructions in the README</a> of the website GitHuB repo or email us info@slint.dev</p>
+                    <h2>Option 2. Submit form</h2>
+                    <form method="POST" action="https://slint.dev/submit-application" enctype="multipart/form-data">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required placeholder="john.doe@slint.dev" class="required">
+                        <label for="name">Application Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Foo" class="required">
+                        <label for="creator">Application Creator</label>
+                        <input type="text" id="creator" name="creator" required placeholder="Company Name/ Name of Individual" class="required">
+                        <label for="description">Application Description</label>
+                        <textarea id="description" name="description" required placeholder="Enter a description of the application" class="required"></textarea>
+                        <label for="repo">Application Repo (optional)</label>
+                        <input type="text" id="repo" name="repo" placeholder="https://github/">
+                        <div id="turnstileWidget"></div>
+                        <div class="form-footer">
+                            <input type="submit" value="Send" disabled>
+                        </div>
+                    </form>
+                </section>
+
+            </main>
+
+
+            <!-- ====== Footer Start ====== -->
+            <footer>
+                <div class="col-wrap">
+                    <div class="col-6">
+                        <p><img src="https://slint.dev/assets/img/slint-logo.svg" alt="Slint" width="141" height="47" class="footer-logo"></p>
+                        <p class="some-links">
+                            <a href="https://twitter.com/slint_ui"><img src="https://slint.dev/assets/img/icon-twitter.svg" alt="Twitter" width="40" height="40"></a>
+                            <a href="https://www.linkedin.com/company/slint-ui/"><img src="https://slint.dev/assets/img/icon-linkedin.svg" alt="Linkedin" width="40" height="40"></a>
+                            <a href="https://fosstodon.org/@slint"><img src="https://slint.dev/assets/img/icon-mastodon.svg" alt="Mastodon" width="40" height="40"></a>
+                            <!-- <a href="https://github.com/slint-ui/slint/discussions"><img src="https://slint.dev/assets/img/icon-github.svg" alt="Github Discussions" width="40" height="40"></a> -->
+                            <!-- <a href="https://chat.slint.dev/"><img src="https://slint.dev/assets/img/icon-some.svg" alt="" width="40" height="40"></a> -->
+                        </p>
+                        <p><img src="https://slint.dev/assets/img/annual-ross-index.svg" data-darkimg="https://slint.dev/assets/img/annual-ross-index-light.svg" data-lightimg="https://slint.dev/assets/img/annual-ross-index.svg" alt="Annual Ross index" width="260" height="52" class="annual-ross"></p>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">About</dt>
+                            <dd><a href="https://slint.dev/about-us.html">Us</a></dd>
+                            <dd><a href="https://slint.dev/investors.html">Investors</a></dd>
+                            <dd><a href="https://slint.dev/events.html">Events</a></dd>
+                            <dd><a href="https://slint.dev/careers.html">Careers</a></dd>
+                            <dd><a href="https://slint.dev/imprint.html">Imprint &amp; Privacy</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Explore</dt>
+                            <dd><a href="https://slint.dev/docs.html">Documentation</a></dd>
+                            <dd><a href="https://slint.dev/demos.html">Demos</a></dd>
+                            <dd><a href="https://slint.dev/videos.html">Videos</a></dd>
+                            <dd><a href="https://slint.dev/service-partners.html">Service Partners</a></dd>
+                            <dd><a href="https://slint.dev/silicon-partners.html">Silicon Partners</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Resources</dt>
+                            <dd><a href="https://slint.dev/pricing.html">Pricing</a></dd>
+                            <dd><a href="https://slint.dev/community.html">Community</a></dd>
+                            <dd><a href="https://slint.dev/blog">Blog</a></dd>
+                            <dd><a href="https://slint.dev/thisweek">Weekly</a></dd>
+                            <dd><a href="https://slint.dev/supported-boards.html">Supported Boards</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Compare</dt>
+                            <dd><a href="https://slint.dev/alternative-to-qt.html">Qt</a></dd>
+                            <dd><a href="https://slint.dev/alternative-to-lvgl.html">LVGL</a></dd>
+                            <dd><a href="https://slint.dev/alternative-to-flutter.html">Flutter</a></dd>
+                            <dd><a href="https://slint.dev/alternative-to-electron.html">Electron</a></dd>
+                            <dd><a href="https://slint.dev/declarative-rust-gui.html">Other Rust GUI Toolkits</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Contact us</dt>
+                            <dd><a href="mailto:sales@slint.dev?subject=Contact from Website">Email</a></dd>
+                            <dd><a href="https://chat.slint.dev">Chat</a></dd>
+                            <dd><a href="https://github.com/slint-ui/slint">GitHub</a></dd>
+                            <dd hidden><a href="#">Schedule meeting</a></dd>
+                            <dd hidden><a href="#">Github discussion</a></dd>
+                            <dd hidden><a href="#">Twitter</a></dd>
+                            <dd hidden><a href="#">Mastodon</a></dd>
+                            <dd hidden><a href="#">Linkedin</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                </div>
+                <div class="col-wrap">
+                    <div class="col-1">
+                        <p>Copyright &copy; 2023 SixtyFPS GmbH</p>
+                        <p><a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>.</p>
+                    </div><!-- .col-1 -->
+                </div>
+            </footer>
+            <!-- ====== Footer End ====== -->
+        </div><!-- .wrap -->
+
+        <!-- ====== All Javascript Files ====== -->
+        <script src="/assets/js/script.js?ver=1.2.6"></script>
+    </body>
+
+</html>
