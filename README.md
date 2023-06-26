@@ -24,7 +24,7 @@ See example below for Cargo UI
 - Application License: MIT / Apache 2.0
 - Application Repo: https://github.com/slint-ui/cargo-ui/
 
-``
+```
 <div class="application-item">
     <div class="application-overview">
         <div class="application-overview-name">
@@ -42,4 +42,4 @@ See example below for Cargo UI
         </div>
     </div>
 </div><!-- .application-item -->
-``
+```
