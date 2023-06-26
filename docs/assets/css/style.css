@@ -2183,6 +2183,13 @@ div.application-overview-name h3.application-company {
 	margin-bottom: 0;
 }
 
+div.application-cta {
+	display: flex; 
+	flex-flow: row wrap; 
+	justify-content: space-around;
+	align-content: center;
+}
+
 @media only screen and (max-width: 1170px) {
 	section.applications .col-wrap {
 		display: grid;

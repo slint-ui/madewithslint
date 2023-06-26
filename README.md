@@ -37,8 +37,11 @@ See example below for Cargo UI
         <div>
             <p>A GUI frontend for Cargo.<br><br> License: MIT / Apache 2.0</p>
         </div>
-        <div>
-            <a class="btn" href="https://github.com/slint-ui/cargo-ui/">Project Repo</a>
+        <div class="application-cta">
+            <!-- Use this is for running a wasm binary
+            <p><a href="" class="btn">Run in Browser</a></p> 
+            --> 
+            <p><a class="btn" href="https://github.com/slint-ui/cargo-ui/">Project Repo</a></p>                    
         </div>
     </div>
 </div><!-- .application-item -->
