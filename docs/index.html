@@ -15,11 +15,15 @@
         <link rel="stylesheet" href="/assets/css/style.css?v=1.6.0" />
 
         <!-- ===== Header from individual pages ===== -->
-        
+
         <title>#MadeWithSlint</title>
         <meta name="description" content="Awesome applications built with Slint, the declarative GUI toolkit for Rust, C++, and JavaScript" />
-        
-        <style>body {background-size:cover;}</style>
+
+        <style>
+            body {
+                background-size: cover;
+            }
+        </style>
 
         <!-- Matomo -->
         <script>
@@ -42,12 +46,12 @@
         <script>
             /* Check if dark theme is selected */
             if (localStorage.getItem('theme') === 'dark') {
-              document.documentElement.classList.add('dark');
+                document.documentElement.classList.add('dark');
             }
             else if (localStorage.getItem('theme') === 'light') {
-              document.documentElement.classList.add('light');
+                document.documentElement.classList.add('light');
             }
-          </script>
+        </script>
 
         <div class="wrap">
             <!-- ====== Header Start ====== -->
@@ -76,201 +80,220 @@
             </header>
             <!-- ====== Header End ====== -->
 
-            
-        <main>
 
-            <!--
+            <main>
+
+                <!--
             Section blocks on this page:
             - one-column
             - one-column (with blue background)
             -->
-            <section class="one-column" style="padding: 100px 0;">
-                <div style="display: flex; align-items: center; justify-content: center;"><img src="/assets/img/madewithslint-logo-light.svg" data-darkimg="/assets/img/madewithslint-logo-dark.svg" data-lightimg="/assets/img/madewithslint-logo-light.svg" alt="Made with Slint" width="300"></div>
-            </section>
+                <section class="one-column" style="padding: 100px 0;">
+                    <div style="display: flex; align-items: center; justify-content: center;"><img src="/assets/img/madewithslint-logo-light.svg" data-darkimg="/assets/img/madewithslint-logo-dark.svg" data-lightimg="/assets/img/madewithslint-logo-light.svg" alt="Made with Slint" width="300"></div>
+                </section>
 
-            <section class="applications">
-                <div class="col-wrap">
-                    <div class="application-item">
-                        <div class="application-overview">
-                            <div class="application-overview-name">
-                                <h3 class="application-name">Cargo UI</h3>
-                                <h3 class="application-company"><small>SixtyFPS GmbH</small></h3>
+                <section class="applications">
+                    <div class="col-wrap">
+                        <div class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Cargo UI</h3>
+                                    <h3 class="application-company"><small>SixtyFPS GmbH</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img src="/assets/img/madewithslint-cargoui.png" alt="Screenshot of Cargo UI">
+                                </div>
+                                <div>
+                                    <p>A GUI frontend for Cargo.<br><br> License: MIT / Apache 2.0</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://github.com/slint-ui/cargo-ui/">Project Repo</a></p>
+                                </div>
                             </div>
-                            <div class="application-overview-img">
-                                <img src="/assets/img/madewithslint-cargoui.png" alt="Screenshot of Cargo UI">
-                            </div>
-                            <div>
-                                <p>A GUI frontend for Cargo.<br><br> License: MIT / Apache 2.0</p>
-                            </div>
-                            <div class="application-cta">
-                                <p><a class="btn" href="https://github.com/slint-ui/cargo-ui/">Project Repo</a></p>                    
-                            </div>
-                        </div>
-                    </div><!-- .application-item -->
-                    <div class="application-item">
-                        <div class="application-overview">
-                            <div class="application-overview-name">
-                                <h3 class="application-name">Chiptrack</h3>
-                                <h3 class="application-company"><small>Jocelyn Turcotte</small></h3>
-                            </div>
-                            <div class="application-overview-img">
-                                <img src="/assets/img/madewithslint-chiptrack.png" alt="Screenshot of Chiptrack">
-                            </div>
-                            <div>
-                                <p>A cross-platform sequencer and synthesizer based on the emulation of the Game Boy sound chip.<br><br> License: MIT</p>
-                            </div>
-                            <div class="application-cta">
-                                <p><a href="https://jturcotte.github.io/chiptrack" class="btn">Run in Browser</a></p><p><a href="https://github.com/jturcotte/chiptrack/" class="btn"">Project Repo</a></p>                    
-                            </div>
-                        </div>
-                    </div><!-- .application-item -->
-                    <div class="application-item">
-                        <div class="application-overview">
-                            <div class="application-overview-name">
-                                <h3 class="application-name">Tetris</h3>
-                                <h3 class="application-company"><small>Gaspard Culis</small></h3>
-                            </div>
-                            <div class="application-overview-img">
-                                <img src="/assets/img/madewithslint-tetris-light.png" alt="Screenshot of Tetris" data-darkimg="/assets/img/madewithslint-tetris-dark.png" data-lightimg="/assets/img/madewithslint-tetris-light.png">
-                            </div>
-                            <div>
-                                <p>A Tetris remake that's using Slint for the user interface.<br><br> License: MIT</p>
-                            </div>
-                            <div class="application-cta">
-                                <p><a href="https://gaspardculis.github.io/slint-tetris/" class="btn">Run in Browser</a></p><p><a class="btn" href="https://github.com/GaspardCulis/slint-tetris/">Project Repo</a></p>                    
+                        </div><!-- .application-item -->
+                        <div class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Chiptrack</h3>
+                                    <h3 class="application-company"><small>Jocelyn Turcotte</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img src="/assets/img/madewithslint-chiptrack.png" alt="Screenshot of Chiptrack">
+                                </div>
+                                <div>
+                                    <p>A cross-platform sequencer and synthesizer based on the emulation of the Game Boy sound chip.<br><br> License: MIT</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a href="https://jturcotte.github.io/chiptrack" class="btn">Run in Browser</a></p>
+                                    <p><a href="https://github.com/jturcotte/chiptrack/" class="btn"">Project Repo</a></p>                    
                             </div>
                         </div>
                     </div><!-- .application-item -->
-                    <div class="application-item">
-                        <div class="application-overview">
-                            <div class="application-overview-name">
-                                <h3 class="application-name">ImageSieve</h3>
-                                <h3 class="application-company"><small>Florian Fetz</small></h3>
-                            </div>
-                            <div class="application-overview-img">
-                                <img src="/assets/img/madewithslint-imagesieve.png">
-                            </div>
-                            <div>
-                                <p>ImageSieve is a GUI based tool to assist in sorting images based on taken date and similarity, categorize them according to their creation date and archive them in a target folder.<br><br> License: GPL3.0</p>
-                            </div>
-                            <div>
-                                <a class="btn" href="https://github.com/Futsch1/image-sieve/">Project Repo</a>
-                            </div>
-                        </div>
-                    </div><!-- .application-item -->
-                    <div class="application-item">
-                        <div class="application-overview">
-                            <div class="application-overview-name">
-                                <h3 class="application-name">GPCL</h3>
-                                <h3 class="application-company"><small>Danil Gulin</small></h3>
-                            </div>
-                            <div class="application-overview-img">
-                                <img src="/assets/img/madewithslint-gpcl.png" alt="Screenshot of GamePad Controlled Launcher">
-                            </div>
-                            <div>
-                                <p>GamePad Controlled Launcher - Simple application launcher that can be controlled with a gamepad. It is designed to be a media center home screen.<br><br> License: MIT</p>
-                            </div>
-                            <div class="application-cta">
-                                <!-- Use this is for running a wasm binary
+                    <div class=" application-item">
+                                            <div class="application-overview">
+                                                <div class="application-overview-name">
+                                                    <h3 class="application-name">Tetris</h3>
+                                                    <h3 class="application-company"><small>Gaspard Culis</small></h3>
+                                                </div>
+                                                <div class="application-overview-img">
+                                                    <img src="/assets/img/madewithslint-tetris-light.png" alt="Screenshot of Tetris" data-darkimg="/assets/img/madewithslint-tetris-dark.png" data-lightimg="/assets/img/madewithslint-tetris-light.png">
+                                                </div>
+                                                <div>
+                                                    <p>A Tetris remake that's using Slint for the user interface.<br><br> License: MIT</p>
+                                                </div>
+                                                <div class="application-cta">
+                                                    <p><a href="https://gaspardculis.github.io/slint-tetris/" class="btn">Run in Browser</a></p>
+                                                    <p><a class="btn" href="https://github.com/GaspardCulis/slint-tetris/">Project Repo</a></p>
+                                                </div>
+                                            </div>
+                                </div><!-- .application-item -->
+                                <div class="application-item">
+                                    <div class="application-overview">
+                                        <div class="application-overview-name">
+                                            <h3 class="application-name">ImageSieve</h3>
+                                            <h3 class="application-company"><small>Florian Fetz</small></h3>
+                                        </div>
+                                        <div class="application-overview-img">
+                                            <img src="/assets/img/madewithslint-imagesieve.png">
+                                        </div>
+                                        <div>
+                                            <p>ImageSieve is a GUI based tool to assist in sorting images based on taken date and similarity, categorize them according to their creation date and archive them in a target folder.<br><br> License: GPL3.0</p>
+                                        </div>
+                                        <div>
+                                            <a class="btn" href="https://github.com/Futsch1/image-sieve/">Project Repo</a>
+                                        </div>
+                                    </div>
+                                </div><!-- .application-item -->
+                                <div class="application-item">
+                                    <div class="application-overview">
+                                        <div class="application-overview-name">
+                                            <h3 class="application-name">GPCL</h3>
+                                            <h3 class="application-company"><small>Danil Gulin</small></h3>
+                                        </div>
+                                        <div class="application-overview-img">
+                                            <img src="/assets/img/madewithslint-gpcl.png" alt="Screenshot of GamePad Controlled Launcher">
+                                        </div>
+                                        <div>
+                                            <p>GamePad Controlled Launcher - Simple application launcher that can be controlled with a gamepad. It is designed to be a media center home screen.<br><br> License: MIT</p>
+                                        </div>
+                                        <div class="application-cta">
+                                            <!-- Use this is for running a wasm binary
                                 <p><a href="" class="btn">Run in Browser</a></p> 
-                                --> 
-                                <p><a class="btn" href="https://github.com/dngulin/gpcl/">Project Repo</a></p>                    
-                            </div>
-                        </div>
-                    </div><!-- .application-item -->
-                    <div class="application-item">
-                        <div class="application-overview">
-                            <div class="application-overview-name">
-                                <h3 class="application-name">Coop Widgets</h3>
-                                <h3 class="application-company"><small>flovansl</small></h3>
-                            </div>
-                            <div class="application-overview-img">
-                                <img src="/assets/img/madewithslint-coop-widgets.png">
-                            </div>
-                            <div>
-                                <p>The goal with coop_widgets is to provide a custom widget and components library for Slint with a simple, consistence and clean design. The second goal is to serve as an example how to implement a widget library with Slint based on a custom design system.<br><br> License: MIT</p>
-                            </div>
-                            <div class="application-cta">
-                                <p><a href="https://flovansl.codeberg.page/coop_sl/snapshots/examples/gallery/" class="btn">Run in Browser</a></p><p><a class="btn" href="https://codeberg.org/flovansl/co_sl/src/branch/main/widgets/coop_widgets/">Project Repo</a></p>                    
-                            </div>
-                        </div>
-                    </div><!-- .application-item -->
-                    <div class="application-item">
-                        <div class="application-overview">
-                            <div class="application-overview-name">
-                                <h3 class="application-name">Mastermind</h3>
-                                <h3 class="application-company"><small>Guillaume VDK</small></h3>
-                            </div>
-                            <div class="application-overview-img">
-                                <img src="/assets/img/madewithslint-mastermind.gif">
-                            </div>
-                            <div>
-                                <p>Mastermind or Master Mind is a code-breaking game for two players.</p>
-                            </div>
-                            <div>
-                                <a class="btn" href="https://github.com/ElevenJune/mastermind_Rust">Project Repo</a>
-                            </div>
-                            </p>
-                        </div>
-                    </div><!-- .application-item -->
-                    <div class="application-item">
-                        <div class="application-overview">
-                            <div class="application-overview-name">
-                                <h3 class="application-name">Launcher</h3>
-                                <h3 class="application-company"><small>Project Trains</small></h3>
-                            </div>
-                            <div class="application-overview-img">
-                                <img src="/assets/img/madewithslint-project-trains-launcher.png">
-                            </div>
-                            <div class="application-description">
-                                <p>Crossplatform game launcher made for Project Trains simulator.</p>
-                            </div>
-                            <div>
-                                <a class="btn" href="https://github.com/Project-Trains/launcher/">Project Repo</a>
-                            </div>
-                        </div>
-                    </div><!-- .application-item -->
-                    <div class="application-item">
-                        <div class="application-overview">
-                            <div class="application-overview-name">
-                                <h3 class="application-name">Dispute</h3>
-                                <h3 class="application-company"><small>Vinegret43</small></h3>
-                            </div>
-                            <div class="application-overview-img">
-                                <img src="/assets/img/madewithslint-dispute.jpg">
-                            </div>
-                            <div class="application-description">
-                                <p>The Damn Stylish Pomodoro Timer<br/><br/>License: GPL 3.0</p>
-                            </div>
-                            <div>
-                                <a class="btn" href="https://github.com/Vinegret43/dispute">Project Repo</a>
-                            </div>
-                        </div>
-                    </div><!-- .application-item -->
-                </div><!-- .col-wrap -->
-            </section><!-- .applications -->
+                                -->
+                                            <p><a class="btn" href="https://github.com/dngulin/gpcl/">Project Repo</a></p>
+                                        </div>
+                                    </div>
+                                </div><!-- .application-item -->
+                                <div class="application-item">
+                                    <div class="application-overview">
+                                        <div class="application-overview-name">
+                                            <h3 class="application-name">Coop Widgets</h3>
+                                            <h3 class="application-company"><small>flovansl</small></h3>
+                                        </div>
+                                        <div class="application-overview-img">
+                                            <img src="/assets/img/madewithslint-coop-widgets.png">
+                                        </div>
+                                        <div>
+                                            <p>The goal with coop_widgets is to provide a custom widget and components library for Slint with a simple, consistence and clean design. The second goal is to serve as an example how to implement a widget library with Slint based on a custom design system.<br><br> License: MIT</p>
+                                        </div>
+                                        <div class="application-cta">
+                                            <p><a href="https://flovansl.codeberg.page/coop_sl/snapshots/examples/gallery/" class="btn">Run in Browser</a></p>
+                                            <p><a class="btn" href="https://codeberg.org/flovansl/co_sl/src/branch/main/widgets/coop_widgets/">Project Repo</a></p>
+                                        </div>
+                                    </div>
+                                </div><!-- .application-item -->
+                                <div class="application-item">
+                                    <div class="application-overview">
+                                        <div class="application-overview-name">
+                                            <h3 class="application-name">Mastermind</h3>
+                                            <h3 class="application-company"><small>Guillaume VDK</small></h3>
+                                        </div>
+                                        <div class="application-overview-img">
+                                            <img src="/assets/img/madewithslint-mastermind.gif">
+                                        </div>
+                                        <div>
+                                            <p>Mastermind or Master Mind is a code-breaking game for two players.</p>
+                                        </div>
+                                        <div>
+                                            <a class="btn" href="https://github.com/ElevenJune/mastermind_Rust">Project Repo</a>
+                                        </div>
+                                        </p>
+                                    </div>
+                                </div><!-- .application-item -->
+                                <div class="application-item">
+                                    <div class="application-overview">
+                                        <div class="application-overview-name">
+                                            <h3 class="application-name">Launcher</h3>
+                                            <h3 class="application-company"><small>Project Trains</small></h3>
+                                        </div>
+                                        <div class="application-overview-img">
+                                            <img src="/assets/img/madewithslint-project-trains-launcher.png">
+                                        </div>
+                                        <div class="application-description">
+                                            <p>Crossplatform game launcher made for Project Trains simulator.</p>
+                                        </div>
+                                        <div>
+                                            <a class="btn" href="https://github.com/Project-Trains/launcher/">Project Repo</a>
+                                        </div>
+                                    </div>
+                                </div><!-- .application-item -->
+                                <div class="application-item">
+                                    <div class="application-overview">
+                                        <div class="application-overview-name">
+                                            <h3 class="application-name">Dispute</h3>
+                                            <h3 class="application-company"><small>Vinegret43</small></h3>
+                                        </div>
+                                        <div class="application-overview-img">
+                                            <img src="/assets/img/madewithslint-dispute.jpg">
+                                        </div>
+                                        <div class="application-description">
+                                            <p>The Damn Stylish Pomodoro Timer<br /><br />License: GPL 3.0</p>
+                                        </div>
+                                        <div>
+                                            <a class="btn" href="https://github.com/Vinegret43/dispute">Project Repo</a>
+                                        </div>
+                                    </div>
+                                </div><!-- .application-item -->
+                            </div><!-- .application-item -->
+                            <div class="application-item">
+                                <div class="application-overview">
+                                    <div class="application-overview-name">
+                                        <h3 class="application-name">SurrealismUI</h3>
+                                        <h3 class="application-company"><small>YiFei Sheng</small></h3>
+                                    </div>
+                                    <div class="application-overview-img">
+                                        <img src="/assets/img/madewithslint-surrealismui.png">
+                                    </div>
+                                    <div class="application-description">SurrealismUI is a third-party component library built entirely using Slint. Components follow and use Fluent2 design style.<br /><br />License: MIT</p>
+                                    </div>
+                                    <div>
+                                        <a class="btn" href="https://github.com/syf20020816/SurrealismUI">Project Repo</a>
+                                    </div>
+                                </div>
+                            </div><!-- .application-item -->
+                        </div><!-- .col-wrap -->
+                </section><!-- .applications -->
 
 
-            <section class="one-column" style="padding: 100px 0;">
-                <p><a href="/submit-application.html" class="btn btn-center" style="	background-color: var(--color_blue);
+                <section class="one-column" style="padding: 100px 0;">
+                    <p><a href="/submit-application.html" class="btn btn-center" style="	background-color: var(--color_blue);
                     border-radius: 4px;
                     font-weight: 600; color: #fff;">Submit your Application</a></p>
-            </section>
+                </section>
 
-        </main>
-    
+            </main>
 
-            <!-- ====== Footer Start ====== -->
+
             <footer>
                 <div class="col-wrap">
                     <div class="col-6">
-                        <p><img src="https://slint.dev/assets/img/slint-logo.svg" alt="Slint" width="141" height="47" class="footer-logo"></p>
+                        <p><a href=""><img src="https://slint.dev/assets/img/slint-logo.svg" alt="Slint" width="141" height="47" class="footer-logo"></a></p>
                         <p class="some-links">
-                            <a href="https://twitter.com/slint_ui"><img src="https://slint.dev/assets/img/icon-twitter.svg" alt="Twitter" width="40" height="40"></a>
-                            <a href="https://www.linkedin.com/company/slint-ui/"><img src="https://slint.dev/assets/img/icon-linkedin.svg" alt="Linkedin" width="40" height="40"></a>
-                            <a href="https://fosstodon.org/@slint"><img src="https://slint.dev/assets/img/icon-mastodon.svg" alt="Mastodon" width="40" height="40"></a>
-                            <!-- <a href="https://github.com/slint-ui/slint/discussions"><img src="https://slint.dev/assets/img/icon-github.svg" alt="Github Discussions" width="40" height="40"></a> -->
-                            <!-- <a href="https://chat.slint.dev/"><img src="https://slint.dev/assets/img/icon-some.svg" alt="" width="40" height="40"></a> -->
+                            <a href="https://twitter.com/slint_ui"><img src="/assets/img/icon-twitter.svg" alt="Twitter" width="40" height="40"></a>
+                            <a href="https://www.linkedin.com/company/slint-ui/"><img src="/assets/img/icon-linkedin.svg" alt="Linkedin" width="40" height="40"></a>
+                            <a rel="me" href="https://fosstodon.org/@slint"><img src="/assets/img/icon-mastodon.svg" alt="Mastodon" width="40" height="40"></a>
+                            <!-- <a href="https://github.com/slint-ui/slint/discussions"><img src="/assets/img/icon-github.svg" alt="Github Discussions" width="40" height="40"></a> -->
+                            <!-- <a href="https://chat.slint.dev/"><img src="/assets/img/icon-some.svg" alt="" width="40" height="40"></a> -->
                         </p>
                         <p><img src="https://slint.dev/assets/img/annual-ross-index.svg" data-darkimg="https://slint.dev/assets/img/annual-ross-index-light.svg" data-lightimg="https://slint.dev/assets/img/annual-ross-index.svg" alt="Annual Ross index" width="260" height="52" class="annual-ross"></p>
                     </div><!-- .col-6 -->
@@ -298,9 +321,9 @@
                         <dl>
                             <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Resources</dt>
                             <dd><a href="https://slint.dev/pricing.html">Pricing</a></dd>
+                            <dd><a href="https://slint.dev/pricing.html#support">Support</a></dd>
                             <dd><a href="https://slint.dev/community.html">Community</a></dd>
                             <dd><a href="https://slint.dev/blog">Blog</a></dd>
-                            <dd><a href="https://slint.dev/thisweek">Weekly</a></dd>
                             <dd><a href="https://slint.dev/supported-boards.html">Supported Boards</a></dd>
                         </dl>
                     </div><!-- .col-6 -->
@@ -317,12 +340,10 @@
                     <div class="col-6">
                         <dl>
                             <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Contact us</dt>
-                            <dd><a href="/meeting.html?event=online">Schedule Meeting</a></dd>
+                            <dd><a href="https://slint.dev/meeting.html?event=online">Schedule Meeting</a></dd>
                             <dd><a href="mailto:info@slint.dev?subject=Contact%20from%20Website">Email</a></dd>
                             <dd><a href="https://chat.slint.dev">Chat</a></dd>
                             <dd><a href="https://github.com/slint-ui/slint">GitHub</a></dd>
-                            <dd hidden><a href="#">Schedule meeting</a></dd>
-                            <dd hidden><a href="#">Github discussion</a></dd>
                             <dd hidden><a href="#">Twitter</a></dd>
                             <dd hidden><a href="#">Mastodon</a></dd>
                             <dd hidden><a href="#">Linkedin</a></dd>
@@ -332,7 +353,6 @@
                 <div class="col-wrap">
                     <div class="col-1">
                         <p>Copyright &copy; 2023 SixtyFPS GmbH</p>
-                        <p><a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>.</p>
                     </div><!-- .col-1 -->
                 </div>
             </footer>
