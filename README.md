@@ -1,5 +1,7 @@
 # About
 
+![#MadeWithSlint](./assets/img/MadeWithSlint-logo-light.svg#gh-light-mode-only)![#MadeWithSlint](./assets/img/MadeWithSlint-logo-dark.svg#gh-dark-mode-only)
+
 This is the repository that contains data for the madewithslint.com website.
 
 ## Add a new entry
@@ -24,7 +26,7 @@ See example below for Cargo UI
 - Application License: MIT / Apache 2.0
 - Application Repo: https://github.com/slint-ui/cargo-ui/
 
-```
+```html
 <div class="application-item">
     <div class="application-overview">
         <div class="application-overview-name">
