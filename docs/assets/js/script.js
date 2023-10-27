@@ -46,7 +46,12 @@ const imgObserver = new IntersectionObserver(entries => {
         src = img.getAttribute('data-src');
       }
 
+      if (!src) {
+        return;
+      }
+
       img.src = src;
+      
     }
   });
 });
