@@ -34,7 +34,7 @@ See example below for Cargo UI
             <h3 class="application-company"><small>SixtyFPS GmbH</small></h3>
         </div>
         <div class="application-overview-img">
-            <img src="/assets/img/madewithslint-cargoui.png" alt="Screenshot of Cargo UI">
+            <img data-src="/assets/img/madewithslint-cargoui.png" alt="Screenshot of Cargo UI">
         </div>
         <div>
             <p>A GUI frontend for Cargo.<br><br> License: MIT / Apache 2.0</p>

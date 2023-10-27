@@ -10,47 +10,6 @@
 // - Change image source <img> in dark theme
 // - Sets main navi list item as selected by url end (JUST FOR DEMO)
 
-// Home page, detect sticky element if it is "sticky" (design/develop/deploy)
-const stickyElement = document.querySelector('.tabs');
-
-if ( stickyElement ) {
-  const offsetTop = stickyElement.offsetTop;
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    if (scrollTop >= offsetTop) {
-      stickyElement.classList.add('sticky');
-    } else {
-      // console.log("scrollTop :", scrollTop, "offsetTop :", offsetTop)
-      stickyElement.classList.remove('sticky');
-    }
-  });
-}
-// /Home page, detect sticky element
-
-// Accordion toggle
-const accordionHeaders = document.querySelectorAll('.accordion-header');
-
-accordionHeaders.forEach(header => {
-  header.addEventListener('click', () => {
-    // Close other accordion items
-    const activeItem = document.querySelector('.active');
-    if (activeItem && activeItem !== header.parentNode) {
-      activeItem.classList.remove('active');
-      activeItem.querySelector('.accordion-collapse').style.height = '0';
-    }
-
-    // Toggle current accordion item
-    header.parentNode.classList.toggle('active');
-    const accordionContent = header.nextElementSibling;
-    if (accordionContent.style.height === '0px') {
-      accordionContent.style.height = accordionContent.scrollHeight + 'px';
-    } else {
-      accordionContent.style.height = '0';
-    }
-  });
-});
-// /Accordion toggle
-
 // Main navi, sub navi toggle open/close
 // Active only on big screens, not when mobile menu is visible
 if (window.innerWidth > 1170) {
@@ -68,126 +27,23 @@ if (window.innerWidth > 1170) {
 }
 // /Main navi, sub navi toggle open/close
 
-// Sticky header
-// Sticky header appears only when user scrolls up and is more than 200 px away from the top of the page.
-// let prevScrollPos = window.pageYOffset;
-
-// window.addEventListener('scroll', function() {
-//   const body = document.querySelector('body');
-//   const currentScrollPos = window.pageYOffset;
-//   if (currentScrollPos > 200 && currentScrollPos < prevScrollPos) {
-//     body.classList.add('sticky-header');
-//   } else {
-//     body.classList.remove('sticky-header');
-//   }
-//   prevScrollPos = currentScrollPos;
-// });
-// /Sticky header
-
-// Activate tab menu when content is scrolled in to the view
-let currentMenuItem;
-let options = {
-  threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
-};
-
-const observer = new IntersectionObserver(entries => {
+// Load image when content is scrolled in to the view
+const imgObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const elementAttributes = entry.target.attributes;
-      const elementId = elementAttributes.getNamedItem("category").value;
-      const menuItem = document.querySelector('.' + elementId);
-      if (currentMenuItem == null) {
-        menuItem.classList.add('active');
-        currentMenuItem = menuItem;
-      }
-      if (entry.intersectionRatio == 1) {
-        if (currentMenuItem !== menuItem) {
-          currentMenuItem.classList.remove('active');
-          menuItem.classList.add('active');
-          currentMenuItem = menuItem;
-        }
-      }
-    } /*else {
-      const elementId = entry.target.id;
-      const menuItem = document.querySelector('.' + elementId);
-      if (currentMenuItem === menuItem) {
-        menuItem.classList.remove('active');
-        currentMenuItem = null;
-      }
-    }*/
-  });
-}, options);
-
-const targetElements = document.querySelectorAll('[category]');
-targetElements.forEach(targetElement => {
-  observer.observe(targetElement);
-});
-// /Activate tab menu when content is scrolled in to the view
-
-// Load videos when content is scrolled in to the view
-const videoObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      let videoElement = entry.target;
-      if (!videoElement.readyState) {
-        videoElement.load();
-        // console.log("video is loaded")
-      }
+      let img = entry.target;
+      const src = img.getAttribute('data-src');
+      if (!src) { return; }
+      img.src = src;
     }
   });
 });
 
-const videoElements = document.querySelectorAll('video');
-videoElements.forEach(videoElement => {
-  videoObserver.observe(videoElement);
+const imgElements = document.querySelectorAll('img');
+imgElements.forEach(imgElement => {
+  imgObserver.observe(imgElement);
 });
 // /Load videos when content is scrolled in to the view
-
-// Load demo wasm binaries when content is clicked
-// const demoElements = document.querySelectorAll('[demo]');
-// demoElements.forEach(demoElement => {
-//   demoElement.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     const elementAttributes = demoElement.attributes;
-//     let elementId = elementAttributes.getNamedItem("demo").value;
-//     let elementIdFile = elementId;
-//     switch (elementId) {
-//       case 'gallery_fluent':
-//         elementId = "gallery";
-//         elementIdFile = "fluent/gallery";
-//         break;
-//       case 'gallery_material':
-//         elementId = "gallery";
-//         elementIdFile = "material/gallery";
-//         break;
-//       case 'energy-monitor':
-//         elementIdFile = "energy_monitor";
-//         break;
-//       default:
-//         break;
-//     }
-//     const jsFile = "https://" + window.location.hostname + "/demos/" + elementId + "/pkg/" + elementIdFile + ".js";
-//     let canvas = document.getElementById("canvas");
-//     // remove old canvas and unload window
-//     if (canvas != undefined) {
-//       let sibling = canvas.previousElementSibling;
-//       if (sibling) {
-//         sibling.hidden = false;
-//       }
-//       canvas.remove();
-//     }
-//     import(jsFile).then(module => {
-//       let canvas = document.createElement("canvas");
-//       canvas.id = "canvas";
-//       demoElement.parentElement.appendChild(canvas);
-//       module.default().finally(() => {
-//         demoElement.hidden = true;
-//         document.getElementById("canvas").hidden = false;
-//       });
-//     });
-//   })
-// });
-// /Load demo wasm binaries when content is clicked
 
 // Color theme toggle
 const root = document.documentElement;
