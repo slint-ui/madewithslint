@@ -1,6 +1,6 @@
 # About
 
-![#MadeWithSlint](./docs/assets/img/MadeWithSlint-logo-light.svg#gh-light-mode-only)![#MadeWithSlint](./docs/assets/img/MadeWithSlint-logo-dark.svg#gh-dark-mode-only)
+![#MadeWithSlint](./docs/assets/img/madewithslint-logo-light.svg#gh-light-mode-only)![#MadeWithSlint](./docs/assets/img/madewithslint-logo-dark.svg#gh-dark-mode-only)
 
 This is the repository that contains data for the madewithslint.com website.
 
