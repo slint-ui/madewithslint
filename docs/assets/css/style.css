@@ -103,7 +103,7 @@ body {
   src: url(/assets/fonts/SourceCodePro-SemiBold.ttf);
 }
 
-/* @font-face {
+@font-face {
 	font-display: auto;
   font-family: 'Red Hat Display';
   font-weight: 600;
@@ -122,7 +122,7 @@ body {
   font-family: 'Red Hat Display';
   font-weight: 900;
   src: url(/assets/fonts/RedHatDisplay-Black.ttf);
-} */
+}
 
 /* /Fonts */
 
