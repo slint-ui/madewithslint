@@ -32,8 +32,20 @@ const imgObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       let img = entry.target;
-      const src = img.getAttribute('data-src');
-      if (!src) { return; }
+
+      let src = null;
+
+      if (document.documentElement.classList.contains('dark') || (!document.documentElement.classList.contains('dark') && !document.documentElement.classList.contains('light') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        src = img.getAttribute('data-darkimg');
+      } 
+      else {
+        src = img.getAttribute('data-lightimg');
+      }
+
+      if (!src) {
+        src = img.getAttribute('data-src');
+      }
+
       img.src = src;
     }
   });
@@ -158,10 +170,6 @@ if (window.innerWidth <= 1170) {
 // /Mobile navi, sub navi buttons
 
 // Change image source <img> in dark theme
-window.addEventListener('load', function () {
-  updateImageSources();
-});
-
 function updateImageSources() {
   if (document.documentElement.classList.contains('dark') || (!document.documentElement.classList.contains('dark') && !document.documentElement.classList.contains('light') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     const darkImages = document.querySelectorAll('img[data-darkimg]');
