@@ -2199,6 +2199,7 @@ div.application-cta {
 	align-content: center;
 	text-align: center;
 	flex-grow: 1;
+	padding-top: 2em;
 }
 
 div.application-cta p {
