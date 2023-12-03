@@ -2161,6 +2161,7 @@ div.application-overview-img {
 	align-items: center;
 	justify-content: center;
 	margin: 1em 0;
+	flex-grow: 1;
 }
 
 div.application-overview-img img {
@@ -2175,6 +2176,7 @@ div.application-overview-name {
 	padding-left: 14px;
 	width: calc(100% - 70px);
 	text-align: center;
+	flex-grow: 1;
 }
 
 div.application-overview-name h3.application-name {
@@ -2185,11 +2187,22 @@ div.application-overview-name h3.application-company {
 	margin-bottom: 0;
 }
 
+div.application-description {
+	display: flex;
+	flex-grow: 2;
+}
+
 div.application-cta {
 	display: flex; 
 	flex-flow: row wrap; 
 	justify-content: space-around;
 	align-content: center;
+	text-align: center;
+	flex-grow: 1;
+}
+
+div.application-cta p {
+	width: 100%;
 }
 
 @media only screen and (max-width: 1170px) {
