@@ -27,7 +27,7 @@ See example below for Cargo UI
 - Application Repo: https://github.com/slint-ui/cargo-ui/
 
 ```html
-<div class="application-item">
+<div id="cargo-ui" class="application-item">
     <div class="application-overview">
         <div class="application-overview-name">
             <h3 class="application-name">Cargo UI</h3>
