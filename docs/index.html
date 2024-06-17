@@ -731,7 +731,6 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         let img = entry.target;
-                        console.log("Image in view")
                         let src = null;
 
                         if (document.documentElement.classList.contains('dark') || (!document.documentElement.classList.contains('dark') && !document.documentElement.classList.contains('light') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -760,7 +759,6 @@
             console.log(imgElements.length)
             imgElements.forEach(imgElement => {
                 imgObserver.observe(imgElement);
-                console.log("Added")
             });
         </script>
     </body>
