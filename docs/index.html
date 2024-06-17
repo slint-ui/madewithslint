@@ -45,41 +45,6 @@
             else if (localStorage.getItem('theme') === 'light') {
                 document.documentElement.classList.add('light');
             }
-
-            // Load image when content is scrolled in to the view
-            const imgObserver = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        let img = entry.target;
-
-                        let src = null;
-
-                        if (document.documentElement.classList.contains('dark') || (!document.documentElement.classList.contains('dark') && !document.documentElement.classList.contains('light') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                            src = img.getAttribute('data-darkimg');
-                        }
-                        else {
-                            src = img.getAttribute('data-lightimg');
-                        }
-
-                        if (!src) {
-                            src = img.getAttribute('data-src');
-                        }
-
-                        if (!src) {
-                            return;
-                        }
-
-                        img.src = src;
-
-                    }
-                });
-            });
-
-
-            const imgElements = document.querySelectorAll('img');
-            imgElements.forEach(imgElement => {
-                imgObserver.observe(imgElement);
-            });
         </script>
 
         <div class="wrap">
@@ -760,6 +725,44 @@
 
         <!-- ====== All Javascript Files ====== -->
         <script src="https://slint.dev/assets/js/script.js?ver=1.2.20"></script>
+        <script>
+            // Load image when content is scrolled in to the view
+            const imgObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        let img = entry.target;
+                        console.log("Image in view")
+                        let src = null;
+
+                        if (document.documentElement.classList.contains('dark') || (!document.documentElement.classList.contains('dark') && !document.documentElement.classList.contains('light') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                            src = img.getAttribute('data-darkimg');
+                        }
+                        else {
+                            src = img.getAttribute('data-lightimg');
+                        }
+
+                        if (!src) {
+                            src = img.getAttribute('data-src');
+                        }
+
+                        if (!src) {
+                            return;
+                        }
+
+                        img.src = src;
+
+                    }
+                });
+            });
+
+
+            const imgElements = document.querySelectorAll('img');
+            console.log(imgElements.length)
+            imgElements.forEach(imgElement => {
+                imgObserver.observe(imgElement);
+                console.log("Added")
+            });
+        </script>
     </body>
 
 </html>
