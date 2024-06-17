@@ -45,6 +45,36 @@
             else if (localStorage.getItem('theme') === 'light') {
                 document.documentElement.classList.add('light');
             }
+
+            // Load image when content is scrolled in to the view
+            const imgObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        let img = entry.target;
+
+                        let src = null;
+
+                        if (document.documentElement.classList.contains('dark') || (!document.documentElement.classList.contains('dark') && !document.documentElement.classList.contains('light') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                            src = img.getAttribute('data-darkimg');
+                        }
+                        else {
+                            src = img.getAttribute('data-lightimg');
+                        }
+
+                        if (!src) {
+                            src = img.getAttribute('data-src');
+                        }
+
+                        if (!src) {
+                            return;
+                        }
+
+                        img.src = src;
+
+                    }
+                });
+            });
+
         </script>
 
         <div class="wrap">
@@ -724,7 +754,7 @@
         </div><!-- .wrap -->
 
         <!-- ====== All Javascript Files ====== -->
-        <script src="https://slint.dev/assets/js/script.js?ver=1.3.0"></script>
+        <script src="https://slint.dev/assets/js/script.js?ver=1.2.20"></script>
     </body>
 
 </html>
