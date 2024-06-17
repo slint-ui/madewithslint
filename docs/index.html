@@ -75,6 +75,11 @@
                 });
             });
 
+
+            const imgElements = document.querySelectorAll('img');
+            imgElements.forEach(imgElement => {
+                imgObserver.observe(imgElement);
+            });
         </script>
 
         <div class="wrap">
