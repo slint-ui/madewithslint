@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Showcase | #MadeWithSlint</title>
+        <meta property="og:image" content="<?root?>assets/img/responsive.png" />
+        <meta property="og:title" content="<?og_title?>" />
+        <meta property="og:url" content="<?og_url?>" />
+        <meta property="og:type" content="website" />
+        <meta name="description" content="Awesome applications built with Slint, the declarative GUI toolkit for Rust, C++, Python, and JavaScript" />
+    </head>
+
+    <body>
+        <main>
+
+            <style>
+                /* Section: applications */
+
+                section.applications {
+                    max-width: 1280px;
+                    padding: 62px 0 0;
+                }
+
+                section.applications .col-wrap {
+                    justify-content: space-around;
+                    flex-wrap: wrap;
+                }
+
+                section.applications>h2 {
+                    margin-bottom: 50px;
+                    text-align: center;
+                }
+
+                div.application-item {
+                    background-color: var(--color_blue);
+                    border-radius: 8px;
+                    color: #fff;
+                    font-size: 1.125em;
+                    padding: 1.77em;
+                    width: calc(33% - 20px);
+                    margin: 20px 0;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+
+                div.application-item p {
+                    font-size: 1.125rem;
+                    line-height: 1.5;
+                    margin-bottom: 1em;
+                }
+
+                div.application-item a {
+                    color: var(--color_gray);
+                }
+
+                div.application-item a.btn {
+                    border: 1px solid var(--color_purple);
+                    /* border-color: var(--dark, #fff) var(--light, var(--color_blue)); */
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    color: var(--color_blue);
+                    display: inline-block;
+                    font-size: 1.25rem;
+                    /* 20 / 16 */
+                    font-weight: 600;
+                    line-height: 1;
+                    /* padding: 0.8em 1.2em; */
+                    padding: 16px 24px;
+                    text-align: center;
+                    background-color: #fff;
+                }
+
+                div.application-item a.btn:hover {
+                    outline: 1px solid var(--color_purple);
+                    color: var(--color_purple);
+                }
+
+                div.application-item a.btn:active {
+                    border: 1px solid var(--color_purple);
+                    color: var(--color_purple);
+                }
+
+                div.application-item a.btn:focus {
+                    border: 1px solid var(--color_purple);
+                }
+
+                div.application-overview {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                div.application-overview-img {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 1em 0;
+                    flex-grow: 1;
+                }
+
+                div.application-overview-img img {
+                    display: block;
+                    border: 2px solid #fff;
+                    border-radius: 8px;
+                    max-height: 350px;
+                }
+
+                div.application-overview-name {
+                    padding-top: 14px;
+                    padding-left: 14px;
+                    width: calc(100% - 70px);
+                    text-align: center;
+                    flex-grow: 1;
+                }
+
+                div.application-overview-name h3.application-name {
+                    margin-bottom: 0;
+                }
+
+                div.application-overview-name h3.application-company {
+                    margin-bottom: 0;
+                }
+
+                div.application-description {
+                    display: flex;
+                    flex-grow: 2;
+                }
+
+                div.application-cta {
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: space-around;
+                    align-content: center;
+                    text-align: center;
+                    flex-grow: 1;
+                    padding-top: 2em;
+                }
+
+                div.application-cta p {
+                    width: 100%;
+                }
+
+                @media only screen and (max-width: 1170px) {
+                    section.applications .col-wrap {
+                        display: grid;
+                        grid-gap: 20px;
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+
+                    div.application-item {
+                        width: 100%;
+                    }
+                }
+
+                @media only screen and (max-width: 750px) {
+                    section.applications .col-wrap {
+                        grid-template-columns: 1fr;
+                    }
+                }
+
+                /* /Section: application */
+            </style>
+
+                <section class="hero" style="padding: 2em 0;">
+                    <h1>
+                        #MadeWithSlint
+                    </h1>
+                </section>
+
+                <section class="applications">
+                    <div class="col-wrap">
+
+                        <!-- EV Charger -->
+                        <div id="evcharger" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">EV Charger</h3>
+                                    <h3 class="application-company"><small>SK Signet</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="https://slint.dev/success/sksignet-evcharger/ready_screen_light.png" alt="Picture of HMI on EV Chargers from SK Signet" loading="lazy">
+                                </div>
+                                <div class="application-description">SK Signet, the no.1 EV (Electric Vehicle) charging solutions provider in the U.S., launched a new HMI (Human-Machine-Interface) which scales to both 15-inch and 32-inch touch displays that are installed on their EV chargers.<br /><br />License: Proprietary</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a href="https://slint.dev/success/sksignet-evcharger.html" class="btn" target="_blank">Read their Story</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- DAW Plugin -->
+                        <div id="daw-plugin" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">DAW Plugin</h3>
+                                    <h3 class="application-company"><small>WesAudio</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img srcset="https://slint.dev/success/wesaudio-daw/eclipse_eqs_4-400w.avif 400w, https://slint.dev/success/wesaudio-daw/eclipse_eqs_4-600w.avif 600w, https://slint.dev/success/wesaudio-daw/eclipse_eqs_4-800w.avif 800w, https://slint.dev/success/wesaudio-daw/eclipse_eqs_4-1000w.avif 1000w, https://slint.dev/success/wesaudio-daw/eclipse_eqs_4-1200w.avif 1200w, https://slint.dev/success/wesaudio-daw/eclipse_eqs_4-1600w.avif 1600w, https://slint.dev/success/wesaudio-daw/eclipse_eqs_4-2000w.avif 2000w" sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 800px) 800px, (max-width: 1000px) 1000px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (min-width: 1601px) 2000px" data-src="https://slint.dev/success/wesaudio-daw/eclipse_eqs_4.jpg" alt="Picture of WesAudio DAW Eclipse EQS" width="2615" height="1428" loading="lazy">
+                                </div>
+                                <div class="application-description">WesAudio, a leading manufacturer of professional audio equipment, revamped their limited edition products, _HYPERION and _PROMETHEUS with a complete redesign of their digital audio workstation (DAW) plugin user interface, enhancing the overall user experience and functionality.<br /><br />License: Proprietary</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a href="https://slint.dev/success/wesaudio-daw/wesaudio_demo.html" class="btn" target="_blank">Run in Browser</a></p>
+                                    <p><a href="https://slint.dev/success/wesaudio-daw.html" class="btn" target="_blank">Read their Story</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- Raccoin -->
+                        <div id="raccoin" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Raccoin</h3>
+                                    <h3 class="application-company"><small>Thorbjørn Lindeijer</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-raccoin.png" alt="Screenshot of Raccoin" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>Raccoin makes it easy to see the current state and the history of your crypto portfolio and to generate relevant reports for declaring capital gain income tax.<br><br> License: GPL 3.0</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://raccoin.org/" target="_blank">Website</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- Fractal Explorer -->
+                        <div id="fractal-explorer" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Fractal Explorer</h3>
+                                    <h3 class="application-company"><small>Brian O'Clair</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-fractal-explorer.png" alt="Screenshot of Fractal Explorer" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>Explore the relationship between Mandelbrot and Julia Fractals: click, zoom, etc.<br><br> License: MIT</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://boclair.github.io/fractal-explorer/" target="_blank">Web Demo</a></p>
+                                    <p><a class="btn" href="https://github.com/boclair/fractal-explorer" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- SurrealismUI -->
+                        <div id="surrealism-ui" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">SurrealismUI</h3>
+                                    <h3 class="application-company"><small>YiFei Sheng</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-surrealismui.png" alt="Image of SurrealismUI" loading="lazy">
+                                </div>
+                                <div class="application-description">SurrealismUI is a third-party component library built entirely using Slint. Components follow and use Fluent2 design style.<br /><br />License: MIT</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://github.com/syf20020816/SurrealismUI" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- tymoz -->
+                        <div id="tymoz" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">tymoz</h3>
+                                    <h3 class="application-company"><small>Arun PK</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-tymoz-light.png" alt="Screenshot of tymoz" data-darkimg="/assets/img/madewithslint-tymoz-dark.png" data-lightimg="/assets/img/madewithslint-tymoz-light.png" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>tymoz is a simple and intuitive application built using Rust for the backend and SlintUI for the user interface. This application helps you to display and manage the time for various cities across different time zones.<br /><br />License: MIT</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://github.com/arunpkio/tymoz" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- Dispute -->
+                        <div id="dispute" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Dispute</h3>
+                                    <h3 class="application-company"><small>Vinegret43</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-dispute.jpg" alt="Image of The Damn Stylish Pomodoro Timer" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>The Damn Stylish Pomodoro Timer<br /><br />License: GPL 3.0</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://github.com/Vinegret43/dispute" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- Cargo UI -->
+                        <div id="cargo-ui" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Cargo UI</h3>
+                                    <h3 class="application-company"><small>SixtyFPS GmbH</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-cargoui.png" alt="Screenshot of Cargo UI" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>A GUI frontend for Cargo.<br><br> License: MIT / Apache 2.0</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://github.com/slint-ui/cargo-ui/" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- Tomotroid -->
+                        <div id="tomotroid" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Tomotroid</h3>
+                                    <h3 class="application-company"><small>Vadoola</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-tomotroid.png" alt="Image of Tomotroid Timer" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>A clean themeable pomodoro timer<br /><br />License: MIT</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://github.com/vadoola/Tomotroid" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- Chiptrack -->
+                        <div id="chiptrack" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Chiptrack</h3>
+                                    <h3 class="application-company"><small>Jocelyn Turcotte</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-chiptrack.png" alt="Screenshot of Chiptrack" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>A cross-platform sequencer and synthesizer based on the emulation of the Game Boy sound chip.<br><br> License: MIT</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a href="https://jturcotte.github.io/chiptrack" class="btn" target="_blank">Run in Browser</a></p>
+                                    <p><a href="https://github.com/jturcotte/chiptrack/" class="btn" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- Parch Welcome -->
+                        <div id="parch-welcome" class=" application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Parch Welcome (dorood)</h3>
+                                    <h3 class="application-company"><small>ParchLinux</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-parch.png" alt="Screenshot of welcome app in ParchLinux" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>Parch dorood (/do-rood/, درود, pronunciation) which is a Persian word for "Greetings", is a welcome app in the Parch distribution.<br><br> License: GPL3.0</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://github.com/parchlinux/parch-welcome/" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .application-item -->
+
+                        <!-- Ordinary -->
+                        <div id="ordinary" class=" application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Ordinary</h3>
+                                    <h3 class="application-company"><small>Florian Loers</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-ordinary.png" alt="Screenshot of Ordinary shell" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>Ordinary is a compositor and shell written in slint that aims e-paper devices like the remarkable 2 tablet.<br><br> License: GPL3.0</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://gitlab.com/floers/ordinary" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .application-item -->
+
+                        <!-- Tetris -->
+                        <div id="tetris" class=" application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Tetris</h3>
+                                    <h3 class="application-company"><small>Gaspard Culis</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-tetris-light.png" alt="Screenshot of Tetris" data-darkimg="/assets/img/madewithslint-tetris-dark.png" data-lightimg="/assets/img/madewithslint-tetris-light.png" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>A Tetris remake that's using Slint for the user interface.<br><br> License: MIT</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a href="https://gaspardculis.github.io/slint-tetris/" class="btn" target="_blank">Run in Browser</a></p>
+                                    <p><a class="btn" href="https://github.com/GaspardCulis/slint-tetris/" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .application-item -->
+
+                        <!-- ImageSieve -->
+                        <div id="image-sieve" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">ImageSieve</h3>
+                                    <h3 class="application-company"><small>Florian Fetz</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-imagesieve.png" alt="Image of ImageSieve application" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>ImageSieve is a GUI based tool to assist in sorting images based on taken date and similarity, categorize them according to their creation date and archive them in a target folder.<br><br> License: GPL3.0</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://github.com/Futsch1/image-sieve/" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .application-item -->
+
+                        <!-- GPCL -->
+                        <div id="gpcl" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">GPCL</h3>
+                                    <h3 class="application-company"><small>Danil Gulin</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-gpcl.png" alt="Screenshot of GamePad Controlled Launcher" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>GamePad Controlled Launcher - Simple application launcher that can be controlled with a gamepad. It is designed to be a media center home screen.<br><br> License: MIT</p>
+                                </div>
+                                <div class="application-cta">
+                                    <!-- Use this is for running a wasm binary
+                                                        <p><a href="" class="btn">Run in Browser</a></p>
+                                                        -->
+                                    <p><a class="btn" href="https://github.com/dngulin/gpcl/" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- coop -->
+                        <div id="coop" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">coop</h3>
+                                    <h3 class="application-company"><small>flovansl</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-coop-widgets.png" alt="Screenshot of coop widgets" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>Coop is a custom widget and component library for Slint with a custom simple, consistence and clean design.<br><br> License: MIT</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a href="https://flovansl.codeberg.page/coop_sl/snapshots/main/demos/gallery/" class="btn" target="_blank">Run in Browser</a></p>
+                                    <p><a class="btn" href="https://codeberg.org/flovansl/co_sl/src/branch/main/widgets/coop/" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- coop_local -->
+                        <div id="coop_local" class=" application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">coop_local</h3>
+                                    <h3 class="application-company"><small>flovansl</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-coop-local-light.png" alt="Screenshot of coop_lcoal" data-darkimg="/assets/img/madewithslint-coop-local-dark.png" data-lightimg="/assets/img/madewithslint-coop-local-light.png" alt="Screenshot of coop local widgets" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>coop_local is a cross platform file manager build with Slint and coop.<br><br> License: GPL 3.0</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://codeberg.org/flovansl/co_sl/src/branch/main/apps/coop_local" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- Mastermind -->
+                        <div id="mastermind" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Mastermind</h3>
+                                    <h3 class="application-company"><small>Guillaume VDK</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-mastermind.gif" alt="Animated gif of Mastermind game" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>Mastermind or Master Mind is a code-breaking game for two players.</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://github.com/ElevenJune/mastermind_Rust" target="_blank">Project Repo</a></p>
+                                </div>
+                                </p>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- Launcher -->
+                        <div id="launcher" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Launcher</h3>
+                                    <h3 class="application-company"><small>Project Trains</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-project-trains-launcher.png" alt="Screenshot of Project Trains Launcher" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>Crossplatform game launcher made for Project Trains simulator.</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://github.com/Project-Trains/launcher/" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- BSP-STM32F429-DK -->
+                        <div id="bsp-stm32f429-dk" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">BSP-STM32F429-DK</h3>
+                                    <h3 class="application-company"><small>ErturkMe</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/bsp-for-stm32f429i-discover-kit.jpeg" alt="Carousel Demo with the BSP-STM32F429-DK" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>A Rust Board Support Package (BSP) and Example Application Slint UI for STM32F429-Discovery Kit.<br><br> License: MPL-2.0</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://erturk.me/projects/a-rust-bsp-package-for-stm32f4-discovery-kit/">Website</a></p>
+                                    <p><a class="btn" href="https://github.com/ierturk/rust-on-stm32">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                        <!-- vivi -->
+                        <div id="vivi" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">vivi</h3>
+                                    <h3 class="application-company"><small>vivi developers</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-vivi-light.png" alt="Screenshot of vivi gallery" data-darkimg="/assets/img/madewithslint-vivi-dark.png" data-lightimg="/assets/img/madewithslint-vivi-light.png" alt="Screenshot of vivi gallery" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>vivi is a custom component library for Slint.<br><br> License: MIT</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://vivi-ui.codeberg.page/@main/vivi/0.2.0/demos/gallery/" class="btn" target="_blank">Web gallery</a></p>
+                                    <p><a class="btn" href="https://app.radicle.xyz/nodes/seed.radicle.garden/rad:z3oxAZSLcyXgpa7fcvgtueF49jHpH" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+
+                         <!-- castle-of-focus -->
+                         <div id="castle-of-focus" class="application-item">
+                            <div class="application-overview">
+                                <div class="application-overview-name">
+                                    <h3 class="application-name">Castle of Focus</h3>
+                                    <h3 class="application-company"><small>vivi developers</small></h3>
+                                </div>
+                                <div class="application-overview-img">
+                                    <img data-src="/assets/img/madewithslint-vivi-light.png" alt="Screenshot of vivi gallery" data-darkimg="/assets/img/madewithslint-cof-dark.png" data-lightimg="/assets/img/madewithslint-cof-light.png" alt="Screenshot of Castle of Focus" loading="lazy">
+                                </div>
+                                <div class="application-description">
+                                    <p>A focus and productivity app for Desktop and Android build with Slint and vivi. The app is privacy focused and does not collect or share any data.<br><br> License: GPLv3</p>
+                                </div>
+                                <div class="application-cta">
+                                    <p><a class="btn" href="https://app.radicle.xyz/nodes/seed.radicle.garden/rad:z3oxAZSLcyXgpa7fcvgtueF49jHpH/tree/apps/castle_of_focus/README.md" target="_blank">Project Repo</a></p>
+                                </div>
+                            </div>
+                        </div><!-- .application-item -->
+                    </div><!-- .col-wrap -->
+                </section><!-- .applications -->
+
+            <section class="one-column mobile-only" style="padding: 50px 0 2em;">
+                <p class="cta"><a href="<?root?>submit-application.html" class="btn btn-center">List your Application</a></p>
+            </section>
+
+        </main>
+    </body>
+
+</html>

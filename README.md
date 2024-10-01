@@ -2,49 +2,67 @@
 
 ![#MadeWithSlint](./docs/assets/img/madewithslint-logo-light.svg#gh-light-mode-only)![#MadeWithSlint](./docs/assets/img/madewithslint-logo-dark.svg#gh-dark-mode-only)
 
-This is the repository that contains data for the madewithslint.com website.
+This is the repository that showcases applications #MadeWithSlint
 
 ## Add a new entry
 
 Each entry is composed of the following fields:
 
-- Application Name
-- Application Creator: Name of company or Individual
-- Application Screenshot
-- Application Description
-- Application License
-- Application Repo
+### Mandatory
 
-Create a PR to add the above info in the following HTML structure in index.html (Please append to the end of the list)
+- Application Title
+- Application Company: Name of company or Individual
+- Application Description
+- Application Image
+- Application Image Alt text
+- Class Style: Size of the card
+
+### Optional
+
+- Application Quote
+- Git Link
+- Preview Link
+- Doc Link
+- Success Story Link
+- License Text
+- License Type
+
+Create a PR to add the above info in the following JSON structure in showcases.json
+
+```json
+{
+      "app_title": "Application Name",
+      "app_company": "Application Author",
+      "app_description": "Application Description",
+      "app_quote": "Quote from Author",
+      "image_src": "URL to Application screenshot",
+      "image_alt": "Alt text for image",
+      "class_style": "Size of card (col-3-row-3, col-3-row-2, col-2-row-2, col-2-row-1, col-1-row-1)",
+      "git_link": "URL to Git repo",
+      "preview_link": "URL to WASM binary",
+      "doc_link": "URL to Product page",
+      "license_text": "Type of license (Proprietary, MIT, BSD, etc.)",
+      "license_type": "Type of license (closed, open-source, dual)",
+      "story_link": "URL to success story"
+    }
+```
 
 See example below for Cargo UI
 
-- Application Name: Cargo UI
-- Application Creator: SixtyFPS GmbH
-- Application Screenshot: /assets/img/madewithslint-cargoui.png
-- Application Description: A GUI frontend for Cargo.
-- Application License: MIT / Apache 2.0
-- Application Repo: https://github.com/slint-ui/cargo-ui/
-
-```html
-<div id="cargo-ui" class="application-item">
-    <div class="application-overview">
-        <div class="application-overview-name">
-            <h3 class="application-name">Cargo UI</h3>
-            <h3 class="application-company"><small>SixtyFPS GmbH</small></h3>
-        </div>
-        <div class="application-overview-img">
-            <img data-src="/assets/img/madewithslint-cargoui.png" alt="Screenshot of Cargo UI">
-        </div>
-        <div>
-            <p>A GUI frontend for Cargo.<br><br> License: MIT / Apache 2.0</p>
-        </div>
-        <div class="application-cta">
-            <!-- Use this is for running a wasm binary
-            <p><a href="" class="btn">Run in Browser</a></p> 
-            --> 
-            <p><a class="btn" href="https://github.com/slint-ui/cargo-ui/">Project Repo</a></p>                    
-        </div>
-    </div>
-</div><!-- .application-item -->
+```json
+{
+        "app_title": "Cargo UI",
+        "app_company": "SixtyFPS GmbH",
+        "app_description": "A GUI frontend for Cargo",
+        "app_quote": "",
+        "image_src": "https://madewithslint.com/assets/img/madewithslint-cargoui.png",
+        "image_alt": "Screenshot of Cargo UI",
+        "class_style": "col-3-row-1",
+        "git_link": "https://github.com/slint-ui/cargo-ui/",
+        "preview_link": "",
+        "doc_link": "",
+        "license_text": "MIT, Apache 2.0",
+        "license_type": "open-source",
+        "story_link": ""
+      }
 ```
