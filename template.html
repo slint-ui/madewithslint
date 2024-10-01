@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="author" content="SixtyFPS GmbH" />
+
+        <!--====== Favicon Icon ======-->
+        <link rel="shortcut icon" href="https://slint.dev/assets/img/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="https://slint.dev/assets/img/favicon.svg">
+
+        <!-- ===== All CSS files ===== -->
+        <link rel="stylesheet" href="https://slint.dev/assets/css/style.css?v=1.12.18" async />
+
+
+        <!-- ===== Header from individual pages ===== -->
+
+        <title>Showcase | #MadeWithSlint</title>
+        <meta property="og:image" content="https://slint.dev/assets/img/responsive.png" />
+        <meta property="og:title" content="#MadeWithSlint" />
+        <meta property="og:url" content="https://madewithslint.com" />
+        <meta property="og:type" content="website" />
+        <meta name="description" content="Awesome applications built with Slint, the declarative GUI toolkit for Rust, C++, Python, and JavaScript" />
+
+        <!-- Font Awesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+
+    </head>
+
+    <body>
+        <script>
+            /* Check if dark theme is selected */
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+            else if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.add('light');
+            }
+        </script>
+
+        <div class="wrap">
+            <!-- ====== Header Start ====== -->
+            <header class="top">
+                <div class="header-wrap">
+
+                    <a href="https://slint.dev/index.html" class="logo">Slint</a>
+
+                    <nav class="main-navi">
+
+                        <ul>
+                            <li class="navi-item-has-children" id="use-cases"><a href="#">Use Cases</a>
+                                <ul>
+                                    <li id="demos"><a href="https://slint.dev//demos.html">Demos</a></li>
+                                    <li id="supported-boards"><a href="https://slint.dev//supported-boards.html">Embedded</a></li>
+                                    <li id="use-cases"><a href="https://slint.dev//use-cases.html">Cross Platform</a></li>
+                                </ul>
+                            </li>
+                            <li id="pricing"><a href="https://slint.dev//pricing.html">Pricing</a></li>
+                            <li id="blog"><a href="https://slint.dev//blog">Blog</a></li>
+                            <li id="docs"><a href="https://slint.dev//docs.html">Docs</a></li>
+                            <li class="navi-item-has-children" id="resources"><a href="#">Resources</a>
+                                <ul>
+                                    <li id="success"><a href="https://slint.dev//success">Success Stories</a></li>
+                                    <li id="community"><a href="https://slint.dev//community.html">Community</a></li>
+                                    <li id="partners"><a href="https://slint.dev//partners.html">Partners</a></li>
+                                    <li id="events"><a href="https://slint.dev//events.html">Events</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li class="search"><a href="/search-results.html">Search</a></li> -->
+                            <li class="theme theme-light"><a href="#">Theme</a></li>
+                            <li class="btn btn-blue"><a href="https://slint.dev//get-started.html">Get Started</a></li>
+                            <li class="btn btn-white"><a href="https://slint.dev//contact.html">Contact Us</a></li>
+                        </ul>
+
+                    </nav>
+
+                    <!-- <a href="/search-results.html" class="search-mobile">Search</a> -->
+
+                    <button class="hamburger" aria-label="menu" aria-expanded="false" aria-controls="nav">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                </div><!-- .header-wrap -->
+            </header>
+            <!-- ====== Header End ====== -->
+
+
+            <main>
+
+                <style>
+                    @media only screen and (max-width: 750px) {
+                        section.hero h1 {
+                            font-size: 2.225rem;
+                        }
+                    }
+
+                    /* Section: applications */
+                    section.applications {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    /* Create a grid with varying column spans */
+                    section.applications .col-wrap {
+                        display: grid;
+                        grid-template-columns: repeat(12, 1fr);
+                        grid-gap: 20px;
+                    }
+
+                    /* Different sizes for a collage look */
+                    .application-item {
+                        background-color: var(--color_blue);
+                        border-radius: 8px;
+                        color: #fff;
+                        font-size: 1.125em;
+                        margin: 20px 10px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        overflow: hidden;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                        transition: 0.3s ease-in-out;
+                    }
+
+                    .application-item:hover {
+                        box-shadow: 0 8px 16px var(--color_purple);
+                    }
+
+                    .application-header img {
+                        width: 100%;
+                        height: auto;
+                    }
+
+                    .application-body {
+                        padding: 0.5em 1.77em;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: center;
+                        flex-grow: 1;
+                    }
+
+                    .application-title {
+                        text-align: center;
+                        margin-bottom: 10px;
+                        font-weight: bold;
+                    }
+
+                    .application-company {
+                        text-align: center;
+                        margin-bottom: 20px;
+                        font-weight: 400;
+                        font-size: 1.3rem;
+                    }
+
+                    .application-description {
+                        flex-grow: 1;
+                        text-align: center;
+                        margin-bottom: 15px;
+                    }
+
+                    .application-quote {
+                        display: flex;
+                        align-items: center;
+                        margin: 15px 0 15px;
+                        flex-direction: column;
+                        color: #333;
+                        background-color: #f9f9f9;
+                        border-left: 4px solid var(--color_ice_blue);
+                        padding: 10px 10px 0px 10px;
+                    }
+
+                    .quote-text {
+                        font-style: italic;
+                    }
+
+                    .quote-author {
+                        font-weight: bold;
+                    }
+
+                    /* General card styling */
+                    div.application-item p {
+                        font-size: 1.125rem;
+                        line-height: 1.5;
+                        margin-bottom: 1em;
+                    }
+
+                    /* CTA icons container */
+                    .application-cta {
+                        display: flex;
+                        justify-content: center;
+                        gap: 20px;
+                        margin-top: 20px;
+                    }
+
+                    /* Styling for the icons */
+                    .application-cta a {
+                        color: #fff;
+                        font-size: 1.5rem;
+                        transition: color 0.3s ease;
+                        text-decoration: none;
+                    }
+
+                    .application-cta a:hover {
+                        color: var(--color_purple);
+                    }
+
+                    /* Icon positioning and appearance */
+                    .application-cta a i {
+                        display: inline-block;
+                        margin-right: 8px;
+                    }
+
+                    /* Styling for tool tips */
+                    /* Basic styles for the tooltip */
+                    .tooltip {
+                        position: relative;
+                        display: inline-block;
+                        cursor: pointer;
+                        /* Change cursor to indicate interactivity */
+                    }
+
+                    .tooltip .tooltip-text {
+                        visibility: hidden;
+                        font-size: 1rem;
+                        width: 10rem;
+                        /* Adjust width as needed */
+                        background-color: #555;
+                        color: #fff;
+                        text-align: center;
+                        border-radius: 5px;
+                        padding: 5px 0;
+                        position: absolute;
+                        z-index: 1;
+                        bottom: 125%;
+                        /* Position above the icon */
+                        left: 50%;
+                        margin-left: -60px;
+                        /* Center the tooltip */
+                        opacity: 0;
+                        /* Hide tooltip */
+                        transition: opacity 0.3s;
+                        /* Smooth fade */
+                    }
+
+                    /* Show the tooltip text when hovering */
+                    .tooltip:hover .tooltip-text,
+                    .tooltip:focus-within .tooltip-text {
+                        visibility: visible;
+                        opacity: 1;
+                        /* Show tooltip */
+                    }
+
+                    /* Additional mobile touch functionality */
+                    .tooltip:active .tooltip-text {
+                        visibility: visible;
+                        /* Show tooltip on touch */
+                        opacity: 1;
+                    }
+
+                    /* Assigning different grid spans to specific items*/
+
+                    .col-6-row-3 {
+                        grid-column: span 6;
+                        grid-row: span 3;
+                    }
+
+                    .col-6-row-3 {
+                        grid-column: span 6;
+                        grid-row: span 3;
+                    }
+
+                    .col-6-row-2 {
+                        grid-column: span 6;
+                        grid-row: span 2;
+                    }
+
+                    .col-6-row-1 {
+                        grid-column: span 6;
+                        grid-row: span 1;
+                    }
+
+                    .col-4-row-3 {
+                        grid-column: span 4;
+                        grid-row: span 3;
+                    }
+
+                    .col-4-row-2 {
+                        grid-column: span 4;
+                        grid-row: span 2;
+                    }
+
+                    .col-4-row-1 {
+                        grid-column: span 4;
+                        grid-row: span 1;
+                    }
+
+                    .col-3-row-1 {
+                        grid-column: span 3;
+                        grid-row: span 1;
+                    }
+
+                    .col-3-row-2 {
+                        grid-column: span 3;
+                        grid-row: span 2;
+                    }
+
+                    .col-2-row-1 {
+                        grid-column: span 2;
+                        grid-row: span 1;
+                    }
+
+                    .col-2-row-2 {
+                        grid-column: span 2;
+                        grid-row: span 2;
+                    }
+
+                    /* Responsive Adjustments */
+                    @media only screen and (max-width: 1170px) {
+                        section.applications .col-wrap {
+                            grid-template-columns: repeat(6, 1fr);
+                        }
+
+                        /* Assigning different grid spans to specific items*/
+
+                        .col-6-row-3 {
+                            grid-column: span 3;
+                            grid-row: span 3;
+                        }
+
+                        .col-6-row-3 {
+                            grid-column: span 3;
+                            grid-row: span 3;
+                        }
+
+                        .col-6-row-2 {
+                            grid-column: span 3;
+                            grid-row: span 2;
+                        }
+
+                        .col-6-row-1 {
+                            grid-column: span 3;
+                            grid-row: span 1;
+                        }
+
+                        .col-4-row-3 {
+                            grid-column: span 3;
+                            grid-row: span 3;
+                        }
+
+                        .col-4-row-2,
+                        .col-3-row-2 {
+                            grid-column: span 3;
+                            grid-row: span 2;
+                        }
+
+                        .col-4-row-1,
+                        .col-3-row-1 {
+                            grid-column: span 3;
+                            grid-row: span 1;
+                        }
+
+                        .col-2-row-1 {
+                            grid-column: span 1;
+                            grid-row: span 1;
+                        }
+
+                        .col-2-row-2 {
+                            grid-column: span 1;
+                            grid-row: span 2;
+                        }
+
+                    }
+
+                    @media only screen and (max-width: 750px) {
+                        section.applications .col-wrap {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+
+                    .application-item.highlight {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 20px;
+                        margin-bottom: 20px;
+                        background-color: #99A8FF;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                        color: #000;
+                        grid-column: span 12;
+                        grid-row: span 1;
+                    }
+
+                    div.application-content {
+                        display: flex;
+                        width: 100%;
+                        flex-wrap: wrap;
+                        height: 100%;
+                        flex-direction: column;
+                    }
+
+                    .highlight div.application-content {
+                        flex-direction: row;
+                    }
+
+                    .highlight div.application-header {
+                        flex: 1 1 40%;
+                        /* 40% of the width for the image */
+                        max-width: 40%;
+                        padding-right: 20px;
+                        /* Space between the image and text */
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        max-height: 100%;
+                        /* Limit the height to the container's height */
+                        overflow-y: auto;
+                    }
+
+                    .highlight div.application-header img {
+                        max-width: 100%;
+                        max-height: 100%;
+                        /* Ensures the image doesn't exceed the container's max height */
+                        height: auto;
+                        width: auto;
+                        display: block;
+                        object-fit: contain;
+                        /* Keeps the aspect ratio of the image */
+                        border-radius: 8px;
+                        /* Optional: rounded corners */
+                    }
+
+                    .highlight div.application-body {
+                        flex: 1 1 60%;
+                        /* 60% of the width for the text content */
+                        padding-left: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        overflow-y: auto;
+                    }
+
+                    @media only screen and (max-width: 1170px) {
+                        .application-item.highlight {
+                            grid-column: span 6;
+                            grid-row: span 1;
+                        }
+                    }
+
+                    @media (max-width: 768px) {
+                        .highlight div.application-content {
+                            flex-direction: column;
+                        }
+
+                        .highlight div.application-header,
+                        .highlight div.application-body {
+                            max-width: 100%;
+                            flex: 1 1 100%;
+                            padding: 0;
+                        }
+
+                        .highlight div.application-header {
+                            margin-bottom: 20px;
+                            /* Add space between the image and text on small screens */
+                        }
+                    }
+                </style>
+
+                <section class="hero" style="padding: 2em 0;">
+                    <h1>
+                        #MadeWithSlint
+                    </h1>
+                </section>
+
+                <?applications?>
+
+                <section class="one-column" style="padding: 50px 0 2em;">
+                    <p class="cta"><a href="https://slint.dev/submit-application.html" class="btn btn-center">Submit Your Application</a></p>
+                </section>
+            </main>
+
+
+            <!-- ====== Footer Start ====== -->
+            <footer>
+                <div class="col-wrap">
+                    <div class="col-6">
+                        <p><a href="https://slint.dev/index.html"><img src="https://slint.dev/assets/img/slint-logo.svg" alt="Slint" width="141" height="47" class="footer-logo"></a></p>
+                        <p class="some-links">
+                            <a href="https://twitter.com/slint_ui" target="_blank"><img src="https://slint.dev/assets/img/icon-twitter.svg" alt="Twitter" width="40" height="40"></a>
+                            <a href="https://www.linkedin.com/company/slint-ui/" target="_blank"><img src="https://slint.dev/assets/img/icon-linkedin.svg" alt="Linkedin" width="40" height="40"></a>
+                            <a rel="me" href="https://fosstodon.org/@slint" target="_blank"><img src="https://slint.dev/assets/img/icon-mastodon.svg" alt="Mastodon" width="40" height="40"></a>
+                            <!-- <a href="https://github.com/slint-ui/slint/discussions" target="_blank"><img src="https://slint.dev/assets/img/icon-github.svg" alt="Github Discussions" width="40" height="40"></a> -->
+                            <!-- <a href="https://chat.slint.dev/" target="_blank"><img src="https://slint.dev/assets/img/icon-some.svg" alt="" width="40" height="40"></a> -->
+                        </p>
+                        <p><img src="https://slint.dev/assets/img/annual-ross-index.svg" data-darkimg="https://slint.dev/assets/img/annual-ross-index-light.svg" data-lightimg="https://slint.dev/assets/img/annual-ross-index.svg" alt="Annual Ross index" width="260" height="52" class="annual-ross"></p>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">About</dt>
+                            <dd><a href="https://slint.dev//about-us.html">Us</a></dd>
+                            <dd><a href="https://slint.dev//events.html">Events</a></dd>
+                            <dd><a href="https://slint.dev//careers.html">Careers</a></dd>
+                            <dd><a href="https://slint.dev//investors.html">Investors</a></dd>
+                            <dd><a href="https://slint.dev//imprint.html">Imprint &amp; Privacy</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Explore</dt>
+                            <dd><a href="https://slint.dev//use-cases.html#embedded-applications">Embedded</a></dd>
+                            <dd><a href="https://slint.dev//use-cases.html#desktop-applications">Desktop</a></dd>
+                            <dd><a href="https://slint.dev//demos.html">Demos</a></dd>
+                            <dd><a href="https://slint.dev//terms-and-conditions.html">Terms & Conditions</a></dd>
+                            <dd><a href="https://slint.dev//brand-guidelines.html">Brand Guidelines</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Markets</dt>
+                            <dd><a href="https://slint.dev//use-cases.html#automotive-applications">Automotive</a></dd>
+                            <dd><a href="https://slint.dev//use-cases.html#consumer-applications">Consumer</a></dd>
+                            <dd><a href="https://slint.dev//use-cases.html#industrial-applications">Industrial</a></dd>
+                            <dd><a href="https://slint.dev//use-cases.html#medical-applications">Medical</a></dd>
+                            <dd><a href="https://slint.dev//success">Success Stories</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Compare</dt>
+                            <dd><a href="https://slint.dev//alternative-to-qt.html">Qt</a></dd>
+                            <dd><a href="https://slint.dev//alternative-to-lvgl.html">LVGL</a></dd>
+                            <dd><a href="https://slint.dev//alternative-to-flutter.html">Flutter</a></dd>
+                            <dd><a href="https://slint.dev//alternative-to-electron.html">Electron</a></dd>
+                            <dd><a href="https://slint.dev//declarative-rust-gui.html">Rust GUI Toolkits</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Contact us</dt>
+                            <dd><a href="https://slint.dev//meeting.html?event=online">Schedule Meeting</a></dd>
+                            <dd><a href="mailto:info@slint.dev?subject=Contact%20from%20Website">Email</a></dd>
+                            <dd><a href="https://chat.slint.dev">Chat</a></dd>
+                            <dd><a href="https://slint.dev//pricing.html#support">Support</a></dd>
+                            <dd><a href="https://github.com/slint-ui/slint/" target="_blank">GitHub</a></dd>
+                            <dd hidden><a href="#">Twitter</a></dd>
+                            <dd hidden><a href="#">Mastodon</a></dd>
+                            <dd hidden><a href="#">Linkedin</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                </div>
+                <div class="col-wrap">
+                    <div class="col-1">
+                        <p>Copyright &copy; 2024 SixtyFPS GmbH</p>
+                    </div><!-- .col-1 -->
+                </div>
+            </footer>
+            <!-- ====== Footer End ====== -->
+        </div><!-- .wrap -->
+
+        <!-- ====== All Javascript Files ====== -->
+        <script src="https://slint.dev/assets/js/script.js?ver=1.2.21"></script>
+
+
+        <!-- Matomo -->
+        <script>
+            var _paq = window._paq = window._paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function () {
+                var u = "https://matomo.slint.dev/";
+                _paq.push(['setTrackerUrl', u + 'matomo.php']);
+                _paq.push(['setSiteId', '1']);
+                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+            })();
+        </script>
+        <noscript>
+            <img referrerpolicy="no-referrer-when-downgrade" src="https://matomo.slint.dev/matomo.php?idsite=1&amp;rec=1" style="border:0" alt="" />
+        </noscript>
+
+        <!-- End Matomo Code -->
+    </body>
+
+</html>
