@@ -165,12 +165,22 @@
                     }
 
                     .application-quote {
-                        font-style: italic;
+                        display: flex;
+                        align-items: center;
+                        margin: 15px 0 15px;
+                        flex-direction: column;
                         color: #333;
                         background-color: #f9f9f9;
-                        padding: 10px;
                         border-left: 4px solid var(--color_ice_blue);
-                        margin-bottom: 15px;
+                        padding: 10px 10px 0px 10px;
+                    }
+
+                    .quote-text {
+                        font-style: italic;
+                    }
+
+                    .quote-author {
+                        font-weight: bold;
                     }
 
                     /* General card styling */
@@ -375,6 +385,93 @@
                             justify-content: center;
                         }
                     }
+
+                    .application-item.highlight {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 20px;
+                        margin-bottom: 20px;
+                        background-color: #99A8FF;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                        color: #000;
+                        grid-column: span 12;
+                        grid-row: span 1;
+                    }
+
+                    div.application-content {
+                        display: flex;
+                        width: 100%;
+                        flex-wrap: wrap;
+                        height: 100%;
+                        flex-direction: column;
+                    }
+
+                    .highlight div.application-content {
+                        flex-direction: row;
+                    }
+
+                    .highlight div.application-header {
+                        flex: 1 1 40%;
+                        /* 40% of the width for the image */
+                        max-width: 40%;
+                        padding-right: 20px;
+                        /* Space between the image and text */
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        max-height: 100%;
+                        /* Limit the height to the container's height */
+                        overflow-y: auto;
+                    }
+
+                    .highlight div.application-header img {
+                        max-width: 100%;
+                        max-height: 100%;
+                        /* Ensures the image doesn't exceed the container's max height */
+                        height: auto;
+                        width: auto;
+                        display: block;
+                        object-fit: contain;
+                        /* Keeps the aspect ratio of the image */
+                        border-radius: 8px;
+                        /* Optional: rounded corners */
+                    }
+
+                    .highlight div.application-body {
+                        flex: 1 1 60%;
+                        /* 60% of the width for the text content */
+                        padding-left: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        overflow-y: auto;
+                    }
+
+                    @media only screen and (max-width: 1170px) {
+                        .application-item.highlight {
+                            grid-column: span 6;
+                            grid-row: span 1;
+                        }
+                    }
+
+                    @media (max-width: 768px) {
+                        .highlight div.application-content {
+                            flex-direction: column;
+                        }
+
+                        .highlight div.application-header,
+                        .highlight div.application-body {
+                            max-width: 100%;
+                            flex: 1 1 100%;
+                            padding: 0;
+                        }
+
+                        .highlight div.application-header {
+                            margin-bottom: 20px;
+                            /* Add space between the image and text on small screens */
+                        }
+                    }
                 </style>
 
                 <section class="hero" style="padding: 2em 0;">
@@ -387,7 +484,7 @@
 
                 <section class="one-column" style="padding: 50px 0 2em;">
                     <p class="cta"><a href="https://slint.dev/submit-application.html" class="btn btn-center">Submit Your Application</a></p>
-                  </section>
+                </section>
             </main>
 
 

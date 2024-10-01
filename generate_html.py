@@ -1,5 +1,6 @@
 import json
 import argparse
+import re
 
 def is_valid(app_data):
     """Check if the required fields in app_data are non-empty and valid."""
@@ -12,6 +13,18 @@ def is_valid(app_data):
             return False
     return True
 
+def convert_to_html_id(text):
+    # Replace spaces and underscores with hyphens
+    text = text.replace(" ", "-").replace("_", "-")
+    
+    # Remove any characters that are not alphanumeric or hyphens
+    text = re.sub(r'[^a-zA-Z0-9-]', '', text)
+    
+    # Convert to lowercase
+    text = text.lower()
+    
+    return text
+
 def generate_html(app_data):
     """Generate HTML for an application entry."""
     image_src = app_data['image_src']
@@ -23,6 +36,7 @@ def generate_html(app_data):
     
     # Optional fields
     app_quote = app_data.get('app_quote', '').strip()
+    app_quote_author = app_data.get('app_quote_author', '')
     git_link = app_data.get('git_link', '')
     preview_link = app_data.get('preview_link', '')
     doc_link = app_data.get('doc_link', '')
@@ -36,53 +50,57 @@ def generate_html(app_data):
     elif license_type == "dual":
         license_icon = "fa-unlock"
 
+    app_id = convert_to_html_id(app_title)
     html_template = f"""
                     <!-- {app_title} -->
-                    <div class="application-item {class_style}">
-                        <div class="application-header">
-                            <img src="{image_src}" alt="{image_alt}" loading="lazy">
-                        </div>
-                        <div class="application-body">
-                            <h3 class="application-title">{app_title}</h3>
-                            <h4 class="application-company">{app_company}</h4>"""
+                    <div id="{app_id}" class="application-item {class_style}">
+                        <div class="application-content">
+                            <div class="application-header">
+                                <img src="{image_src}" alt="{image_alt}" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">{app_title}</h3>
+                                <h4 class="application-company">{app_company}</h4>"""
 
     # Only include quote if it's not empty
     if app_quote:
         html_template += f"""
-                            <p class="application-quote">"{app_quote}"</p>"""
+                                <div class="application-quote">
+                                    <p class="quote-text">"{app_quote}"</p>
+                                    <p class="quote-author">{app_quote_author}</p>
+                                </div>"""
     
     # App Description
     html_template += f"""
-                            <p class="application-description">
+                                <p class="application-description">
                                 {app_description}
                             </p>"""
     
     # CTA (Call-to-Action) buttons - include links only if they are provided
     html_template += """
-                            <div class="application-cta">"""
+                                <div class="application-cta">"""
     
-    if git_link:
-        html_template += f"""
-                                <a href="{git_link}" target="_blank"><i class="fab fa-git-alt"></i></a>"""
     
     if preview_link:
         html_template += f"""
-                                <a href="{preview_link}" target="_blank"><i class="fas fa-play-circle"></i></a>"""
-    
-    if doc_link:
-        html_template += f"""
-                                <a href="{doc_link}" target="_blank"><i class="fas fa-globe"></i></a>"""
-    
-    if license_text:
-        html_template += f"""
-                                <a href="#" class="tooltip"><i class="fas {license_icon}"></i><span class="tooltip-text">{license_text}</span></a>"""
+                                    <a href="{preview_link}" target="_blank" class="tooltip"><i class="fas fa-play-circle"></i><span class="tooltip-text">Open Live Preview</span></a>"""
     
     if story_link:
         html_template += f"""
-                                <a href="{story_link}" target="_blank"><i class="fas fa-comment"></i></a>"""
+                                    <a href="{story_link}" target="_blank" class="tooltip"><i class="fas fa-comment"></i><span class="tooltip-text">Read Customer Journey</span></a>"""
+    if doc_link:
+        html_template += f"""
+                                    <a href="{doc_link}" target="_blank" class="tooltip"><i class="fas fa-globe"></i><span class="tooltip-text">Open Product Page</span></a>"""
     
+    if license_text:
+        html_template += f"""
+                                    <a href="#{app_id}" class="tooltip"><i class="fas {license_icon}"></i><span class="tooltip-text">{license_text}</span></a>"""
+
+    if git_link:
+        html_template += f"""
+                                    <a href="{git_link}" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>"""    
     # Closing tags
-    html_template += """
+    html_template += """        </div>
                             </div>
                         </div>
                     </div><!-- .application-item -->\n"""
