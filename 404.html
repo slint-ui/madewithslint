@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="author" content="SixtyFPS GmbH" />
+
+        <!--====== Favicon Icon ======-->
+        <link rel="shortcut icon" href="https://slint.dev/assets/img/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="https://slint.dev/assets/img/favicon.svg">
+
+        <!-- ===== All CSS files ===== -->
+        <link rel="stylesheet" href="https://slint.dev/assets/css/style.css?v=1.12.15" />
+        
+
+        <!-- ===== Header from individual pages ===== -->
+        
+        <title>404 page not found</title>
+        <meta name="description" content="Error: 404 page not found." />
+    
+    </head>
+
+    <body>
+        <script>
+            /* Check if dark theme is selected */
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+            else if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.add('light');
+            }
+        </script>
+
+        <div class="wrap">
+            <!-- ====== Header Start ====== -->
+            <header class="top">
+                <div class="header-wrap">
+
+                    <a href="https://slint.dev/index.html" class="logo">Slint</a>
+
+                    <nav class="main-navi">
+
+                        <ul>
+                            <li class="navi-item-has-children" id="use-cases"><a href="#">Use Cases</a>
+                                <ul>
+                                    <li id="demos"><a href="https://slint.dev/demos.html">Demos</a></li>
+                                    <li id="supported-boards"><a href="https://slint.dev/supported-boards.html">Embedded</a></li>
+                                    <li id="use-cases"><a href="https://slint.dev/use-cases.html">Cross Platform</a></li>
+                                </ul>
+                            </li>
+                            <li id="pricing"><a href="https://slint.dev/pricing.html">Pricing</a></li>
+                            <li id="blog"><a href="https://slint.dev/blog">Blog</a></li>
+                            <li id="docs"><a href="https://slint.dev/docs.html">Docs</a></li>
+                            <li class="navi-item-has-children" id="resources"><a href="#">Resources</a>
+                                <ul>
+                                    <li id="success"><a href="https://slint.dev/success">Success Stories</a></li>
+                                    <li id="community"><a href="https://slint.dev/community.html">Community</a></li>
+                                    <li id="partners"><a href="https://slint.dev/partners.html">Partners</a></li>
+                                    <li id="events"><a href="https://slint.dev/events.html">Events</a></li>    
+                                </ul>
+                            </li>
+                            <!-- <li class="search"><a href="https://slint.dev/search-results.html">Search</a></li> -->
+                            <li class="theme theme-light"><a href="#">Theme</a></li>
+                            <li class="btn btn-blue"><a href="https://slint.dev/get-started.html">Get Started</a></li>
+                            <li class="btn btn-white"><a href="https://slint.dev/contact.html">Contact Us</a></li>
+                        </ul>
+
+                    </nav>
+
+                    <!-- <a href="https://slint.dev/search-results.html" class="search-mobile">Search</a> -->
+
+                    <button class="hamburger" aria-label="menu" aria-expanded="false" aria-controls="nav">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                </div><!-- .header-wrap -->
+            </header>
+            <!-- ====== Header End ====== -->
+
+            
+        <main>
+
+            <!--
+            Section blocks on this page:
+            - one-column
+            - one-column (with blue background)
+            -->
+
+            <section class="one-column medium-narrow">
+                <h2 class="subtitle">Oops!</h2>
+                <h1>Error 404: Page not found</h1>
+                <p class="intro">Sorry! The page you are looking for either does not exist or has been moved. Please feel free to report this in our <a href="https://github.com/slint-ui/slint/labels/website" target="_blank">Github issues.</a></p>
+                <p>Join <a href="https://github.com/slint-ui/slint/discussions" target="_blank">Github discussions</a> for general chat or questions. We chat in our <a href="https://chat.slint.dev/" target="_blank">Mattermost instance</a> where you are welcome to listen in or ask your questions. You can follow us on <a href="https://twitter.com/slint_ui" target="_blank">Twitter</a>, <a href="https://fosstodon.org/@slint" target="_blank">Mastodon</a> and <a href="https://www.linkedin.com/company/slint-ui/" target="_blank">LinkedIn.</a></p>
+            </section>
+
+        </main>
+    
+
+            <!-- ====== Footer Start ====== -->
+            <footer>
+                <div class="col-wrap">
+                    <div class="col-6">
+                        <p><a href="https://slint.dev/index.html"><img src="https://slint.dev/assets/img/slint-logo.svg" alt="Slint" width="141" height="47" class="footer-logo"></a></p>
+                        <p class="some-links">
+                            <a href="https://twitter.com/slint_ui" target="_blank"><img src="https://slint.dev/assets/img/icon-twitter.svg" alt="Twitter" width="40" height="40"></a>
+                            <a href="https://www.linkedin.com/company/slint-ui/" target="_blank"><img src="https://slint.dev/assets/img/icon-linkedin.svg" alt="Linkedin" width="40" height="40"></a>
+                            <a rel="me" href="https://fosstodon.org/@slint" target="_blank"><img src="https://slint.dev/assets/img/icon-mastodon.svg" alt="Mastodon" width="40" height="40"></a>
+                            <!-- <a href="https://github.com/slint-ui/slint/discussions" target="_blank"><img src="https://slint.dev/assets/img/icon-github.svg" alt="Github Discussions" width="40" height="40"></a> -->
+                            <!-- <a href="https://chat.slint.dev/" target="_blank"><img src="https://slint.dev/assets/img/icon-some.svg" alt="" width="40" height="40"></a> -->
+                        </p>
+                        <p><img src="https://slint.dev/assets/img/annual-ross-index.svg" data-darkimg="https://slint.dev/assets/img/annual-ross-index-light.svg" data-lightimg="https://slint.dev/assets/img/annual-ross-index.svg" alt="Annual Ross index" width="260" height="52" class="annual-ross"></p>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">About</dt>
+                            <dd><a href="https://slint.dev/about-us.html">Us</a></dd>
+                            <dd><a href="https://slint.dev/events.html">Events</a></dd>
+                            <dd><a href="https://slint.dev/careers.html">Careers</a></dd>
+                            <dd><a href="https://slint.dev/investors.html">Investors</a></dd>
+                            <dd><a href="https://slint.dev/imprint.html">Imprint &amp; Privacy</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Explore</dt>
+                            <dd><a href="https://slint.dev/use-cases.html#embedded-applications">Embedded</a></dd>
+                            <dd><a href="https://slint.dev/use-cases.html#desktop-applications">Desktop</a></dd>
+                            <dd><a href="https://slint.dev/demos.html">Demos</a></dd>
+                            <dd><a href="https://slint.dev/partners.html">Partners</a></dd>
+                            <dd><a href="https://slint.dev/brand-guidelines.html">Brand Guidelines</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Markets</dt>
+                            <dd><a href="https://slint.dev/use-cases.html#automotive-applications">Automotive</a></dd>
+                            <dd><a href="https://slint.dev/use-cases.html#consumer-applications">Consumer</a></dd>
+                            <dd><a href="https://slint.dev/use-cases.html#industrial-applications">Industrial</a></dd>
+                            <dd><a href="https://slint.dev/use-cases.html#medical-applications">Medical</a></dd>
+                            <dd><a href="https://slint.dev/success">Success Stories</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Compare</dt>
+                            <dd><a href="https://slint.dev/alternative-to-qt.html">Qt</a></dd>
+                            <dd><a href="https://slint.dev/alternative-to-lvgl.html">LVGL</a></dd>
+                            <dd><a href="https://slint.dev/alternative-to-flutter.html">Flutter</a></dd>
+                            <dd><a href="https://slint.dev/alternative-to-electron.html">Electron</a></dd>
+                            <dd><a href="https://slint.dev/declarative-rust-gui.html">Rust GUI Toolkits</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Contact us</dt>
+                            <dd><a href="https://slint.dev/meeting.html?event=online">Schedule Meeting</a></dd>
+                            <dd><a href="mailto:info@slint.dev?subject=Contact%20from%20Website">Email</a></dd>
+                            <dd><a href="https://chat.slint.dev">Chat</a></dd>
+                            <dd><a href="https://slint.dev/pricing.html#support">Support</a></dd>
+                            <dd><a href="https://github.com/slint-ui/slint/" target="_blank">GitHub</a></dd>
+                            <dd hidden><a href="#">Twitter</a></dd>
+                            <dd hidden><a href="#">Mastodon</a></dd>
+                            <dd hidden><a href="#">Linkedin</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                </div>
+                <div class="col-wrap">
+                    <div class="col-1">
+                        <p>Copyright &copy; 2024 SixtyFPS GmbH</p>
+                    </div><!-- .col-1 -->
+                </div>
+            </footer>
+            <!-- ====== Footer End ====== -->
+        </div><!-- .wrap -->
+
+        <!-- ====== All Javascript Files ====== -->
+        <script src="https://slint.dev/assets/js/script.js?ver=1.2.20"></script>
+        
+    </body>
+
+</html>
