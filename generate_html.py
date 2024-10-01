@@ -1,4 +1,5 @@
 import json
+import argparse
 
 def is_valid(app_data):
     """Check if the required fields in app_data are non-empty and valid."""
@@ -113,29 +114,39 @@ def generate_html_for_all_apps(data):
             </section><!-- .applications -->\n"""
     return html_output
 
-def replace_placeholder_in_html(html_file_path, placeholder, new_content):
+def replace_placeholder_in_html(template_file_path, html_file_path, placeholder, new_content):
     # Read the HTML file
-    with open(html_file_path, 'r') as file:
+    with open(template_file_path, 'r') as file:
         file_content = file.read()
 
     # Replace the placeholder with the new content
     updated_content = file_content.replace(placeholder, new_content)
 
     # Write the updated content back to the HTML file
-    with open('index.html', 'w') as file:
+    with open(html_file_path, 'w') as file:
         file.write(updated_content)
 
-# Load data from the JSON file
-json_file_path = 'showcases.json'
-data = load_data_from_json(json_file_path)
+def main(json_file_path, template_file_path, html_file_path):
+    placeholder = '<?applications?>'
 
-# Generate HTML for all the valid applications in the JSON array
-html_code = generate_html_for_all_apps(data)
+    # Load data from JSON
+    data = load_data_from_json(json_file_path)
 
-# Print or save the generated HTML
-print(html_code)
+    # Generate HTML for all the valid applications in the JSON array
+    html_code = generate_html_for_all_apps(data)
 
-# Create index.html
-html_file_path = 'template.html'  
-placeholder = '<?applications?>'
-replace_placeholder_in_html(html_file_path, placeholder, html_code)
+    # Replace the placeholder in the HTML file
+    replace_placeholder_in_html(template_file_path, html_file_path, placeholder, html_code)
+
+if __name__ == '__main__':
+    # Set up command line argument parsing
+    parser = argparse.ArgumentParser(description="Generate madewithslint showcase page.")
+    parser.add_argument('--json', default='showcases.json', help='Path to the JSON file with application data')
+    parser.add_argument('--template', default='template.html', help='The tenplate HTML file that should be used')
+    parser.add_argument('--output', default='index.html', help='The HTML file that should be created')
+    
+    # Parse command line arguments
+    args = parser.parse_args()
+
+    # Call the main function with the provided file paths
+    main(args.json, args.template, args.output)
