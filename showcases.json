@@ -5,7 +5,7 @@
     "app_description": "OTIV is pioneering rail automation through technology for assisted, remote and autonomous driving in rail. The products OTIV.ONE, OTIV.TWO, OTIV.THREE, and OTIV.FOUR empower industrial companies, railway undertakings, infrastructure managers and OEM's to increase safety and efficiency of rail vehicles.",
     "app_quote": "Safe, reliable, and intuitive user interfaces are critical for our customers who depend on OTIV products to drive the future of rail automation. Slint has been an exceptional partner in helping us achieve this, providing the high-performance UI solutions we need to stay at the forefront of innovation.",
     "app_quote_author": "Sam De Smet, Co-Founder",
-    "image_src": "otiv-three.png",
+    "image_src": "https://madewithslint.com/assets/img/madewithslint-otiv-three.png",
     "image_alt": "Picture of OTIV.THREE Remote Supervision & Control Center",
     "class_style": "highlight",
     "git_link": "",
