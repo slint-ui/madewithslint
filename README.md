@@ -1,6 +1,6 @@
 # About
 
-![#MadeWithSlint](./assets/img/madewithslint-logo-light.svg#gh-light-mode-only)![#MadeWithSlint](./assets/img/madewithslint-logo-dark.svg#gh-dark-mode-only)
+![#MadeWithSlint](./assets/img/MadeWithSlint-logo-light.svg#gh-light-mode-only)![#MadeWithSlint](./assets/img/MadeWithSlint-logo-dark.svg#gh-dark-mode-only)
 
 This is the repository that showcases applications #MadeWithSlint
 
