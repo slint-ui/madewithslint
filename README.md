@@ -20,6 +20,7 @@ Each entry is composed of the following fields:
 ### Optional
 
 - Application Quote
+- Application Quote Author
 - Git Link
 - Preview Link
 - Doc Link
@@ -35,6 +36,7 @@ Create a PR to add the above info in the following JSON structure in showcases.j
       "app_company": "Application Author",
       "app_description": "Application Description",
       "app_quote": "Quote from Author",
+      "app_quote_author": "Name of Author, Job Title",
       "image_src": "URL to Application screenshot",
       "image_alt": "Alt text for image",
       "class_style": "Size of card (col-3-row-3, col-3-row-2, col-2-row-2, col-2-row-1, col-1-row-1)",

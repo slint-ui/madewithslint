@@ -94,7 +94,7 @@ def generate_html(app_data):
     
     if license_text:
         html_template += f"""
-                                    <a href="#{app_id}" class="tooltip"><i class="fas {license_icon}"></i><span class="tooltip-text">{license_text}</span></a>"""
+                                    <a id="#{app_id}-license" href="#{app_id}-license" class="tooltip"><i class="fas {license_icon}"></i><span class="tooltip-text">{license_text}</span></a>"""
 
     if git_link:
         html_template += f"""
