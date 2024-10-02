@@ -66,3 +66,17 @@ See example below for Cargo UI
         "story_link": ""
       }
 ```
+
+## Test Locally
+
+Run the command
+
+```shell
+python3 generate_html.py
+```
+
+and then run http.server
+
+```shell
+python3 -m http.server
+```
