@@ -43,7 +43,7 @@ Create a PR to add the above info in the following JSON structure in showcases.j
       "git_link": "URL to Git repo",
       "preview_link": "URL to WASM binary",
       "doc_link": "URL to Product page",
-      "license_text": "Type of license (Proprietary, MIT, BSD, etc.)",
+      "license_text": "Type of license (Proprietary License, MIT, BSD, etc.)",
       "license_type": "Type of license (closed, open-source, dual)",
       "story_link": "URL to success story"
     }

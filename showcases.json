@@ -11,7 +11,7 @@
     "git_link": "",
     "preview_link": "",
     "doc_link": "https://www.otiv.ai",
-    "license_text": "Proprietary",
+    "license_text": "Proprietary License",
     "license_type": "closed",
     "story_link": ""
   },
@@ -27,7 +27,7 @@
     "git_link": "",
     "preview_link": "",
     "doc_link": "https://sksignet.us",
-    "license_text": "Proprietary",
+    "license_text": "Proprietary License",
     "license_type": "closed",
     "story_link": "https://slint.dev/success/sksignet-evcharger.html"
   },
@@ -43,7 +43,7 @@
     "git_link": "",
     "preview_link": "https://slint.dev/success/wesaudio-daw/wesaudio_demo.html",
     "doc_link": "https://wesaudio.com/product/_prometheus/",
-    "license_text": "Proprietary",
+    "license_text": "Proprietary License",
     "license_type": "closed",
     "story_link": "https://slint.dev/success/wesaudio-daw.html"
   },
@@ -208,7 +208,7 @@
     "git_link": "https://github.com/ElevenJune/mastermind_Rust",
     "preview_link": "",
     "doc_link": "",
-    "license_text": "Proprietary",
+    "license_text": "Proprietary License",
     "license_type": "closed",
     "story_link": ""
   },
@@ -313,7 +313,7 @@
     "git_link": "https://github.com/Project-Trains/launcher/",
     "preview_link": "",
     "doc_link": "",
-    "license_text": "Proprietary",
+    "license_text": "Proprietary License",
     "license_type": "closed",
     "story_link": ""
   },
