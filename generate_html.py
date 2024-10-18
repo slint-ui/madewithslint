@@ -55,8 +55,17 @@ def generate_html(app_data):
                     <!-- {app_title} -->
                     <div id="{app_id}" class="application-item {class_style}">
                         <div class="application-content">
-                            <div class="application-header">
-                                <img src="{image_src}" alt="{image_alt}" loading="lazy">
+                            <div class="application-header">"""
+    if story_link:
+        html_template += f"""
+                                <a href="{story_link}" target="_blank">"""
+    html_template += f"""
+                                    <img src="{image_src}" alt="{image_alt}" loading="lazy">"""
+    if story_link:
+        html_template += f"""
+                                </a>"""
+        
+    html_template += f"""
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">{app_title}</h3>
