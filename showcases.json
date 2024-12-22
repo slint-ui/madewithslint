@@ -376,5 +376,20 @@
     "license_text": "GPLv3",
     "license_type": "open-source",
     "story_link": ""
+  },
+  {
+    "app_title": "musi lili",
+    "app_company": "vivi",
+    "app_description": "musi lili is a retro game engine for GB styled games written in Rust. Inspired by pico8.",
+    "app_quote": "",
+    "image_src": "https://codeberg.org/vivi-ui/pages/raw/branch/main/assets/lili-0-1-map-editor.png",
+    "image_alt": "Screenshot of musi lili map editor",
+    "class_style": "col-3-row-1",
+    "git_link": "https://codeberg.org/vivi-ui/lili",
+    "preview_link": "https://vivi-ui.codeberg.page/@main/musi_lili/snapshots/examples/map/",
+    "doc_link": "",
+    "license_text": "LGPLv3",
+    "license_type": "open-source",
+    "story_link": ""
   }
 ]
