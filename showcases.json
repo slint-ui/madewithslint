@@ -391,5 +391,20 @@
     "license_text": "LGPLv3",
     "license_type": "open-source",
     "story_link": ""
+  },
+  {
+    "app_title": "Game Bub",
+    "app_company": "Eli Lipsitz",
+    "app_description": "Open-source FPGA retro emulation handheld",
+    "app_quote": "",
+    "image_src": "https://eli.lipsitz.net/posts/introducing-gamebub/media/metroid-zero-mission-from-cartridge-poster.jpg",
+    "image_alt": "Screenshot of Game Bub",
+    "class_style": "col-3-row-1",
+    "git_link": "https://github.com/elipsitz/gamebub",
+    "preview_link": "https://www.youtube.com/watch?v=_WQGJFFGHmE",
+    "doc_link": "https://eli.lipsitz.net/posts/introducing-gamebub",
+    "license_text": "GPLv3",
+    "license_type": "open-source",
+    "story_link": ""
   }
 ]
