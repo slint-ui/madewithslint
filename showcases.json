@@ -406,5 +406,20 @@
     "license_text": "GPLv3",
     "license_type": "open-source",
     "story_link": ""
+  },
+  {
+    "app_title": "WinAlpha",
+    "app_company": "Ethan Henry",
+    "app_description": "A simple UI application to interact with the Windows API. It allows users to setup rules that set the transparency of different programs/window classes.",
+    "app_quote": "",
+    "image_src": "https://github.com/tadghh/transparent-windows/blob/main/examples/docs.png?raw=true",
+    "image_alt": "Effect of WinAlpha app on transparency",
+    "class_style": "col-3-row-1",
+    "git_link": "https://github.com/tadghh/transparent-windows",
+    "preview_link": "",
+    "doc_link": "",
+    "license_text": "Proprietary License",
+    "license_type": "closed",
+    "story_link": ""
   }
 ]
