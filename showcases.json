@@ -421,5 +421,20 @@
     "license_text": "Proprietary License",
     "license_type": "closed",
     "story_link": ""
+  },
+  {
+    "app_title": "Minesweeper",
+    "app_company": "Erik",
+    "app_description": "Classic Minesweeper implemented with Rust+Slint targeting WebAssembly.",
+    "app_quote": "",
+    "image_src": "https://madewithslint.com/assets/img/madewithslint-minesweeper.png",
+    "image_alt": "Picture of Classic Minesweeper implemented with Rust+Slint targeting WebAssembly.",
+    "class_style": "col-3-row-1",
+    "git_link": "https://github.com/Erik7354/slint_minesweeper",
+    "preview_link": "https://minesweeper.e36t.net",
+    "doc_link": "",
+    "license_text": "Proprietary License",
+    "license_type": "closed",
+    "story_link": ""
   }
 ]
