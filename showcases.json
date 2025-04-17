@@ -436,5 +436,20 @@
     "license_text": "Proprietary License",
     "license_type": "closed",
     "story_link": ""
+  },
+  {
+    "app_title": "WebSocket Reflector X",
+    "app_company": "Reverier-Xu@XDSEC",
+    "app_description": "Controlled TCP-over-WebSocket forwarding tunnel.",
+    "app_quote": "",
+    "image_src": "https://madewithslint.com/assets/img/madewithslint-WebSocketReflectorX.webp",
+    "image_alt": "Picture of WebSocket Reflector X.",
+    "class_style": "col-3-row-1",
+    "git_link": "https://github.com/XDSEC/WebSocketReflectorX",
+    "preview_link": "",
+    "doc_link": "",
+    "license_text": "MIT",
+    "license_type": "open-source",
+    "story_link": ""
   }
 ]
