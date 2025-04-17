@@ -442,7 +442,7 @@
     "app_company": "Reverier-Xu@XDSEC",
     "app_description": "Controlled TCP-over-WebSocket forwarding tunnel.",
     "app_quote": "",
-    "image_src": "https://madewithslint.com/assets/img/madewithslint-WebSocketReflectorX.webp",
+    "image_src": "https://madewithslint.com/assets/img/madewithslint-WebSocketReflectorX.jpeg",
     "image_alt": "Picture of WebSocket Reflector X.",
     "class_style": "col-3-row-1",
     "git_link": "https://github.com/XDSEC/WebSocketReflectorX",
