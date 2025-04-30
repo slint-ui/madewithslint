@@ -451,5 +451,20 @@
     "license_text": "MIT",
     "license_type": "open-source",
     "story_link": ""
+  },
+  {
+    "app_title": "POVVER",
+    "app_company": "burumdev",
+    "app_description": "Agent-based model (ABM) simulator of simplified manufacturing economics and energy distribution between industries with an actor-style multithreaded timeline.",
+    "app_quote": "",
+    "image_src": "https://madewithslint.com/assets/img/madewithslint-povver.jpg",
+    "image_alt": "POVVER simulator main screen with events tab open",
+    "class_style": "col-3-row-1",
+    "git_link": "https://github.com/burumdev/POVVER",
+    "preview_link": "",
+    "doc_link": "",
+    "license_text": "GPLv3",
+    "license_type": "open-source",
+    "story_link": ""
   }
 ]
