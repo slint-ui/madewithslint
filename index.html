@@ -1,0 +1,1217 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="author" content="SixtyFPS GmbH" />
+
+        <!--====== Favicon Icon ======-->
+        <link rel="shortcut icon" href="https://slint.dev/assets/img/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="https://slint.dev/assets/img/favicon.svg">
+
+        <!-- ===== All CSS files ===== -->
+        <link rel="stylesheet" href="https://slint.dev/assets/css/style.css?v=1.12.18" async />
+
+
+        <!-- ===== Header from individual pages ===== -->
+
+        <title>Showcase | #MadeWithSlint</title>
+        <meta property="og:image" content="https://slint.dev/assets/img/responsive.png" />
+        <meta property="og:title" content="#MadeWithSlint" />
+        <meta property="og:url" content="https://madewithslint.com" />
+        <meta property="og:type" content="website" />
+        <meta name="description" content="Awesome applications built with Slint, the declarative GUI toolkit for Rust, C++, Python, and JavaScript" />
+
+        <!-- Font Awesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+
+    </head>
+
+    <body>
+        <script>
+            /* Check if dark theme is selected */
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+            else if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.add('light');
+            }
+        </script>
+
+        <div class="wrap">
+            <!-- ====== Header Start ====== -->
+            <header class="top">
+                <div class="header-wrap">
+
+                    <a href="https://slint.dev/index.html" class="logo">Slint</a>
+
+                    <nav class="main-navi">
+
+                        <ul>
+                            <li class="navi-item-has-children" id="use-cases"><a href="#">Use Cases</a>
+                                <ul>
+                                    <li id="demos"><a href="https://slint.dev//demos.html">Demos</a></li>
+                                    <li id="supported-boards"><a href="https://slint.dev//supported-boards.html">Embedded</a></li>
+                                    <li id="use-cases"><a href="https://slint.dev//use-cases.html">Cross Platform</a></li>
+                                </ul>
+                            </li>
+                            <li id="pricing"><a href="https://slint.dev//pricing.html">Pricing</a></li>
+                            <li id="blog"><a href="https://slint.dev//blog">Blog</a></li>
+                            <li id="docs"><a href="https://slint.dev//docs.html">Docs</a></li>
+                            <li class="navi-item-has-children" id="resources"><a href="#">Resources</a>
+                                <ul>
+                                    <li id="success"><a href="https://slint.dev//success">Success Stories</a></li>
+                                    <li id="community"><a href="https://slint.dev//community.html">Community</a></li>
+                                    <li id="partners"><a href="https://slint.dev//partners.html">Partners</a></li>
+                                    <li id="events"><a href="https://slint.dev//events.html">Events</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li class="search"><a href="/search-results.html">Search</a></li> -->
+                            <li class="theme theme-light"><a href="#">Theme</a></li>
+                            <li class="btn btn-blue"><a href="https://slint.dev//get-started.html">Get Started</a></li>
+                            <li class="btn btn-white"><a href="https://slint.dev//contact.html">Contact Us</a></li>
+                        </ul>
+
+                    </nav>
+
+                    <!-- <a href="/search-results.html" class="search-mobile">Search</a> -->
+
+                    <button class="hamburger" aria-label="menu" aria-expanded="false" aria-controls="nav">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                </div><!-- .header-wrap -->
+            </header>
+            <!-- ====== Header End ====== -->
+
+
+            <main>
+
+                <style>
+                    @media only screen and (max-width: 750px) {
+                        section.hero h1 {
+                            font-size: 2.225rem;
+                        }
+                    }
+
+                    /* Section: applications */
+                    section.applications {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    /* Create a grid with varying column spans */
+                    section.applications .col-wrap {
+                        display: grid;
+                        grid-template-columns: repeat(12, 1fr);
+                        grid-gap: 20px;
+                    }
+
+                    /* Different sizes for a collage look */
+                    .application-item {
+                        background-color: var(--color_blue);
+                        border-radius: 8px;
+                        color: #fff;
+                        font-size: 1.125em;
+                        margin: 20px 10px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        overflow: hidden;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                        transition: 0.3s ease-in-out;
+                    }
+
+                    .application-item:hover {
+                        box-shadow: 0 8px 16px var(--color_purple);
+                    }
+
+                    .application-header img {
+                        width: 100%;
+                        height: auto;
+                    }
+
+                    .application-body {
+                        padding: 0.5em 1.77em;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: center;
+                        flex-grow: 1;
+                    }
+
+                    .application-title {
+                        text-align: center;
+                        margin-bottom: 10px;
+                        font-weight: bold;
+                    }
+
+                    .application-company {
+                        text-align: center;
+                        margin-bottom: 20px;
+                        font-weight: 400;
+                        font-size: 1.3rem;
+                    }
+
+                    .application-description {
+                        flex-grow: 1;
+                        text-align: center;
+                        margin-bottom: 15px;
+                    }
+
+                    .application-quote {
+                        display: flex;
+                        align-items: center;
+                        margin: 15px 0 15px;
+                        flex-direction: column;
+                        color: #333;
+                        background-color: #f9f9f9;
+                        border-left: 4px solid var(--color_ice_blue);
+                        padding: 10px 10px 0px 10px;
+                    }
+
+                    .quote-text {
+                        font-style: italic;
+                    }
+
+                    .quote-author {
+                        font-weight: bold;
+                    }
+
+                    /* General card styling */
+                    div.application-item p {
+                        font-size: 1.125rem;
+                        line-height: 1.5;
+                        margin-bottom: 1em;
+                    }
+
+                    /* CTA icons container */
+                    .application-cta {
+                        display: flex;
+                        justify-content: center;
+                        gap: 20px;
+                        margin-top: 20px;
+                    }
+
+                    /* Styling for the icons */
+                    .application-cta a {
+                        color: #fff;
+                        font-size: 1.5rem;
+                        transition: color 0.3s ease;
+                        text-decoration: none;
+                    }
+
+                    .application-cta a:hover {
+                        color: var(--color_purple);
+                    }
+
+                    /* Icon positioning and appearance */
+                    .application-cta a i {
+                        display: inline-block;
+                        margin-right: 8px;
+                    }
+
+                    /* Styling for tool tips */
+                    /* Basic styles for the tooltip */
+                    .tooltip {
+                        position: relative;
+                        display: inline-block;
+                        cursor: pointer;
+                        /* Change cursor to indicate interactivity */
+                    }
+
+                    .tooltip .tooltip-text {
+                        visibility: hidden;
+                        font-size: 1rem;
+                        width: 10rem;
+                        /* Adjust width as needed */
+                        background-color: #555;
+                        color: #fff;
+                        text-align: center;
+                        border-radius: 5px;
+                        padding: 5px 0;
+                        position: absolute;
+                        z-index: 1;
+                        bottom: 125%;
+                        /* Position above the icon */
+                        left: 50%;
+                        margin-left: -60px;
+                        /* Center the tooltip */
+                        opacity: 0;
+                        /* Hide tooltip */
+                        transition: opacity 0.3s;
+                        /* Smooth fade */
+                    }
+
+                    /* Show the tooltip text when hovering */
+                    .tooltip:hover .tooltip-text,
+                    .tooltip:focus-within .tooltip-text {
+                        visibility: visible;
+                        opacity: 1;
+                        /* Show tooltip */
+                    }
+
+                    /* Additional mobile touch functionality */
+                    .tooltip:active .tooltip-text {
+                        visibility: visible;
+                        /* Show tooltip on touch */
+                        opacity: 1;
+                    }
+
+                    /* Assigning different grid spans to specific items*/
+
+                    .col-6-row-3 {
+                        grid-column: span 6;
+                        grid-row: span 3;
+                    }
+
+                    .col-6-row-3 {
+                        grid-column: span 6;
+                        grid-row: span 3;
+                    }
+
+                    .col-6-row-2 {
+                        grid-column: span 6;
+                        grid-row: span 2;
+                    }
+
+                    .col-6-row-1 {
+                        grid-column: span 6;
+                        grid-row: span 1;
+                    }
+
+                    .col-4-row-3 {
+                        grid-column: span 4;
+                        grid-row: span 3;
+                    }
+
+                    .col-4-row-2 {
+                        grid-column: span 4;
+                        grid-row: span 2;
+                    }
+
+                    .col-4-row-1 {
+                        grid-column: span 4;
+                        grid-row: span 1;
+                    }
+
+                    .col-3-row-1 {
+                        grid-column: span 3;
+                        grid-row: span 1;
+                    }
+
+                    .col-3-row-2 {
+                        grid-column: span 3;
+                        grid-row: span 2;
+                    }
+
+                    .col-2-row-1 {
+                        grid-column: span 2;
+                        grid-row: span 1;
+                    }
+
+                    .col-2-row-2 {
+                        grid-column: span 2;
+                        grid-row: span 2;
+                    }
+
+                    /* Responsive Adjustments */
+                    @media only screen and (max-width: 1170px) {
+                        section.applications .col-wrap {
+                            grid-template-columns: repeat(6, 1fr);
+                        }
+
+                        /* Assigning different grid spans to specific items*/
+
+                        .col-6-row-3 {
+                            grid-column: span 3;
+                            grid-row: span 3;
+                        }
+
+                        .col-6-row-3 {
+                            grid-column: span 3;
+                            grid-row: span 3;
+                        }
+
+                        .col-6-row-2 {
+                            grid-column: span 3;
+                            grid-row: span 2;
+                        }
+
+                        .col-6-row-1 {
+                            grid-column: span 3;
+                            grid-row: span 1;
+                        }
+
+                        .col-4-row-3 {
+                            grid-column: span 3;
+                            grid-row: span 3;
+                        }
+
+                        .col-4-row-2,
+                        .col-3-row-2 {
+                            grid-column: span 3;
+                            grid-row: span 2;
+                        }
+
+                        .col-4-row-1,
+                        .col-3-row-1 {
+                            grid-column: span 3;
+                            grid-row: span 1;
+                        }
+
+                        .col-2-row-1 {
+                            grid-column: span 1;
+                            grid-row: span 1;
+                        }
+
+                        .col-2-row-2 {
+                            grid-column: span 1;
+                            grid-row: span 2;
+                        }
+
+                    }
+
+                    @media only screen and (max-width: 750px) {
+                        section.applications .col-wrap {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+
+                    .application-item.highlight {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 20px;
+                        margin-bottom: 20px;
+                        background-color: #99A8FF;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                        color: #000;
+                        grid-column: span 12;
+                        grid-row: span 1;
+                    }
+
+                    div.application-content {
+                        display: flex;
+                        width: 100%;
+                        flex-wrap: wrap;
+                        height: 100%;
+                        flex-direction: column;
+                    }
+
+                    .highlight div.application-content {
+                        flex-direction: row;
+                    }
+
+                    .highlight div.application-header {
+                        flex: 1 1 40%;
+                        /* 40% of the width for the image */
+                        max-width: 40%;
+                        padding-right: 20px;
+                        /* Space between the image and text */
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        max-height: 100%;
+                        /* Limit the height to the container's height */
+                        overflow-y: auto;
+                    }
+
+                    .highlight div.application-header img {
+                        max-width: 100%;
+                        max-height: 100%;
+                        /* Ensures the image doesn't exceed the container's max height */
+                        height: auto;
+                        width: auto;
+                        display: block;
+                        object-fit: contain;
+                        /* Keeps the aspect ratio of the image */
+                        border-radius: 8px;
+                        /* Optional: rounded corners */
+                    }
+
+                    .highlight div.application-body {
+                        flex: 1 1 60%;
+                        /* 60% of the width for the text content */
+                        padding-left: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        overflow-y: auto;
+                    }
+
+                    @media only screen and (max-width: 1170px) {
+                        .application-item.highlight {
+                            grid-column: span 6;
+                            grid-row: span 1;
+                        }
+                    }
+
+                    @media (max-width: 768px) {
+                        .highlight div.application-content {
+                            flex-direction: column;
+                        }
+
+                        .highlight div.application-header,
+                        .highlight div.application-body {
+                            max-width: 100%;
+                            flex: 1 1 100%;
+                            padding: 0;
+                        }
+
+                        .highlight div.application-header {
+                            margin-bottom: 20px;
+                            /* Add space between the image and text on small screens */
+                        }
+                    }
+                </style>
+
+                <section class="hero" style="padding: 2em 0;">
+                    <h1>
+                        #MadeWithSlint
+                    </h1>
+                </section>
+
+                
+            <section class="applications">
+                <div class="col-wrap">
+                    <!-- Assisted, Remote and Autonomous Rail Vehicles -->
+                    <div id="assisted-remote-and-autonomous-rail-vehicles" class="application-item highlight">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-otiv-three.png" alt="Picture of OTIV.THREE Remote Supervision & Control Center" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Assisted, Remote and Autonomous Rail Vehicles</h3>
+                                <h4 class="application-company">OTIV BV</h4>
+                                <div class="application-quote">
+                                    <p class="quote-text">"Safe, reliable, and intuitive user interfaces are critical for our customers who depend on OTIV products to drive the future of rail automation. Slint has been an exceptional partner in helping us achieve this, providing the high-performance UI solutions we need to stay at the forefront of innovation."</p>
+                                    <p class="quote-author">Sam De Smet, Co-Founder</p>
+                                </div>
+                                <p class="application-description">
+                                OTIV is pioneering rail automation through technology for assisted, remote and autonomous driving in rail. The products OTIV.ONE, OTIV.TWO, OTIV.THREE, and OTIV.FOUR empower industrial companies, railway undertakings, infrastructure managers and OEM's to increase safety and efficiency of rail vehicles.
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://www.otiv.ai" target="_blank" class="tooltip"><i class="fas fa-globe"></i><span class="tooltip-text">Open Product Page</span></a>
+                                    <a id="#assisted-remote-and-autonomous-rail-vehicles-license" href="#assisted-remote-and-autonomous-rail-vehicles-license" class="tooltip"><i class="fas fa-lock"></i><span class="tooltip-text">Proprietary License</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- EV Charger -->
+                    <div id="ev-charger" class="application-item col-4-row-2">
+                        <div class="application-content">
+                            <div class="application-header">
+                                <a href="https://slint.dev/success/sksignet-evcharger.html" target="_blank">
+                                    <img src="https://slint.dev/success/sksignet-evcharger/ready_screen_light.png" alt="Picture of HMI on EV Chargers from SK Signet" loading="lazy">
+                                </a>
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">EV Charger</h3>
+                                <h4 class="application-company">SK Signet</h4>
+                                <div class="application-quote">
+                                    <p class="quote-text">"We are very happy to have selected Slint for developing the HMI of our next generation chargers. Slint provides us flexibility, high performance and value-for-money along with great support."</p>
+                                    <p class="quote-author">Sang-Baek Lee, Manager</p>
+                                </div>
+                                <p class="application-description">
+                                SK Signet, the no.1 EV (Electric Vehicle) charging solutions provider in the U.S., launched a new HMI (Human-Machine-Interface) which scales to both 15-inch and 32-inch touch displays that are installed on their EV chargers
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://slint.dev/success/sksignet-evcharger.html" target="_blank" class="tooltip"><i class="fas fa-comment"></i><span class="tooltip-text">Read Customer Journey</span></a>
+                                    <a href="https://sksignet.us" target="_blank" class="tooltip"><i class="fas fa-globe"></i><span class="tooltip-text">Open Product Page</span></a>
+                                    <a id="#ev-charger-license" href="#ev-charger-license" class="tooltip"><i class="fas fa-lock"></i><span class="tooltip-text">Proprietary License</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- DAW Plugin -->
+                    <div id="daw-plugin" class="application-item col-4-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                <a href="https://slint.dev/success/wesaudio-daw.html" target="_blank">
+                                    <img src="https://slint.dev/success/wesaudio-daw/eclipse_eqs_4.jpg" alt="DAW Plugin Image" loading="lazy">
+                                </a>
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">DAW Plugin</h3>
+                                <h4 class="application-company">WesAudio</h4>
+                                <div class="application-quote">
+                                    <p class="quote-text">"Slint stands out with its extensive out-of-the-box platform support, making it a prime choice for cross-platform development. It is an entirely different level of experience working with people who care about their product, their support and willingness to help is more than extraordinary."</p>
+                                    <p class="quote-author">Michał Węglicki, CEO</p>
+                                </div>
+                                <p class="application-description">
+                                WesAudio, a leading manufacturer of professional audio equipment adopted Slint for a complete redesign of their digital audio workstation (DAW) plugin user interfaces, enhancing the overall user experience and functionality
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://slint.dev/success/wesaudio-daw/wesaudio_demo.html" target="_blank" class="tooltip"><i class="fas fa-play-circle"></i><span class="tooltip-text">Open Live Preview</span></a>
+                                    <a href="https://slint.dev/success/wesaudio-daw.html" target="_blank" class="tooltip"><i class="fas fa-comment"></i><span class="tooltip-text">Read Customer Journey</span></a>
+                                    <a href="https://wesaudio.com/product/_prometheus/" target="_blank" class="tooltip"><i class="fas fa-globe"></i><span class="tooltip-text">Open Product Page</span></a>
+                                    <a id="#daw-plugin-license" href="#daw-plugin-license" class="tooltip"><i class="fas fa-lock"></i><span class="tooltip-text">Proprietary License</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Raccoin -->
+                    <div id="raccoin" class="application-item col-4-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-raccoin.png" alt="Screenshot of Raccoin" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Raccoin</h3>
+                                <h4 class="application-company">Thorbjørn Lindeijer</h4>
+                                <p class="application-description">
+                                Raccoin makes it easy to see the current state and the history of your crypto portfolio and to generate relevant reports for declaring capital gain income tax
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://raccoin.org/" target="_blank" class="tooltip"><i class="fas fa-globe"></i><span class="tooltip-text">Open Product Page</span></a>
+                                    <a id="#raccoin-license" href="#raccoin-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">GPLv3</span></a>
+                                    <a href="https://git.sr.ht/~thorbjorn/raccoin" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Fractal Explorer -->
+                    <div id="fractal-explorer" class="application-item col-4-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-fractal-explorer.png" alt="Screenshot of Fractal Explorer" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Fractal Explorer</h3>
+                                <h4 class="application-company">Brian O'Clair</h4>
+                                <p class="application-description">
+                                Explore the relationship between Mandelbrot and Julia Fractals: click, zoom, etc.
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://boclair.github.io/fractal-explorer/" target="_blank" class="tooltip"><i class="fas fa-play-circle"></i><span class="tooltip-text">Open Live Preview</span></a>
+                                    <a id="#fractal-explorer-license" href="#fractal-explorer-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT</span></a>
+                                    <a href="https://github.com/boclair/fractal-explorer" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- SurrealismUI -->
+                    <div id="surrealismui" class="application-item col-4-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-surrealismui.png" alt="Image of SurrealismUI" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">SurrealismUI</h3>
+                                <h4 class="application-company">YiFei Sheng</h4>
+                                <p class="application-description">
+                                SurrealismUI is a third-party component library built entirely using Slint. Components follow and use Fluent2 design style
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#surrealismui-license" href="#surrealismui-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT</span></a>
+                                    <a href="https://github.com/syf20020816/SurrealismUI" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- tymoz -->
+                    <div id="tymoz" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-tymoz-light.png" alt="Screenshot of tymoz" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">tymoz</h3>
+                                <h4 class="application-company">Arun PK</h4>
+                                <p class="application-description">
+                                tymoz is a simple and intuitive application built using Rust for the backend and SlintUI for the user interface. This application helps you to display and manage the time for various cities across different time zones
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#tymoz-license" href="#tymoz-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT</span></a>
+                                    <a href="https://github.com/arunpkio/tymoz" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Dispute -->
+                    <div id="dispute" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-dispute.jpg" alt="Image of The Damn Stylish Pomodoro Timer" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Dispute</h3>
+                                <h4 class="application-company">Vinegret43</h4>
+                                <p class="application-description">
+                                The Damn Stylish Pomodoro Timer
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#dispute-license" href="#dispute-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">GPLv3</span></a>
+                                    <a href="https://github.com/Vinegret43/dispute" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Tomotroid -->
+                    <div id="tomotroid" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-tomotroid.png" alt="Image of Tomotroid Timer" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Tomotroid</h3>
+                                <h4 class="application-company">Vadoola</h4>
+                                <p class="application-description">
+                                A clean themeable pomodoro timer
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#tomotroid-license" href="#tomotroid-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT</span></a>
+                                    <a href="https://github.com/vadoola/Tomotroid" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- GPCL -->
+                    <div id="gpcl" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-gpcl.png" alt="Screenshot of GamePad Controlled Launcher" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">GPCL</h3>
+                                <h4 class="application-company">Danil Gulin</h4>
+                                <p class="application-description">
+                                GamePad Controlled Launcher - Simple application launcher that can be controlled with a gamepad. It is designed to be a media center home screen
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#gpcl-license" href="#gpcl-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT</span></a>
+                                    <a href="https://github.com/dngulin/gpcl/" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Tetris -->
+                    <div id="tetris" class="application-item col-3-row-2">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-tetris-light.png" alt="Screenshot of Tetris" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Tetris</h3>
+                                <h4 class="application-company">Gaspard Culis</h4>
+                                <p class="application-description">
+                                A Tetris remake that's using Slint for the user interface
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://gaspardculis.github.io/slint-tetris/" target="_blank" class="tooltip"><i class="fas fa-play-circle"></i><span class="tooltip-text">Open Live Preview</span></a>
+                                    <a id="#tetris-license" href="#tetris-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT</span></a>
+                                    <a href="https://github.com/GaspardCulis/slint-tetris/" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Cargo UI -->
+                    <div id="cargo-ui" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-cargoui.png" alt="Screenshot of Cargo UI" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Cargo UI</h3>
+                                <h4 class="application-company">SixtyFPS GmbH</h4>
+                                <p class="application-description">
+                                A GUI frontend for Cargo
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#cargo-ui-license" href="#cargo-ui-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT, Apache 2.0</span></a>
+                                    <a href="https://github.com/slint-ui/cargo-ui/" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Chiptrack -->
+                    <div id="chiptrack" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-chiptrack.png" alt="Screenshot of Chiptrack" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Chiptrack</h3>
+                                <h4 class="application-company">Jocelyn Turcotte</h4>
+                                <p class="application-description">
+                                A cross-platform sequencer and synthesizer based on the emulation of the Game Boy sound chip
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://jturcotte.github.io/chiptrack" target="_blank" class="tooltip"><i class="fas fa-play-circle"></i><span class="tooltip-text">Open Live Preview</span></a>
+                                    <a id="#chiptrack-license" href="#chiptrack-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT</span></a>
+                                    <a href="https://github.com/jturcotte/chiptrack/" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Mastermind -->
+                    <div id="mastermind" class="application-item col-3-row-2">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-mastermind.gif" alt="Animated gif of Mastermind game" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Mastermind</h3>
+                                <h4 class="application-company">Guillaume VDK</h4>
+                                <p class="application-description">
+                                Mastermind or Master Mind is a code-breaking game for two players
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#mastermind-license" href="#mastermind-license" class="tooltip"><i class="fas fa-lock"></i><span class="tooltip-text">Proprietary License</span></a>
+                                    <a href="https://github.com/ElevenJune/mastermind_Rust" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Parch Welcome (dorood) -->
+                    <div id="parch-welcome-dorood" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-parch.png" alt="Screenshot of welcome app in ParchLinux" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Parch Welcome (dorood)</h3>
+                                <h4 class="application-company">ParchLinux</h4>
+                                <p class="application-description">
+                                Parch dorood (/do-rood/, درود, pronunciation) which is a Persian word for "Greetings", is a welcome app in the Parch distribution
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#parch-welcome-dorood-license" href="#parch-welcome-dorood-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">GPLv3</span></a>
+                                    <a href="https://github.com/parchlinux/parch-welcome/" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- ImageSieve -->
+                    <div id="imagesieve" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-imagesieve.png" alt="Image of ImageSieve application" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">ImageSieve</h3>
+                                <h4 class="application-company">Florian Fetz</h4>
+                                <p class="application-description">
+                                ImageSieve is a GUI based tool to assist in sorting images based on taken date and similarity, categorize them according to their creation date and archive them in a target folder
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#imagesieve-license" href="#imagesieve-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">GPLv3</span></a>
+                                    <a href="https://github.com/Futsch1/image-sieve/" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- SAST Evento -->
+                    <div id="sast-evento" class="application-item col-4-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-sast-evento.png" alt="Screenshot of SAST Evento" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">SAST Evento</h3>
+                                <h4 class="application-company">NJUPT-SAST</h4>
+                                <p class="application-description">
+                                SAST Evento is a cross-platform desktop client for SAST's event management system
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#sast-evento-license" href="#sast-evento-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT</span></a>
+                                    <a href="https://github.com/NJUPT-SAST/sast-evento" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Castle of Focus -->
+                    <div id="castle-of-focus" class="application-item col-4-row-2">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-cof-light.png" alt="Screenshot of Castle of Focus" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Castle of Focus</h3>
+                                <h4 class="application-company">vivi developers</h4>
+                                <p class="application-description">
+                                A focus and productivity app for Desktop and Android build with Slint and vivi. The app is privacy focused and does not collect or share any data
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#castle-of-focus-license" href="#castle-of-focus-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">GPLv3</span></a>
+                                    <a href="https://codeberg.org/vivi-ui/vivi/src/branch/main/apps/castle_of_focus" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- coop_local -->
+                    <div id="coop-local" class="application-item col-4-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-coop-local-light.png" alt="Screenshot of coop local widgets" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">coop_local</h3>
+                                <h4 class="application-company">flovansl</h4>
+                                <p class="application-description">
+                                coop_local is a cross platform file manager build with Slint and coop
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#coop-local-license" href="#coop-local-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">GPLv3</span></a>
+                                    <a href="https://codeberg.org/flovansl/co_sl/src/branch/main/apps/coop_local" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Launcher -->
+                    <div id="launcher" class="application-item col-4-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-project-trains-launcher.png" alt="Screenshot of Project Trains Launcher" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Launcher</h3>
+                                <h4 class="application-company">Project Trains</h4>
+                                <p class="application-description">
+                                Crossplatform game launcher made for Project Trains simulator
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#launcher-license" href="#launcher-license" class="tooltip"><i class="fas fa-lock"></i><span class="tooltip-text">Proprietary License</span></a>
+                                    <a href="https://github.com/Project-Trains/launcher/" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Market Prices -->
+                    <div id="market-prices" class="application-item col-4-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-market-prices.png" alt="Screenshot of Market Prices" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Market Prices</h3>
+                                <h4 class="application-company">Raykavin Meireles</h4>
+                                <p class="application-description">
+                                Market Prices is a fast and efficient application developed in Rust, with a modern interface built using the Slint backend. It is designed to provide real-time quotes for popular cryptocurrencies such as Bitcoin and Ethereum.
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#market-prices-license" href="#market-prices-license" class="tooltip"><i class="fas fa-lock"></i><span class="tooltip-text">Proprietary License</span></a>
+                                    <a href="https://github.com/raykavin/market-prices" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- BSP-STM32F429-DK -->
+                    <div id="bsp-stm32f429-dk" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/bsp-for-stm32f429i-discover-kit.jpeg" alt="Carousel Demo with the BSP-STM32F429-DK" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">BSP-STM32F429-DK</h3>
+                                <h4 class="application-company">ErturkMe</h4>
+                                <p class="application-description">
+                                A Rust Board Support Package (BSP) and Example Application Slint UI for STM32F429-Discovery Kit
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://erturk.me/projects/a-rust-bsp-package-for-stm32f4-discovery-kit/" target="_blank" class="tooltip"><i class="fas fa-globe"></i><span class="tooltip-text">Open Product Page</span></a>
+                                    <a id="#bsp-stm32f429-dk-license" href="#bsp-stm32f429-dk-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MPL 2.0</span></a>
+                                    <a href="https://github.com/ierturk/rust-on-stm32" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- vivi -->
+                    <div id="vivi" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-vivi-light.png" alt="Screenshot of vivi gallery" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">vivi</h3>
+                                <h4 class="application-company">vivi developers</h4>
+                                <p class="application-description">
+                                vivi is a custom component library for Slint
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://vivi-ui.codeberg.page/@main/vivi/0.2.0/demos/gallery/" target="_blank" class="tooltip"><i class="fas fa-play-circle"></i><span class="tooltip-text">Open Live Preview</span></a>
+                                    <a id="#vivi-license" href="#vivi-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT</span></a>
+                                    <a href="https://codeberg.org/vivi-ui/vivi" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- coop -->
+                    <div id="coop" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-coop-widgets.png" alt="Screenshot of coop widgets" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">coop</h3>
+                                <h4 class="application-company">flovansl</h4>
+                                <p class="application-description">
+                                Coop is a custom widget and component library for Slint with a custom simple, consistence and clean design
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://flovansl.codeberg.page/coop_sl/snapshots/main/demos/gallery/" target="_blank" class="tooltip"><i class="fas fa-play-circle"></i><span class="tooltip-text">Open Live Preview</span></a>
+                                    <a id="#coop-license" href="#coop-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT</span></a>
+                                    <a href="https://codeberg.org/flovansl/co_sl/src/branch/main/widgets/coop/" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Ordinary -->
+                    <div id="ordinary" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-ordinary.png" alt="Screenshot of Ordinary shell" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Ordinary</h3>
+                                <h4 class="application-company">Florian Loers</h4>
+                                <p class="application-description">
+                                Ordinary is a compositor and shell written in slint that aims e-paper devices like the remarkable 2 tablet
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#ordinary-license" href="#ordinary-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">GPLv3</span></a>
+                                    <a href="https://gitlab.com/floers/ordinary" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- musi lili -->
+                    <div id="musi-lili" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://codeberg.org/vivi-ui/pages/raw/branch/main/assets/lili-0-1-map-editor.png" alt="Screenshot of musi lili map editor" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">musi lili</h3>
+                                <h4 class="application-company">vivi</h4>
+                                <p class="application-description">
+                                musi lili is a retro game engine for GB styled games written in Rust. Inspired by pico8.
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://vivi-ui.codeberg.page/@main/musi_lili/snapshots/examples/map/" target="_blank" class="tooltip"><i class="fas fa-play-circle"></i><span class="tooltip-text">Open Live Preview</span></a>
+                                    <a id="#musi-lili-license" href="#musi-lili-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">LGPLv3</span></a>
+                                    <a href="https://codeberg.org/vivi-ui/lili" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Game Bub -->
+                    <div id="game-bub" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://eli.lipsitz.net/posts/introducing-gamebub/media/metroid-zero-mission-from-cartridge-poster.jpg" alt="Screenshot of Game Bub" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Game Bub</h3>
+                                <h4 class="application-company">Eli Lipsitz</h4>
+                                <p class="application-description">
+                                Open-source FPGA retro emulation handheld
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://www.youtube.com/watch?v=_WQGJFFGHmE" target="_blank" class="tooltip"><i class="fas fa-play-circle"></i><span class="tooltip-text">Open Live Preview</span></a>
+                                    <a href="https://eli.lipsitz.net/posts/introducing-gamebub" target="_blank" class="tooltip"><i class="fas fa-globe"></i><span class="tooltip-text">Open Product Page</span></a>
+                                    <a id="#game-bub-license" href="#game-bub-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">GPLv3</span></a>
+                                    <a href="https://github.com/elipsitz/gamebub" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- WinAlpha -->
+                    <div id="winalpha" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://github.com/tadghh/transparent-windows/blob/main/examples/docs.png?raw=true" alt="Effect of WinAlpha app on transparency" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">WinAlpha</h3>
+                                <h4 class="application-company">Ethan Henry</h4>
+                                <p class="application-description">
+                                A simple UI application to interact with the Windows API. It allows users to setup rules that set the transparency of different programs/window classes.
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#winalpha-license" href="#winalpha-license" class="tooltip"><i class="fas fa-lock"></i><span class="tooltip-text">Proprietary License</span></a>
+                                    <a href="https://github.com/tadghh/transparent-windows" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- Minesweeper -->
+                    <div id="minesweeper" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-minesweeper.png" alt="Picture of Classic Minesweeper implemented with Rust+Slint targeting WebAssembly." loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">Minesweeper</h3>
+                                <h4 class="application-company">Erik</h4>
+                                <p class="application-description">
+                                Classic Minesweeper implemented with Rust+Slint targeting WebAssembly.
+                            </p>
+                                <div class="application-cta">
+                                    <a href="https://minesweeper.e36t.net" target="_blank" class="tooltip"><i class="fas fa-play-circle"></i><span class="tooltip-text">Open Live Preview</span></a>
+                                    <a id="#minesweeper-license" href="#minesweeper-license" class="tooltip"><i class="fas fa-lock"></i><span class="tooltip-text">Proprietary License</span></a>
+                                    <a href="https://github.com/Erik7354/slint_minesweeper" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- WebSocket Reflector X -->
+                    <div id="websocket-reflector-x" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-WebSocketReflectorX.jpeg" alt="Picture of WebSocket Reflector X." loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">WebSocket Reflector X</h3>
+                                <h4 class="application-company">Reverier-Xu@XDSEC</h4>
+                                <p class="application-description">
+                                Controlled TCP-over-WebSocket forwarding tunnel.
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#websocket-reflector-x-license" href="#websocket-reflector-x-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">MIT</span></a>
+                                    <a href="https://github.com/XDSEC/WebSocketReflectorX" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                    <!-- POVVER -->
+                    <div id="povver" class="application-item col-3-row-1">
+                        <div class="application-content">
+                            <div class="application-header">
+                                    <img src="https://madewithslint.com/assets/img/madewithslint-povver.jpg" alt="POVVER simulator main screen with events tab open" loading="lazy">
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">POVVER</h3>
+                                <h4 class="application-company">burumdev</h4>
+                                <p class="application-description">
+                                Agent-based model (ABM) simulator of simplified manufacturing economics and energy distribution between industries with an actor-style multithreaded timeline.
+                            </p>
+                                <div class="application-cta">
+                                    <a id="#povver-license" href="#povver-license" class="tooltip"><i class="fas fa-lock-open"></i><span class="tooltip-text">GPLv3</span></a>
+                                    <a href="https://github.com/burumdev/POVVER" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>        </div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
+                </div><!-- .col-wrap -->
+            </section><!-- .applications -->
+
+
+                <section class="one-column" style="padding: 50px 0 2em;">
+                    <p class="cta"><a href="https://slint.dev/submit-application.html" class="btn btn-center">Submit Your Application</a></p>
+                </section>
+            </main>
+
+
+            <!-- ====== Footer Start ====== -->
+            <footer>
+                <div class="col-wrap">
+                    <div class="col-6">
+                        <p><a href="https://slint.dev/index.html"><img src="https://slint.dev/assets/img/slint-logo.svg" alt="Slint" width="141" height="47" class="footer-logo"></a></p>
+                        <p class="some-links">
+                            <a href="https://twitter.com/slint_ui" target="_blank"><img src="https://slint.dev/assets/img/icon-twitter.svg" alt="Twitter" width="40" height="40"></a>
+                            <a href="https://www.linkedin.com/company/slint-ui/" target="_blank"><img src="https://slint.dev/assets/img/icon-linkedin.svg" alt="Linkedin" width="40" height="40"></a>
+                            <a rel="me" href="https://fosstodon.org/@slint" target="_blank"><img src="https://slint.dev/assets/img/icon-mastodon.svg" alt="Mastodon" width="40" height="40"></a>
+                            <!-- <a href="https://github.com/slint-ui/slint/discussions" target="_blank"><img src="https://slint.dev/assets/img/icon-github.svg" alt="Github Discussions" width="40" height="40"></a> -->
+                            <!-- <a href="https://chat.slint.dev/" target="_blank"><img src="https://slint.dev/assets/img/icon-some.svg" alt="" width="40" height="40"></a> -->
+                        </p>
+                        <p><img src="https://slint.dev/assets/img/annual-ross-index.svg" data-darkimg="https://slint.dev/assets/img/annual-ross-index-light.svg" data-lightimg="https://slint.dev/assets/img/annual-ross-index.svg" alt="Annual Ross index" width="260" height="52" class="annual-ross"></p>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">About</dt>
+                            <dd><a href="https://slint.dev//about-us.html">Us</a></dd>
+                            <dd><a href="https://slint.dev//events.html">Events</a></dd>
+                            <dd><a href="https://slint.dev//careers.html">Careers</a></dd>
+                            <dd><a href="https://slint.dev//investors.html">Investors</a></dd>
+                            <dd><a href="https://slint.dev//imprint.html">Imprint &amp; Privacy</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Explore</dt>
+                            <dd><a href="https://slint.dev//use-cases.html#embedded-applications">Embedded</a></dd>
+                            <dd><a href="https://slint.dev//use-cases.html#desktop-applications">Desktop</a></dd>
+                            <dd><a href="https://slint.dev//demos.html">Demos</a></dd>
+                            <dd><a href="https://slint.dev//terms-and-conditions.html">Terms & Conditions</a></dd>
+                            <dd><a href="https://slint.dev//brand-guidelines.html">Brand Guidelines</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Markets</dt>
+                            <dd><a href="https://slint.dev//use-cases.html#automotive-applications">Automotive</a></dd>
+                            <dd><a href="https://slint.dev//use-cases.html#consumer-applications">Consumer</a></dd>
+                            <dd><a href="https://slint.dev//use-cases.html#industrial-applications">Industrial</a></dd>
+                            <dd><a href="https://slint.dev//use-cases.html#medical-applications">Medical</a></dd>
+                            <dd><a href="https://slint.dev//success">Success Stories</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Compare</dt>
+                            <dd><a href="https://slint.dev//alternative-to-qt.html">Qt</a></dd>
+                            <dd><a href="https://slint.dev//alternative-to-lvgl.html">LVGL</a></dd>
+                            <dd><a href="https://slint.dev//alternative-to-flutter.html">Flutter</a></dd>
+                            <dd><a href="https://slint.dev//alternative-to-electron.html">Electron</a></dd>
+                            <dd><a href="https://slint.dev//declarative-rust-gui.html">Rust GUI Toolkits</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
+                        <dl>
+                            <dt style="color: var(--light, var(--color_dark_gray)) var(--dark, var(--color_light_gray_2));">Contact us</dt>
+                            <dd><a href="https://slint.dev//meeting.html?event=online">Schedule Meeting</a></dd>
+                            <dd><a href="mailto:info@slint.dev?subject=Contact%20from%20Website">Email</a></dd>
+                            <dd><a href="https://chat.slint.dev">Chat</a></dd>
+                            <dd><a href="https://slint.dev//pricing.html#support">Support</a></dd>
+                            <dd><a href="https://github.com/slint-ui/slint/" target="_blank">GitHub</a></dd>
+                            <dd hidden><a href="#">Twitter</a></dd>
+                            <dd hidden><a href="#">Mastodon</a></dd>
+                            <dd hidden><a href="#">Linkedin</a></dd>
+                        </dl>
+                    </div><!-- .col-6 -->
+                </div>
+                <div class="col-wrap">
+                    <div class="col-1">
+                        <p>Copyright &copy; 2024 SixtyFPS GmbH</p>
+                    </div><!-- .col-1 -->
+                </div>
+            </footer>
+            <!-- ====== Footer End ====== -->
+        </div><!-- .wrap -->
+
+        <!-- ====== All Javascript Files ====== -->
+        <script src="https://slint.dev/assets/js/script.js?ver=1.2.21"></script>
+
+
+        <!-- Matomo -->
+        <script>
+            var _paq = window._paq = window._paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function () {
+                var u = "https://matomo.slint.dev/";
+                _paq.push(['setTrackerUrl', u + 'matomo.php']);
+                _paq.push(['setSiteId', '1']);
+                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+            })();
+        </script>
+        <noscript>
+            <img referrerpolicy="no-referrer-when-downgrade" src="https://matomo.slint.dev/matomo.php?idsite=1&amp;rec=1" style="border:0" alt="" />
+        </noscript>
+
+        <!-- End Matomo Code -->
+    </body>
+
+</html>
