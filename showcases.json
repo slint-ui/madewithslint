@@ -451,5 +451,20 @@
     "license_text": "MIT",
     "license_type": "open-source",
     "story_link": ""
+  },
+  {
+    "app_title": "Oxide Manager",
+    "app_company": "Marco Rodríguez Hernández",
+    "app_description": "Oxide is a program made to mod and manage your game library",
+    "app_quote": "",
+    "image_src": "https://madewithslint.com/assets/img/madewithslint-oxide.png",
+    "image_alt": "Picture of Oxide Manager.",
+    "class_style": "col-3-row-1",
+    "git_link": "https://github.com/pezfisk/OxideManager",
+    "preview_link": "",
+    "doc_link": "",
+    "license_text": "GPLv3",
+    "license_type": "open-source",
+    "story_link": ""
   }
 ]
