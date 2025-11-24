@@ -379,7 +379,7 @@
   },
   {
     "app_title": "musi lili",
-    "app_company": "vivi",
+    "app_company": "jan Wiwi",
     "app_description": "musi lili is a retro game engine for GB styled games written in Rust. Inspired by pico8.",
     "app_quote": "",
     "image_src": "https://codeberg.org/vivi-ui/pages/raw/branch/main/assets/lili-0-1-map-editor.png",
@@ -390,6 +390,21 @@
     "doc_link": "",
     "license_text": "LGPLv3",
     "license_type": "open-source",
+    "story_link": ""
+  },
+  {
+    "app_title": "akesi lili",
+    "app_company": "jan Wiwi",
+    "app_description": "akesi lili is a Fantasy Computer designed to help you create Game Boy-styled retro games using koto.",
+    "app_quote": "",
+    "image_src": "https://img.itch.zone/aW1hZ2UvMzIyMTk0MS8yNDIzMTQ2MC5wbmc=/original/RAmqMX.png",
+    "image_alt": "Screenshot of akesi lili code editor",
+    "class_style": "col-3-row-1",
+    "git_link": "",
+    "preview_link": "",
+    "doc_link": "https://vivi-ui.itch.io/akesi-lili",
+    "license_text": "Proprietary License",
+    "license_type": "closed",
     "story_link": ""
   },
   {
