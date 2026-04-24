@@ -466,5 +466,19 @@
     "license_text": "GPLv3",
     "license_type": "open-source",
     "story_link": ""
+  },
+  {
+      "app_title": "Zeedle",
+      "app_company": "Jordan Haidee",
+      "app_description": "Music at the speed of a blink, designed for pure simplicity, also an ideal starter project for anyone new to Rust GUI development",
+      "image_src": "https://raw.githubusercontent.com/Jordan-Haidee/Zeedle/main/assets/p1.png",
+      "image_alt": "Screenshot of Zeedle music player showing dark minimal UI with spectrum visualization",
+      "class_style": "col-3-row-1",
+      "git_link": "https://github.com/Jordan-Haidee/Zeedle",
+      "preview_link": "",
+      "doc_link": "",
+      "license_text": "GPLv3",
+      "license_type": "open-source",
+      "story_link": ""
   }
 ]
