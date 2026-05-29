@@ -187,6 +187,22 @@
     "story_link": ""
   },
   {
+    "app_title": "Clockworks",
+    "app_company": "Clockworks",
+    "app_description": "Clockworks is a suite of applications designed to simplify and empower the live event industry. Offering solutions for moving and distributing timecode during show critical moments. Built on top of Slint and rust to guarantee high reliability.",
+    "app_quote": "",
+    "app_quote_author": "",
+    "image_src": "assets/img/madewithslint-clockworks.png",
+    "image_alt": "Clockworks Image",
+    "class_style": "col-3-row-1",
+    "git_link": "",
+    "preview_link": "",
+    "doc_link": "https://clockworks.live",
+    "license_text": "Proprietary License",
+    "license_type": "closed",
+    "story_link": ""
+  },
+  {
     "app_title": "snake-game",
     "app_company": "timsaya",
     "app_description": "A classic snake game developed using Slint and Rust.",
@@ -368,7 +384,7 @@
     "license_type": "open-source",
     "story_link": ""
   },
-    {
+  {
     "app_title": "POVVER",
     "app_company": "burumdev",
     "app_description": "Agent-based model (ABM) simulator of simplified manufacturing economics and energy distribution between industries with an actor-style multithreaded timeline.",
@@ -414,21 +430,6 @@
     "story_link": ""
   },
   {
-    "app_title": "Castle of Focus",
-    "app_company": "vivi developers",
-    "app_description": "A focus and productivity app for Desktop and Android build with Slint and vivi. The app is privacy focused and does not collect or share any data",
-    "app_quote": "",
-    "image_src": "https://madewithslint.com/assets/img/madewithslint-cof-light.png",
-    "image_alt": "Screenshot of Castle of Focus",
-    "class_style": "col-4-row-2",
-    "git_link": "https://codeberg.org/vivi-ui/vivi/src/branch/main/apps/castle_of_focus",
-    "preview_link": "",
-    "doc_link": "",
-    "license_text": "GPLv3",
-    "license_type": "open-source",
-    "story_link": ""
-  },
-  {
     "app_title": "coop_local",
     "app_company": "flovansl",
     "app_description": "coop_local is a cross platform file manager build with Slint and coop",
@@ -437,6 +438,21 @@
     "image_alt": "Screenshot of coop local widgets",
     "class_style": "col-4-row-1",
     "git_link": "https://codeberg.org/flovansl/co_sl/src/branch/main/apps/coop_local",
+    "preview_link": "",
+    "doc_link": "",
+    "license_text": "GPLv3",
+    "license_type": "open-source",
+    "story_link": ""
+  },
+  {
+    "app_title": "Castle of Focus",
+    "app_company": "vivi developers",
+    "app_description": "A focus and productivity app for Desktop and Android build with Slint and vivi. The app is privacy focused and does not collect or share any data",
+    "app_quote": "",
+    "image_src": "https://madewithslint.com/assets/img/madewithslint-cof-light.png",
+    "image_alt": "Screenshot of Castle of Focus",
+    "class_style": "col-4-row-2",
+    "git_link": "https://codeberg.org/vivi-ui/vivi/src/branch/main/apps/castle_of_focus",
     "preview_link": "",
     "doc_link": "",
     "license_text": "GPLv3",
