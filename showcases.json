@@ -254,7 +254,7 @@
     "app_company": "Szybet",
     "app_description": "GUI for the InkWatchy firmware, running on Yatchy and Watchy watches",
     "app_quote": "",
-    "image_src": "https://madewithslint.com/assets/img/madewithslint_inkwatchy_calendar.png",
+    "image_src": "https://madewithslint.com/assets/img/madewithslint_inkwatchy_calendar.jpeg",
     "image_alt": "Screenshot of InkWatchy",
     "class_style": "col-4-row-1",
     "git_link": "https://github.com/Szybet/InkWatchy/tree/master/components/rusty/crates/general_page",
