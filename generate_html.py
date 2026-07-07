@@ -28,7 +28,7 @@ def convert_to_html_id(text):
 def generate_html(app_data):
     """Generate HTML for an application entry.
 
-    Direction C: a compact card with the license shown as a readable pill on the
+    A compact card with the license shown as a readable pill on the
     screenshot, one bold *adaptive* primary CTA (the best available link, in
     priority order), and the remaining links as small labelled secondary actions.
     """
