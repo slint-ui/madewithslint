@@ -26,90 +26,78 @@ def convert_to_html_id(text):
     return text
 
 def generate_html(app_data):
-    """Generate HTML for an application entry."""
+    """Generate HTML for an application entry.
+
+    Direction C: a compact card with the license shown as a readable pill on the
+    screenshot, one bold *adaptive* primary CTA (the best available link, in
+    priority order), and the remaining links as small labelled secondary actions.
+    """
     image_src = app_data['image_src']
     image_alt = app_data['image_alt']
     app_title = app_data['app_title']
     app_company = app_data['app_company']
     app_description = app_data['app_description']
     class_style = app_data['class_style']
-    
+
     # Optional fields
-    app_quote = app_data.get('app_quote', '').strip()
-    app_quote_author = app_data.get('app_quote_author', '')
     git_link = app_data.get('git_link', '')
     preview_link = app_data.get('preview_link', '')
     doc_link = app_data.get('doc_link', '')
     license_text = app_data.get('license_text', '')
-    license_type = app_data.get('license_type', '')
-    license_icon = "fa-lock"
+    # "Proprietary License" -> "Proprietary"; short values (GPLv3, MIT, ...) are untouched.
+    license_text = license_text.replace(" License", "")
     story_link = app_data.get('story_link', '')
 
-    if license_type == "open-source":
-        license_icon = "fa-lock-open"
-    elif license_type == "dual":
-        license_icon = "fa-unlock"
-
     app_id = convert_to_html_id(app_title)
+
+    # Actions in priority order. The first available one becomes the bold primary
+    # CTA; the rest render as small secondary links. Each entry is
+    # (href, primary_label, secondary_label, icon_html).
+    actions = []
+    if story_link:
+        actions.append((story_link, "Read the case study", "Case study", '<i class="fas fa-book"></i>'))
+    if preview_link:
+        actions.append((preview_link, "Try it live", "Live demo", '<i class="fas fa-play"></i>'))
+    if doc_link:
+        actions.append((doc_link, "Visit product", "Product", '<i class="fas fa-globe"></i>'))
+    if git_link:
+        actions.append((git_link, "View source", "Code", '<i class="fab fa-git-alt"></i>'))
+
+    primary = actions[0] if actions else None
+    secondary = actions[1:]
+
+    license_html = f'<span class="application-license">{license_text}</span>' if license_text else ''
+
+    # The screenshot doubles as a click target for the primary action.
+    img_tag = f'<img src="{image_src}" alt="{image_alt}" loading="lazy">'
+    header_media = f'<a href="{primary[0]}" target="_blank">{img_tag}</a>' if primary else img_tag
+
+    primary_html = ''
+    if primary:
+        primary_html = f'<a class="application-primary" href="{primary[0]}" target="_blank">{primary[1]} <i class="fas fa-arrow-right"></i></a>'
+
+    secondary_html = ''
+    if secondary:
+        links = ''.join(
+            f'<a href="{href}" target="_blank" class="app-act">{icon}<span>{label}</span></a>'
+            for (href, _primary_label, label, icon) in secondary
+        )
+        secondary_html = f'<div class="application-cta">{links}</div>'
+
     html_template = f"""
                     <!-- {app_title} -->
                     <div id="{app_id}" class="application-item {class_style}">
                         <div class="application-content">
-                            <div class="application-header">"""
-    if story_link:
-        html_template += f"""
-                                <a href="{story_link}" target="_blank">"""
-    html_template += f"""
-                                    <img src="{image_src}" alt="{image_alt}" loading="lazy">"""
-    if story_link:
-        html_template += f"""
-                                </a>"""
-        
-    html_template += f"""
+                            <div class="application-header">
+                                {header_media}
+                                {license_html}
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">{app_title}</h3>
-                                <h4 class="application-company">{app_company}</h4>"""
-
-    # Only include quote if it's not empty
-    if app_quote:
-        html_template += f"""
-                                <div class="application-quote">
-                                    <p class="quote-text">"{app_quote}"</p>
-                                    <p class="quote-author">{app_quote_author}</p>
-                                </div>"""
-    
-    # App Description
-    html_template += f"""
-                                <p class="application-description">
-                                {app_description}
-                            </p>"""
-    
-    # CTA (Call-to-Action) buttons - include links only if they are provided
-    html_template += """
-                                <div class="application-cta">"""
-    
-    
-    if preview_link:
-        html_template += f"""
-                                    <a href="{preview_link}" target="_blank" class="tooltip"><i class="fas fa-play-circle"></i><span class="tooltip-text">Open Live Preview</span></a>"""
-    
-    if story_link:
-        html_template += f"""
-                                    <a href="{story_link}" target="_blank" class="tooltip"><i class="fas fa-comment"></i><span class="tooltip-text">Read Customer Journey</span></a>"""
-    if doc_link:
-        html_template += f"""
-                                    <a href="{doc_link}" target="_blank" class="tooltip"><i class="fas fa-globe"></i><span class="tooltip-text">Open Product Page</span></a>"""
-    
-    if license_text:
-        html_template += f"""
-                                    <a id="#{app_id}-license" href="#{app_id}-license" class="tooltip"><i class="fas {license_icon}"></i><span class="tooltip-text">{license_text}</span></a>"""
-
-    if git_link:
-        html_template += f"""
-                                    <a href="{git_link}" target="_blank" class="tooltip"><i class="fab fa-git-alt"></i><span class="tooltip-text">Open Git Repo</span></a>"""    
-    # Closing tags
-    html_template += """        </div>
+                                <h4 class="application-company">{app_company}</h4>
+                                <p class="application-description">{app_description}</p>
+                                {primary_html}
+                                {secondary_html}
                             </div>
                         </div>
                     </div><!-- .application-item -->\n"""
