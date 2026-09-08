@@ -638,5 +638,21 @@
     "license_text": "MIT",
     "license_type": "open-source",
     "story_link": ""
+  },
+  {
+    "app_title": "Flectar Mail",
+    "app_company": "Flectar",
+    "app_description": "A fast, lightweight email client built natively in Rust with Slint. It includes mail, calendars and contacts, uses no WebViews even for email rendering, and can run with as little as 20 MB of RAM.",
+    "app_quote": "",
+    "app_quote_author": "",
+    "image_src": "https://raw.githubusercontent.com/flectar/mail/main/resources/screenshots/desktop-light.png",
+    "image_alt": "Flectar Mail email client running in light mode",
+    "class_style": "col-4-row-1",
+    "git_link": "https://github.com/flectar/mail",
+    "preview_link": "",
+    "doc_link": "https://flectar.com/mail/",
+    "license_text": "AGPLv3",
+    "license_type": "open-source",
+    "story_link": ""
   }
 ]
