@@ -16,6 +16,7 @@ Each entry is composed of the following fields:
 - Application Image
 - Application Image Alt text
 - Class Style: Size of the card
+- Category: one of `embedded`, `audio`, `games`, `tools`, `productivity`, `components` (drives the filter on slint.dev/showcase)
 
 ### Optional
 
@@ -27,6 +28,11 @@ Each entry is composed of the following fields:
 - Success Story Link
 - License Text
 - License Type
+
+Keep the description short: about 140 characters, one or two sentences.
+
+A card shows one main link, the first available of: success story, preview
+link, Git link, doc link. The rest appear as icons.
 
 Create a PR to add the above info in the following JSON structure in showcases.json
 
@@ -40,6 +46,7 @@ Create a PR to add the above info in the following JSON structure in showcases.j
       "image_src": "URL to Application screenshot",
       "image_alt": "Alt text for image",
       "class_style": "Size of card (col-3-row-3, col-3-row-2, col-2-row-2, col-2-row-1, col-1-row-1)",
+      "category": "embedded | audio | games | tools | productivity | components",
       "git_link": "URL to Git repo",
       "preview_link": "URL to WASM binary",
       "doc_link": "URL to Product page",
