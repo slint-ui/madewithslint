@@ -167,6 +167,25 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
   background: var(--mws-image-bg); }
 .mws-gallery .application-item:not(.highlight) .application-header img { height: 100%; object-fit: cover; }
 
+/* Placeholder while an image loads: a soft shimmer in the image box, then the
+   image fades in. Only with scripting, since the loaded class comes from the
+   image's onload handler; without it images show as they arrive. Motion is
+   dropped for readers who ask for less of it. */
+@media (scripting: enabled) {
+  .mws-gallery .application-header { background-color: var(--mws-image-bg); }
+  .mws-gallery .application-header:not(.is-loaded)::before { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.55) 50%, transparent 80%);
+    background-size: 200% 100%; animation: mws-shimmer 1.4s ease-in-out infinite; pointer-events: none; }
+  .mws-gallery .highlight .application-header:not(.is-loaded) { min-height: 220px; border-radius: 10px; overflow: hidden; }
+  .mws-gallery .application-header img { opacity: 0; transition: opacity .35s ease; }
+  .mws-gallery .application-header.is-loaded img { opacity: 1; }
+}
+@keyframes mws-shimmer { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .mws-gallery .application-header:not(.is-loaded)::before { animation: none; background: none; }
+  .mws-gallery .application-header img { transition: none; }
+}
+
 .mws-gallery .application-body { display: flex; flex-direction: column; flex-grow: 1; padding: 20px 22px 18px; }
 .mws-gallery .application-title { margin: 0 0 3px; font-family: var(--mws-display); font-size: 18px;
   font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; color: var(--mws-text); }
@@ -235,13 +254,14 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
 #mws-cat-components:checked ~ .col-wrap .application-item:not([data-category="components"]) { display: none; }
 
                 </style>
+                <script>function mwsImg(img,failed){if(failed&&img.dataset.fallback){var f=img.dataset.fallback;delete img.dataset.fallback;img.removeAttribute('width');img.removeAttribute('height');img.src=f;return;}var box=img.closest('.application-header');if(box)box.classList.add('is-loaded');}</script>
                 <input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-all" checked><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-embedded"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-audio"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-games"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-tools"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-productivity"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-components"><div class="mws-filter" role="group" aria-label="Filter by category"><label for="mws-cat-all">All</label><label for="mws-cat-embedded">Embedded</label><label for="mws-cat-audio">Audio & music</label><label for="mws-cat-games">Games</label><label for="mws-cat-tools">Developer tools</label><label for="mws-cat-productivity">Productivity</label><label for="mws-cat-components">Components</label></div>
                 <div class="col-wrap">
                     <!-- Assisted, Remote and Autonomous Rail Vehicles -->
                     <div id="assisted-remote-and-autonomous-rail-vehicles" class="application-item highlight" data-category="embedded">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://www.otiv.ai" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-otiv-three.png" alt="Picture of OTIV.THREE Remote Supervision & Control Center" loading="lazy"></a>
+                                <a href="https://www.otiv.ai" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/assisted-remote-and-autonomous-rail-vehicles.webp" alt="Picture of OTIV.THREE Remote Supervision & Control Center" width="600" height="360" loading="eager" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-otiv-three.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Assisted, Remote and Autonomous Rail Vehicles</h3>
@@ -256,7 +276,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="ev-charger" class="application-item col-4-row-2" data-category="embedded">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://slint.dev/success/sksignet-evcharger.html" target="_blank" rel="noopener"><img src="https://slint.dev/success/sksignet-evcharger/ready_screen_light.png" alt="Picture of HMI on EV Chargers from SK Signet" loading="lazy"></a>
+                                <a href="https://slint.dev/success/sksignet-evcharger.html" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/ev-charger.webp" alt="Picture of HMI on EV Chargers from SK Signet" width="800" height="1422" loading="eager" decoding="async" data-fallback="https://slint.dev/success/sksignet-evcharger/ready_screen_light.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">EV Charger</h3>
@@ -271,7 +291,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="daw-plugin" class="application-item col-4-row-1" data-category="audio">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://slint.dev/success/wesaudio-daw.html" target="_blank" rel="noopener"><img src="https://slint.dev/success/wesaudio-daw/eclipse_eqs_4.jpg" alt="DAW Plugin Image" loading="lazy"></a>
+                                <a href="https://slint.dev/success/wesaudio-daw.html" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/daw-plugin.webp" alt="DAW Plugin Image" width="800" height="437" loading="eager" decoding="async" data-fallback="https://slint.dev/success/wesaudio-daw/eclipse_eqs_4.jpg" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">DAW Plugin</h3>
@@ -286,7 +306,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="aava-convolution-plugin" class="application-item col-4-row-1" data-category="audio">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://slint.dev/success/viiri-audio.html" target="_blank" rel="noopener"><img src="https://slint.dev/success/viiri-audio/aava.png" alt="Aava Convolution Plugin Image" loading="lazy"></a>
+                                <a href="https://slint.dev/success/viiri-audio.html" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/aava-convolution-plugin.webp" alt="Aava Convolution Plugin Image" width="800" height="537" loading="eager" decoding="async" data-fallback="https://slint.dev/success/viiri-audio/aava.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Aava Convolution Plugin</h3>
@@ -301,7 +321,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="wsl-dashboard" class="application-item col-4-row-1" data-category="tools">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/owu/wsl-dashboard" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-wsl.png" alt="Picture of WSL Dashboard" loading="lazy"></a>
+                                <a href="https://github.com/owu/wsl-dashboard" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/wsl-dashboard.webp" alt="Picture of WSL Dashboard" width="800" height="600" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-wsl.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">WSL Dashboard</h3>
@@ -316,7 +336,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="accidental-synthesizer" class="application-item col-4-row-1" data-category="audio">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://gitlab.com/joltedbot-public/accidental-synth" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-accidental-synth.png" alt="Picture of Accidental Synthesizer" loading="lazy"></a>
+                                <a href="https://gitlab.com/joltedbot-public/accidental-synth" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/accidental-synthesizer.webp" alt="Picture of Accidental Synthesizer" width="800" height="466" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-accidental-synth.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Accidental Synthesizer</h3>
@@ -331,7 +351,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="zeedle" class="application-item col-4-row-1" data-category="audio">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/Jordan-Haidee/Zeedle" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/Jordan-Haidee/Zeedle/main/assets/p1.png" alt="Screenshot of Zeedle music player showing dark minimal UI with spectrum visualization" loading="lazy"></a>
+                                <a href="https://github.com/Jordan-Haidee/Zeedle" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/zeedle.webp" alt="Screenshot of Zeedle music player showing dark minimal UI with spectrum visualization" width="800" height="471" loading="lazy" decoding="async" data-fallback="https://raw.githubusercontent.com/Jordan-Haidee/Zeedle/main/assets/p1.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Zeedle</h3>
@@ -346,7 +366,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="guaviewer" class="application-item col-4-row-1" data-category="productivity">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/azurewood/guaViewer" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-guaviewer.png" alt="Picture of GuaViewer" loading="lazy"></a>
+                                <a href="https://github.com/azurewood/guaViewer" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/guaviewer.webp" alt="Picture of GuaViewer" width="800" height="679" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-guaviewer.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">GuaViewer</h3>
@@ -361,7 +381,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="koharu" class="application-item col-4-row-1" data-category="productivity">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/mayocream/koharu" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-koharu.png" alt="Picture of Koharu" loading="lazy"></a>
+                                <a href="https://github.com/mayocream/koharu" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/koharu.webp" alt="Picture of Koharu" width="800" height="600" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-koharu.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Koharu</h3>
@@ -376,7 +396,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="raccoin" class="application-item col-4-row-1" data-category="productivity">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://git.sr.ht/~thorbjorn/raccoin" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-raccoin.png" alt="Screenshot of Raccoin" loading="lazy"></a>
+                                <a href="https://git.sr.ht/~thorbjorn/raccoin" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/raccoin.webp" alt="Screenshot of Raccoin" width="800" height="434" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-raccoin.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Raccoin</h3>
@@ -391,7 +411,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="fractal-explorer" class="application-item col-4-row-1" data-category="games">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://boclair.github.io/fractal-explorer/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-fractal-explorer.png" alt="Screenshot of Fractal Explorer" loading="lazy"></a>
+                                <a href="https://boclair.github.io/fractal-explorer/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/fractal-explorer.webp" alt="Screenshot of Fractal Explorer" width="800" height="601" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-fractal-explorer.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Fractal Explorer</h3>
@@ -406,7 +426,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="surrealismui" class="application-item col-4-row-1" data-category="components">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/syf20020816/SurrealismUI" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-surrealismui.png" alt="Image of SurrealismUI" loading="lazy"></a>
+                                <a href="https://github.com/syf20020816/SurrealismUI" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/surrealismui.webp" alt="Image of SurrealismUI" width="780" height="477" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-surrealismui.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">SurrealismUI</h3>
@@ -421,7 +441,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="clockworks" class="application-item col-3-row-1" data-category="audio">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://clockworks.live" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-clockworks.png" alt="Clockworks Viewer Pro showing four decks with BPM and timecode, beside the Clockworks Gateway and Connector windows" loading="lazy"></a>
+                                <a href="https://clockworks.live" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/clockworks.webp" alt="Clockworks Viewer Pro showing four decks with BPM and timecode, beside the Clockworks Gateway and Connector windows" width="800" height="523" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-clockworks.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Clockworks</h3>
@@ -436,7 +456,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="snake-game" class="application-item col-3-row-1" data-category="games">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/timsaya/snake-game" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint_snake_game.png" alt="Picture of Snake Game" loading="lazy"></a>
+                                <a href="https://github.com/timsaya/snake-game" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/snake-game.webp" alt="Picture of Snake Game" width="800" height="642" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint_snake_game.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">snake-game</h3>
@@ -451,7 +471,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="snake" class="application-item col-3-row-1" data-category="embedded">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/Szybet/snake-slint" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-snake.png" alt="Picture of Snake Game" loading="lazy"></a>
+                                <a href="https://github.com/Szybet/snake-slint" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/snake.webp" alt="Picture of Snake Game" width="404" height="757" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-snake.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">snake</h3>
@@ -466,7 +486,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="tymoz" class="application-item col-3-row-1" data-category="productivity">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/arunpkio/tymoz" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-tymoz-light.png" alt="Screenshot of tymoz" loading="lazy"></a>
+                                <a href="https://github.com/arunpkio/tymoz" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/tymoz.webp" alt="Screenshot of tymoz" width="800" height="580" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-tymoz-light.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">tymoz</h3>
@@ -481,7 +501,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="gui-for-inkwatchy" class="application-item col-4-row-1" data-category="embedded">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/Szybet/InkWatchy/wiki/Demo-videos#wifi" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint_inkwatchy_calendar.jpeg" alt="Screenshot of InkWatchy" loading="lazy"></a>
+                                <a href="https://github.com/Szybet/InkWatchy/wiki/Demo-videos#wifi" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/gui-for-inkwatchy.webp" alt="Screenshot of InkWatchy" width="800" height="748" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint_inkwatchy_calendar.jpeg" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">GUI for InkWatchy</h3>
@@ -496,7 +516,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="sast-evento" class="application-item col-4-row-1" data-category="productivity">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/NJUPT-SAST/sast-evento" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-sast-evento.png" alt="Screenshot of SAST Evento" loading="lazy"></a>
+                                <a href="https://github.com/NJUPT-SAST/sast-evento" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/sast-evento.webp" alt="Screenshot of SAST Evento" width="800" height="573" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-sast-evento.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">SAST Evento</h3>
@@ -511,7 +531,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="coop-local" class="application-item col-4-row-1" data-category="tools">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://codeberg.org/flovansl/co_sl/src/branch/main/apps/coop_local" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-coop-local-light.png" alt="Screenshot of coop local widgets" loading="lazy"></a>
+                                <a href="https://codeberg.org/flovansl/co_sl/src/branch/main/apps/coop_local" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/coop-local.webp" alt="Screenshot of coop local widgets" width="800" height="572" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-coop-local-light.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">coop_local</h3>
@@ -526,7 +546,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="dispute" class="application-item col-3-row-1" data-category="productivity">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/Vinegret43/dispute" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-dispute.jpg" alt="Image of The Damn Stylish Pomodoro Timer" loading="lazy"></a>
+                                <a href="https://github.com/Vinegret43/dispute" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/dispute.webp" alt="Image of The Damn Stylish Pomodoro Timer" width="408" height="600" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-dispute.jpg" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Dispute</h3>
@@ -541,7 +561,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="tomotroid" class="application-item col-3-row-1" data-category="productivity">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/vadoola/Tomotroid" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-tomotroid.png" alt="Image of Tomotroid Timer" loading="lazy"></a>
+                                <a href="https://github.com/vadoola/Tomotroid" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/tomotroid.webp" alt="Image of Tomotroid Timer" width="800" height="1067" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-tomotroid.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Tomotroid</h3>
@@ -556,7 +576,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="gpcl" class="application-item col-3-row-1" data-category="games">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/dngulin/gpcl/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-gpcl.png" alt="Screenshot of GamePad Controlled Launcher" loading="lazy"></a>
+                                <a href="https://github.com/dngulin/gpcl/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/gpcl.webp" alt="Screenshot of GamePad Controlled Launcher" width="800" height="450" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-gpcl.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">GPCL</h3>
@@ -571,7 +591,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="cargo-ui" class="application-item col-3-row-1" data-category="tools">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/slint-ui/cargo-ui/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-cargoui.png" alt="Screenshot of Cargo UI" loading="lazy"></a>
+                                <a href="https://github.com/slint-ui/cargo-ui/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/cargo-ui.webp" alt="Screenshot of Cargo UI" width="580" height="620" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-cargoui.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Cargo UI</h3>
@@ -586,7 +606,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="tetris" class="application-item col-3-row-2" data-category="games">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://gaspardculis.github.io/slint-tetris/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-tetris-light.png" alt="Screenshot of Tetris" loading="lazy"></a>
+                                <a href="https://gaspardculis.github.io/slint-tetris/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/tetris.webp" alt="Screenshot of Tetris" width="328" height="764" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-tetris-light.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Tetris</h3>
@@ -601,7 +621,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="mastermind" class="application-item col-3-row-2" data-category="games">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/ElevenJune/mastermind_Rust" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-mastermind.gif" alt="Animated gif of Mastermind game" loading="lazy"></a>
+                                <a href="https://github.com/ElevenJune/mastermind_Rust" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/mastermind.webp" alt="Animated gif of Mastermind game" width="400" height="1014" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-mastermind.gif" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Mastermind</h3>
@@ -616,7 +636,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="chiptrack" class="application-item col-3-row-1" data-category="audio">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://jturcotte.github.io/chiptrack" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-chiptrack.png" alt="Screenshot of Chiptrack" loading="lazy"></a>
+                                <a href="https://jturcotte.github.io/chiptrack" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/chiptrack.webp" alt="Screenshot of Chiptrack" width="800" height="480" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-chiptrack.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Chiptrack</h3>
@@ -631,7 +651,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="parch-welcome-dorood" class="application-item col-3-row-1" data-category="tools">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/parchlinux/parch-welcome/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-parch.png" alt="Screenshot of welcome app in ParchLinux" loading="lazy"></a>
+                                <a href="https://github.com/parchlinux/parch-welcome/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/parch-welcome-dorood.webp" alt="Screenshot of welcome app in ParchLinux" width="800" height="530" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-parch.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Parch Welcome (dorood)</h3>
@@ -646,7 +666,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="imagesieve" class="application-item col-3-row-1" data-category="tools">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/Futsch1/image-sieve/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-imagesieve.png" alt="Image of ImageSieve application" loading="lazy"></a>
+                                <a href="https://github.com/Futsch1/image-sieve/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/imagesieve.webp" alt="Image of ImageSieve application" width="800" height="422" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-imagesieve.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">ImageSieve</h3>
@@ -661,7 +681,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="povver" class="application-item col-3-row-1" data-category="tools">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/burumdev/POVVER" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-povver.jpg" alt="POVVER simulator main screen with events tab open" loading="lazy"></a>
+                                <a href="https://github.com/burumdev/POVVER" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/povver.webp" alt="POVVER simulator main screen with events tab open" width="800" height="450" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-povver.jpg" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">POVVER</h3>
@@ -672,17 +692,17 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                         </div>
                     </div><!-- .application-item -->
 
-                    <!-- Launcher -->
-                    <div id="launcher" class="application-item col-4-row-1" data-category="games">
+                    <!-- Flectar Mail -->
+                    <div id="flectar-mail" class="application-item col-4-row-1" data-category="productivity">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/Project-Trains/launcher/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-project-trains-launcher.png" alt="Screenshot of Project Trains Launcher" loading="lazy"></a>
+                                <a href="https://github.com/flectar/mail" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/flectar-mail.webp" alt="Flectar Mail email client running in light mode" width="800" height="485" loading="lazy" decoding="async" data-fallback="https://raw.githubusercontent.com/flectar/mail/main/resources/screenshots/desktop-light.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
-                                <h3 class="application-title">Launcher</h3>
-                                <h4 class="application-company">Project Trains</h4>
-                                <p class="application-description">Crossplatform game launcher made for Project Trains simulator</p>
-                                <div class="application-actions"><a class="application-primary" href="https://github.com/Project-Trains/launcher/" target="_blank" rel="noopener">View source <svg class="app-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+                                <h3 class="application-title">Flectar Mail</h3>
+                                <h4 class="application-company">Flectar</h4>
+                                <p class="application-description">A lightweight email client with mail, calendars and contacts, built natively in Rust with Slint. No WebViews; runs in as little as 20 MB of RAM.</p>
+                                <div class="application-actions"><a class="application-primary" href="https://github.com/flectar/mail" target="_blank" rel="noopener">View source <svg class="app-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><div class="application-cta"><a href="https://flectar.com/mail/" target="_blank" rel="noopener" class="app-act" title="Visit website"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg><span class="app-act-label">Visit website</span></a></div></div>
                             </div>
                         </div>
                     </div><!-- .application-item -->
@@ -691,7 +711,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="market-prices" class="application-item col-4-row-1" data-category="productivity">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/raykavin/market-prices" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-market-prices.png" alt="Screenshot of Market Prices" loading="lazy"></a>
+                                <a href="https://github.com/raykavin/market-prices" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/market-prices.webp" alt="Screenshot of Market Prices" width="758" height="394" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-market-prices.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Market Prices</h3>
@@ -706,7 +726,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="bsp-stm32f429-dk" class="application-item col-4-row-1" data-category="embedded">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/ierturk/rust-on-stm32" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/bsp-for-stm32f429i-discover-kit.jpeg" alt="Carousel Demo with the BSP-STM32F429-DK" loading="lazy"></a>
+                                <a href="https://github.com/ierturk/rust-on-stm32" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/bsp-stm32f429-dk.webp" alt="Carousel Demo with the BSP-STM32F429-DK" width="800" height="600" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/bsp-for-stm32f429i-discover-kit.jpeg" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">BSP-STM32F429-DK</h3>
@@ -721,7 +741,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="castle-of-focus" class="application-item col-4-row-2" data-category="productivity">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://codeberg.org/vivi-ui/vivi/src/branch/main/apps/castle_of_focus" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-cof-light.png" alt="Screenshot of Castle of Focus" loading="lazy"></a>
+                                <a href="https://codeberg.org/vivi-ui/vivi/src/branch/main/apps/castle_of_focus" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/castle-of-focus.webp" alt="Screenshot of Castle of Focus" width="800" height="1280" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-cof-light.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Castle of Focus</h3>
@@ -736,7 +756,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="vivi" class="application-item col-4-row-1" data-category="components">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://vivi-ui.codeberg.page/@main/vivi/0.2.0/demos/gallery/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-vivi-light.png" alt="Screenshot of vivi gallery" loading="lazy"></a>
+                                <a href="https://vivi-ui.codeberg.page/@main/vivi/0.2.0/demos/gallery/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/vivi.webp" alt="Screenshot of vivi gallery" width="800" height="567" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-vivi-light.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">vivi</h3>
@@ -751,7 +771,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="oxide-manager" class="application-item col-4-row-1" data-category="tools">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/pezfisk/OxideManager" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-oxide.png" alt="Picture of Oxide Manager." loading="lazy"></a>
+                                <a href="https://github.com/pezfisk/OxideManager" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/oxide-manager.webp" alt="Picture of Oxide Manager." width="800" height="434" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-oxide.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Oxide Manager</h3>
@@ -766,7 +786,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="coop" class="application-item col-4-row-1" data-category="components">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://flovansl.codeberg.page/coop_sl/snapshots/main/demos/gallery/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-coop-widgets.png" alt="Screenshot of coop widgets" loading="lazy"></a>
+                                <a href="https://flovansl.codeberg.page/coop_sl/snapshots/main/demos/gallery/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/coop.webp" alt="Screenshot of coop widgets" width="800" height="601" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-coop-widgets.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">coop</h3>
@@ -781,7 +801,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="ordinary" class="application-item col-4-row-1" data-category="embedded">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://gitlab.com/floers/ordinary" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-ordinary.png" alt="Screenshot of Ordinary shell" loading="lazy"></a>
+                                <a href="https://gitlab.com/floers/ordinary" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/ordinary.webp" alt="Screenshot of Ordinary shell" width="800" height="1067" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-ordinary.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Ordinary</h3>
@@ -796,7 +816,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="musi-lili" class="application-item col-3-row-1" data-category="games">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://vivi-ui.codeberg.page/@main/musi_lili/snapshots/examples/map/" target="_blank" rel="noopener"><img src="https://codeberg.org/vivi-ui/pages/raw/branch/main/assets/lili-0-1-map-editor.png" alt="Screenshot of musi lili map editor" loading="lazy"></a>
+                                <a href="https://vivi-ui.codeberg.page/@main/musi_lili/snapshots/examples/map/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/musi-lili.webp" alt="Screenshot of musi lili map editor" width="800" height="719" loading="lazy" decoding="async" data-fallback="https://codeberg.org/vivi-ui/pages/raw/branch/main/assets/lili-0-1-map-editor.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">musi lili</h3>
@@ -811,7 +831,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="game-bub" class="application-item col-3-row-1" data-category="embedded">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://www.youtube.com/watch?v=_WQGJFFGHmE" target="_blank" rel="noopener"><img src="https://eli.lipsitz.net/posts/introducing-gamebub/media/metroid-zero-mission-from-cartridge-poster.jpg" alt="Screenshot of Game Bub" loading="lazy"></a>
+                                <a href="https://www.youtube.com/watch?v=_WQGJFFGHmE" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/game-bub.webp" alt="Screenshot of Game Bub" width="800" height="1422" loading="lazy" decoding="async" data-fallback="https://eli.lipsitz.net/posts/introducing-gamebub/media/metroid-zero-mission-from-cartridge-poster.jpg" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Game Bub</h3>
@@ -826,7 +846,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="winalpha" class="application-item col-3-row-1" data-category="tools">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/tadghh/transparent-windows" target="_blank" rel="noopener"><img src="https://github.com/tadghh/transparent-windows/blob/main/examples/docs.png?raw=true" alt="Effect of WinAlpha app on transparency" loading="lazy"></a>
+                                <a href="https://github.com/tadghh/transparent-windows" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/winalpha.webp" alt="Effect of WinAlpha app on transparency" width="800" height="920" loading="lazy" decoding="async" data-fallback="https://github.com/tadghh/transparent-windows/blob/main/examples/docs.png?raw=true" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">WinAlpha</h3>
@@ -841,7 +861,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="minesweeper" class="application-item col-3-row-1" data-category="games">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://minesweeper.e36t.net" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-minesweeper.png" alt="Picture of Classic Minesweeper implemented with Rust+Slint targeting WebAssembly." loading="lazy"></a>
+                                <a href="https://minesweeper.e36t.net" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/minesweeper.webp" alt="Picture of Classic Minesweeper implemented with Rust+Slint targeting WebAssembly." width="652" height="872" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-minesweeper.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">Minesweeper</h3>
@@ -856,7 +876,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     <div id="websocket-reflector-x" class="application-item col-3-row-1" data-category="tools">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/XDSEC/WebSocketReflectorX" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/madewithslint-WebSocketReflectorX.jpeg" alt="Picture of WebSocket Reflector X." loading="lazy"></a>
+                                <a href="https://github.com/XDSEC/WebSocketReflectorX" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/websocket-reflector-x.webp" alt="Picture of WebSocket Reflector X." width="800" height="474" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-WebSocketReflectorX.jpeg" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
                                 <h3 class="application-title">WebSocket Reflector X</h3>
@@ -867,17 +887,17 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                         </div>
                     </div><!-- .application-item -->
 
-                    <!-- Flectar Mail -->
-                    <div id="flectar-mail" class="application-item col-4-row-1" data-category="productivity">
+                    <!-- Launcher -->
+                    <div id="launcher" class="application-item col-4-row-1" data-category="games">
                         <div class="application-content">
                             <div class="application-header">
-                                <a href="https://github.com/flectar/mail" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/flectar/mail/main/resources/screenshots/desktop-light.png" alt="Flectar Mail email client running in light mode" loading="lazy"></a>
+                                <a href="https://github.com/Project-Trains/launcher/" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/launcher.webp" alt="Screenshot of Project Trains Launcher" width="800" height="267" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-project-trains-launcher.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
                             </div>
                             <div class="application-body">
-                                <h3 class="application-title">Flectar Mail</h3>
-                                <h4 class="application-company">Flectar</h4>
-                                <p class="application-description">A lightweight email client with mail, calendars and contacts, built natively in Rust with Slint. No WebViews; runs in as little as 20 MB of RAM.</p>
-                                <div class="application-actions"><a class="application-primary" href="https://github.com/flectar/mail" target="_blank" rel="noopener">View source <svg class="app-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><div class="application-cta"><a href="https://flectar.com/mail/" target="_blank" rel="noopener" class="app-act" title="Visit website"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg><span class="app-act-label">Visit website</span></a></div></div>
+                                <h3 class="application-title">Launcher</h3>
+                                <h4 class="application-company">Project Trains</h4>
+                                <p class="application-description">Crossplatform game launcher made for Project Trains simulator</p>
+                                <div class="application-actions"><a class="application-primary" href="https://github.com/Project-Trains/launcher/" target="_blank" rel="noopener">View source <svg class="app-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
                             </div>
                         </div>
                     </div><!-- .application-item -->
