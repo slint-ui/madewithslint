@@ -1,0 +1,93 @@
+/* #MadeWithSlint gallery: cards and category filter.
+
+   generate_html.py inlines this file into the gallery it outputs, so
+   madewithslint.com and slint.dev/madewithslint render the same cards from one
+   source. Colours and fonts are CSS custom properties with fallbacks: a page can
+   theme the gallery by defining --card, --line, --text and friends, and one that
+   defines nothing still gets a complete light gallery.
+
+   Selectors start at .mws-gallery (two classes or more) so a host page's broad
+   rules -- `a { color: inherit }`, `h3 { font-weight }`, `section { padding }`
+   -- don't reach into the cards. */
+
+section.mws-gallery { margin: 0; padding: 0; text-align: left;
+  --mws-card: var(--card, #fff);
+  --mws-line: var(--line, rgba(18, 28, 38, 0.10));
+  --mws-line-2: var(--line-2, rgba(18, 28, 38, 0.17));
+  --mws-text: var(--text, #121A20);
+  --mws-muted: var(--muted, #51616B);
+  --mws-link: var(--blue-ink, #0C68EB);
+  --mws-accent: var(--blue-cta, #1B63D6);
+  --mws-focus: var(--ice, #006E9F);
+  --mws-image-bg: var(--ink-2, #E8EDF1);
+  --mws-display: var(--display, system-ui, sans-serif);
+  --mws-sans: var(--sans, system-ui, sans-serif);
+  --mws-mono: var(--mono, ui-monospace, monospace);
+}
+
+/* ---- category filter: radios drive it, so it works without script ---- */
+.mws-gallery .mws-radio { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; }
+.mws-gallery .mws-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; width: fit-content;
+  max-width: 100%; margin: 0 auto 30px; padding: 4px; border: 1px solid var(--mws-line); border-radius: 22px;
+  background: var(--mws-card); box-sizing: border-box; }
+.mws-gallery .mws-filter label { display: inline-flex; align-items: center; min-height: 34px; padding: 7px 16px;
+  border-radius: 999px; cursor: pointer; font-family: var(--mws-mono); font-size: 12.5px; font-weight: 500;
+  color: var(--mws-muted); transition: background .18s, color .18s; }
+.mws-gallery .mws-filter label:hover { color: var(--mws-text); background: rgba(127, 142, 150, 0.12); }
+
+/* ---- masonry: CSS columns, reading order runs down each column ---- */
+.mws-gallery .col-wrap { display: block; column-count: 3; column-gap: 18px; }
+@media (max-width: 1170px) { .mws-gallery .col-wrap { column-count: 2; } }
+@media (max-width: 750px)  { .mws-gallery .col-wrap { column-count: 1; } }
+
+/* ---- card ---- */
+.mws-gallery .application-item { display: flex; flex-direction: column; margin: 0 0 18px; overflow: hidden;
+  break-inside: avoid; background: var(--mws-card); border: 1px solid var(--mws-line-2); border-radius: 16px;
+  color: var(--mws-text); }
+.mws-gallery .application-content { display: flex; flex-direction: column; width: 100%; height: 100%; }
+.mws-gallery .application-header { position: relative; }
+.mws-gallery .application-header img { display: block; width: 100%; height: auto; }
+/* one image box for every regular card, so screenshots of any shape line up
+   and lazy-loaded images don't reflow the columns */
+.mws-gallery .application-item:not(.highlight) .application-header { aspect-ratio: 16 / 10; overflow: hidden;
+  background: var(--mws-image-bg); }
+.mws-gallery .application-item:not(.highlight) .application-header img { height: 100%; object-fit: cover; }
+
+.mws-gallery .application-body { display: flex; flex-direction: column; flex-grow: 1; padding: 20px 22px 18px; }
+.mws-gallery .application-title { margin: 0 0 3px; font-family: var(--mws-display); font-size: 18px;
+  font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; color: var(--mws-text); }
+.mws-gallery .application-company { margin: 0 0 12px; font-family: var(--mws-sans); font-size: 14px;
+  font-weight: 500; letter-spacing: normal; color: var(--mws-muted); }
+/* three lines on every regular card, so no one description stretches its card */
+.mws-gallery .application-description { margin: 0 0 16px; font-family: var(--mws-sans); font-size: 15px;
+  line-height: 1.6; color: var(--mws-muted); display: -webkit-box; -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+
+/* ---- actions: one text link, then icon links on the same row ---- */
+.mws-gallery .application-actions { display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-top: auto; }
+.mws-gallery .application-primary { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mws-sans);
+  font-size: 14px; font-weight: 600; color: var(--mws-link); text-decoration: none; }
+.mws-gallery .application-primary:hover { text-decoration: underline; }
+.mws-gallery .application-primary .app-arrow { flex: none; }
+.mws-gallery .application-cta { display: flex; gap: 2px; margin: 0; }
+.mws-gallery .application-cta .app-act { display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 6px; color: var(--mws-muted); text-decoration: none; }
+.mws-gallery .application-cta .app-act:hover { color: var(--mws-text); background: rgba(127, 142, 150, 0.12); }
+/* the label stays in the link for screen readers; the icon is what shows */
+.mws-gallery .app-act-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.mws-gallery a:focus-visible { outline: 2px solid var(--mws-focus);
+  outline-offset: 2px; }
+
+/* ---- the featured card spans every column: image left, copy right ---- */
+.mws-gallery .application-item.highlight { column-span: all; padding: 22px; }
+.mws-gallery .highlight .application-content { flex-direction: row; align-items: center; gap: 32px; }
+.mws-gallery .highlight .application-header { flex: 1 1 40%; max-width: 40%; }
+.mws-gallery .highlight .application-header img { border-radius: 10px; object-fit: contain; }
+.mws-gallery .highlight .application-body { flex: 1 1 60%; padding: 0; }
+.mws-gallery .highlight .application-description { display: block; overflow: visible; }
+@media (max-width: 768px) {
+  .mws-gallery .highlight .application-content { flex-direction: column; align-items: stretch; gap: 18px; }
+  .mws-gallery .highlight .application-header { max-width: 100%; }
+}
