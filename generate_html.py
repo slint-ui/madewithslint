@@ -46,6 +46,15 @@ CATEGORIES = {
     "components": "Components",
 }
 
+# Card images: the 800px WebP thumbnails make_thumbs.py writes, served from
+# madewithslint.com so they resolve on both sites. thumbs.json gives each one's
+# size; an entry without a thumbnail uses its image_src as before.
+THUMB_BASE = "https://madewithslint.com/assets/img/thumbs/"
+THUMB_MANIFEST = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', 'img', 'thumbs', 'thumbs.json')
+
+# Cards in the first row load straight away; the rest wait until scrolled near.
+EAGER_CARDS = 4
+
 ARROW = '<svg class="app-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 
 
@@ -55,7 +64,36 @@ def icon(name):
             f'aria-hidden="true">{ICONS[name]}</svg>')
 
 
-def generate_html(app_data):
+def load_thumbs():
+    try:
+        with open(THUMB_MANIFEST, encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+
+def image_tag(app_data, app_id, thumbs, eager):
+    """The card image: the thumbnail when there is one for this image_src.
+
+    If the thumbnail fails to load (not deployed yet, say) the image falls back
+    to image_src. The onload/onerror handlers let the gallery show a placeholder until the
+    image has loaded; see LOADER_JS.
+    """
+    image_src = app_data['image_src']
+    image_alt = app_data['image_alt']
+    thumb = thumbs.get(app_id)
+    loading = 'eager' if eager else 'lazy'
+    if thumb and thumb.get('source') == image_src:
+        src = THUMB_BASE + app_id + '.webp'
+        size = f' width="{thumb["width"]}" height="{thumb["height"]}"'
+        fallback = f' data-fallback="{image_src}"'
+    else:
+        src, size, fallback = image_src, '', ''
+    return (f'<img src="{src}" alt="{image_alt}"{size} loading="{loading}" decoding="async"{fallback} '
+            f'onload="mwsImg(this)" onerror="mwsImg(this, true)">')
+
+
+def generate_html(app_data, thumbs=None, eager=False):
     """Generate HTML for an application entry.
 
     Every card has the same shape: screenshot, product name, author or company,
@@ -68,8 +106,6 @@ def generate_html(app_data):
     <span class="app-act-label"> -- the page can hide it visually and it still
     names the link for screen readers.
     """
-    image_src = app_data['image_src']
-    image_alt = app_data['image_alt']
     app_title = app_data['app_title']
     app_company = app_data['app_company']
     app_description = app_data['app_description']
@@ -99,7 +135,7 @@ def generate_html(app_data):
     secondary = actions[1:]
 
     # The screenshot doubles as a click target for the main link.
-    img_tag = f'<img src="{image_src}" alt="{image_alt}" loading="lazy">'
+    img_tag = image_tag(app_data, app_id, thumbs or {}, eager)
     header_media = (f'<a href="{primary[0]}" target="_blank" rel="noopener">{img_tag}</a>'
                     if primary else img_tag)
 
@@ -147,6 +183,18 @@ def load_data_from_json(json_file_path):
         # You can log more details or handle the error as needed
     except Exception as e:
         print(f"An error occurred: {e}")
+
+# Marks an image's box loaded, so the placeholder shimmer stops and the image
+# fades in. On an error it first retries data-fallback (the original image),
+# and marks the box loaded when there is nothing left to try. Defined before
+# the cards, so it exists when their onload/onerror fire.
+LOADER_JS = (
+    "function mwsImg(img,failed){"
+    "if(failed&&img.dataset.fallback){var f=img.dataset.fallback;delete img.dataset.fallback;"
+    "img.removeAttribute('width');img.removeAttribute('height');img.src=f;return;}"
+    "var box=img.closest('.application-header');if(box)box.classList.add('is-loaded');}"
+)
+
 
 def filter_html(categories):
     """Radios + labels for the category filter, and the CSS that connects them.
@@ -200,10 +248,12 @@ def generate_html_for_all_apps(data):
 {gallery_css}
 {filter_css}
                 </style>
+                <script>{LOADER_JS}</script>
                 {filter_markup}
                 <div class="col-wrap">"""
-    for app in valid:
-        html_output += generate_html(app)
+    thumbs = load_thumbs()
+    for i, app in enumerate(valid):
+        html_output += generate_html(app, thumbs, eager=i < EAGER_CARDS)
     html_output += """
                 </div><!-- .col-wrap -->
             </section><!-- .applications -->\n"""

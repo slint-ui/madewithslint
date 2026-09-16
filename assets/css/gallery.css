@@ -53,6 +53,25 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
   background: var(--mws-image-bg); }
 .mws-gallery .application-item:not(.highlight) .application-header img { height: 100%; object-fit: cover; }
 
+/* Placeholder while an image loads: a soft shimmer in the image box, then the
+   image fades in. Only with scripting, since the loaded class comes from the
+   image's onload handler; without it images show as they arrive. Motion is
+   dropped for readers who ask for less of it. */
+@media (scripting: enabled) {
+  .mws-gallery .application-header { background-color: var(--mws-image-bg); }
+  .mws-gallery .application-header:not(.is-loaded)::before { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.55) 50%, transparent 80%);
+    background-size: 200% 100%; animation: mws-shimmer 1.4s ease-in-out infinite; pointer-events: none; }
+  .mws-gallery .highlight .application-header:not(.is-loaded) { min-height: 220px; border-radius: 10px; overflow: hidden; }
+  .mws-gallery .application-header img { opacity: 0; transition: opacity .35s ease; }
+  .mws-gallery .application-header.is-loaded img { opacity: 1; }
+}
+@keyframes mws-shimmer { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .mws-gallery .application-header:not(.is-loaded)::before { animation: none; background: none; }
+  .mws-gallery .application-header img { transition: none; }
+}
+
 .mws-gallery .application-body { display: flex; flex-direction: column; flex-grow: 1; padding: 20px 22px 18px; }
 .mws-gallery .application-title { margin: 0 0 3px; font-family: var(--mws-display); font-size: 18px;
   font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; color: var(--mws-text); }

@@ -34,6 +34,18 @@ Keep the description short: about 140 characters, one or two sentences.
 A card shows one main link, the first available of: success story, preview
 link, Git link, doc link. The rest appear as icons.
 
+The gallery shows 800px WebP thumbnails rather than the full images. After
+adding or changing an entry, make its thumbnail (needs Pillow) and regenerate
+the page:
+
+```sh
+python3 make_thumbs.py
+python3 generate_html.py
+```
+
+Commit `assets/img/thumbs/` and `index.html` with the change. An entry without
+a thumbnail still works; its card loads the full `image_src`.
+
 Create a PR to add the above info in the following JSON structure in showcases.json
 
 ```json
