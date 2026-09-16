@@ -183,7 +183,9 @@ def generate_html_for_all_apps(data):
 
     for app in valid:
         category = app.get('category', '').strip()
-        if category and category not in CATEGORIES:
+        if not category:
+            print(f"No category for {app['app_title']}; it will only show under All")
+        elif category not in CATEGORIES:
             print(f"Unknown category '{category}' for {app['app_title']}; expected one of {', '.join(CATEGORIES)}")
 
     present = [k for k in CATEGORIES if any(app.get('category', '').strip() == k for app in valid)]
