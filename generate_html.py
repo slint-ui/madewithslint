@@ -3,6 +3,8 @@ import argparse
 import os
 import re
 
+from check_css import check as check_css
+
 def is_valid(app_data):
     """Check if the required fields in app_data are non-empty and valid."""
     required_fields = ['class_style', 'image_src', 'image_alt', 'app_title', 'app_company', 'app_description']
@@ -272,6 +274,7 @@ def generate_html_for_all_apps(data):
 
     gallery_css = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', 'css', 'gallery.css'),
                        encoding='utf-8').read()
+    check_css(gallery_css)
 
     html_output = f"""
             <section class="applications mws-gallery">
