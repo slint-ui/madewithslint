@@ -196,6 +196,29 @@ LOADER_JS = (
 )
 
 
+# Once the filter bar has stuck under the page header, give it a backdrop (the
+# is-stuck class), and when a category is picked from the stuck bar, bring the
+# top of the results back into view -- otherwise a shorter list leaves the
+# reader scrolled past it. The page sets --mws-sticky-top to its header height.
+STICKY_JS = (
+    "(function(){var g=document.currentScript.closest('.mws-gallery');if(!g)return;"
+    "var bar=g.querySelector('.mws-filter-bar'),s=g.querySelector('.mws-sentinel');if(!bar||!s)return;"
+    "function top(){return parseFloat(getComputedStyle(bar).top)||0;}"
+    "var tick=false;function check(){tick=false;"
+    "bar.classList.toggle('is-stuck',s.getBoundingClientRect().top<top());}"
+    "addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(check);}},{passive:true});"
+    "addEventListener('resize',check);check();"
+    "var row=bar.querySelector('.mws-filter');"
+    "[].forEach.call(g.querySelectorAll('.mws-radio'),function(r){r.addEventListener('change',function(){"
+    "var l=row&&row.querySelector('label[for=\"'+r.id+'\"]');"
+    "if(l&&row.scrollWidth>row.clientWidth){row.scrollTo({left:l.offsetLeft-(row.clientWidth-l.offsetWidth)/2,behavior:'smooth'});}"
+    "if(!bar.classList.contains('is-stuck'))return;"
+    "var y=s.getBoundingClientRect().top+scrollY-top();"
+    "scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});});"
+    "})();"
+)
+
+
 def filter_html(categories):
     """Radios + labels for the category filter, and the CSS that connects them.
 
@@ -210,15 +233,18 @@ def filter_html(categories):
         for k in keys)
     labels = ''.join(
         f'<label for="mws-cat-{k}">{"All" if k == "all" else CATEGORIES[k]}</label>' for k in keys)
-    on = ',\n'.join(f'#mws-cat-{k}:checked ~ .mws-filter label[for="mws-cat-{k}"]' for k in keys)
-    focus = ',\n'.join(f'#mws-cat-{k}:focus-visible ~ .mws-filter label[for="mws-cat-{k}"]' for k in keys)
+    on = ',\n'.join(f'#mws-cat-{k}:checked ~ .mws-filter-bar label[for="mws-cat-{k}"]' for k in keys)
+    focus = ',\n'.join(f'#mws-cat-{k}:focus-visible ~ .mws-filter-bar label[for="mws-cat-{k}"]' for k in keys)
     hide = ',\n'.join(
         f'#mws-cat-{k}:checked ~ .col-wrap .application-item:not([data-category="{k}"])' for k in categories)
     css = (f'{on} {{ background: var(--mws-accent); color: #fff; }}\n'
            f'{focus} {{ outline: 2px solid var(--mws-focus); outline-offset: 2px; }}\n'
+           f'@media (max-width: 620px) {{ {focus} {{ outline-offset: -2px; }} }}\n'
            f'@media (forced-colors: active) {{ {on} {{ forced-color-adjust: none; background: Highlight; color: HighlightText; }} }}\n'
            f'{hide} {{ display: none; }}\n')
-    return (radios + f'<div class="mws-filter" role="group" aria-label="Filter by category">{labels}</div>'), css
+    # The bar is what sticks; the sentinel just above it tells STICKY_JS when it has.
+    return (radios + '<div class="mws-sentinel" aria-hidden="true"></div>'
+            + f'<div class="mws-filter-bar"><div class="mws-filter" role="group" aria-label="Filter by category">{labels}</div></div>'), css
 
 
 def generate_html_for_all_apps(data):
@@ -254,8 +280,9 @@ def generate_html_for_all_apps(data):
     thumbs = load_thumbs()
     for i, app in enumerate(valid):
         html_output += generate_html(app, thumbs, eager=i < EAGER_CARDS)
-    html_output += """
+    html_output += f"""
                 </div><!-- .col-wrap -->
+                <script>{STICKY_JS}</script>
             </section><!-- .applications -->\n"""
     return html_output
 

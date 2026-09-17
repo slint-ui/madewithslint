@@ -74,9 +74,16 @@
             .hero p { margin: 18px auto 0; max-width: 56ch; font-size: 18px; color: var(--muted); }
             .hero .btn { margin-top: 34px; }
 
-            .gallery { padding-bottom: clamp(64px, 8vw, 120px); }
+            /* The gallery sits on a dark band, as on slint.dev/madewithslint: the
+               band redefines the colour tokens with slint.dev's dark-chapter values,
+               and the gallery (cards, filter, placeholders) follows them. */
+            .gallery-band { --ink: #151D21; --ink-2: #1A242A; --card: #202D35; --line: rgba(255, 255, 255, 0.10);
+                            --line-2: rgba(255, 255, 255, 0.18); --text: #EEF3F5; --muted: #9FB0B8;
+                            --blue-ink: #6EA2FF; --blue-cta: #1B63D6; --ice: #0DB1FF;
+                            background: #151D21; color: var(--text);
+                            padding-block: clamp(64px, 8vw, 120px); }
 
-            footer { border-top: 1px solid var(--line); background: #fff; font-size: 14px; color: var(--muted); }
+            footer { border-top: 0; background: #fff; font-size: 14px; color: var(--muted); }
             footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;
                            padding-block: 28px; }
             footer nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
@@ -108,8 +115,9 @@
                 <a class="btn btn-lg" href="https://slint.dev/submit-application.html">Submit your app &rarr;</a>
             </section>
 
-            <div class="gallery wrap">
-                
+            <section class="gallery-band" aria-label="Applications built with Slint">
+                <div class="wrap">
+                    
             <section class="applications mws-gallery">
                 <style>
 /* #MadeWithSlint gallery: cards and category filter.
@@ -134,6 +142,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
   --mws-accent: var(--blue-cta, #1B63D6);
   --mws-focus: var(--ice, #006E9F);
   --mws-image-bg: var(--ink-2, #E8EDF1);
+  --mws-band: var(--ink, #F6F8FA);
   --mws-display: var(--display, system-ui, sans-serif);
   --mws-sans: var(--sans, system-ui, sans-serif);
   --mws-mono: var(--mono, ui-monospace, monospace);
@@ -141,13 +150,32 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
 
 /* ---- category filter: radios drive it, so it works without script ---- */
 .mws-gallery .mws-radio { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; }
+/* The bar sticks under the page header while the cards scroll past, as the
+   platform tabs do on slint.dev. A page with a sticky header sets
+   --mws-sticky-top to its height. Once stuck, a translucent full-width band
+   sits behind the filter so the cards don't show through around it. */
+.mws-gallery .mws-sentinel { height: 1px; }
+.mws-gallery .mws-filter-bar { position: sticky; top: var(--mws-sticky-top, 0px); z-index: 20; display: flex;
+  justify-content: center; margin: 0 0 18px; padding: 12px 0; }
+.mws-gallery .mws-filter-bar.is-stuck::before { content: ""; position: absolute; z-index: -1; inset: 0 auto 0 50%;
+  width: 100vw; transform: translateX(-50%); background: color-mix(in srgb, var(--mws-band) 86%, transparent);
+  backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--mws-line); }
 .mws-gallery .mws-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; width: fit-content;
-  max-width: 100%; margin: 0 auto 30px; padding: 4px; border: 1px solid var(--mws-line); border-radius: 22px;
+  max-width: 100%; margin: 0; padding: 4px; border: 1px solid var(--mws-line); border-radius: 22px;
   background: var(--mws-card); box-sizing: border-box; }
 .mws-gallery .mws-filter label { display: inline-flex; align-items: center; min-height: 34px; padding: 7px 16px;
   border-radius: 999px; cursor: pointer; font-family: var(--mws-mono); font-size: 12.5px; font-weight: 500;
   color: var(--mws-muted); transition: background .18s, color .18s; }
 .mws-gallery .mws-filter label:hover { color: var(--mws-text); background: rgba(127, 142, 150, 0.12); }
+/* On a phone seven labels wrap to three rows, and a stuck three-row bar takes
+   a fifth of the screen. One row that scrolls sideways instead; the checked
+   label is scrolled into view when it changes. */
+@media (max-width: 620px) {
+  .mws-gallery .mws-filter { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; border-radius: 999px;
+    scrollbar-width: none; overscroll-behavior-x: contain; }
+  .mws-gallery .mws-filter::-webkit-scrollbar { display: none; }
+  .mws-gallery .mws-filter label { flex: none; white-space: nowrap; }
+}
 
 /* ---- masonry: CSS columns, reading order runs down each column ---- */
 .mws-gallery .col-wrap { display: block; column-count: 3; column-gap: 18px; }
@@ -209,7 +237,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
 .mws-gallery .application-cta .app-act:hover { color: var(--mws-text); background: rgba(127, 142, 150, 0.12); }
 /* the label stays in the link for screen readers; the icon is what shows */
 .mws-gallery .app-act-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; font-weight: 500; }
 .mws-gallery a:focus-visible { outline: 2px solid var(--mws-focus);
   outline-offset: 2px; }
 
@@ -225,27 +253,34 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
   .mws-gallery .highlight .application-header { max-width: 100%; }
 }
 
-#mws-cat-all:checked ~ .mws-filter label[for="mws-cat-all"],
-#mws-cat-embedded:checked ~ .mws-filter label[for="mws-cat-embedded"],
-#mws-cat-audio:checked ~ .mws-filter label[for="mws-cat-audio"],
-#mws-cat-games:checked ~ .mws-filter label[for="mws-cat-games"],
-#mws-cat-tools:checked ~ .mws-filter label[for="mws-cat-tools"],
-#mws-cat-productivity:checked ~ .mws-filter label[for="mws-cat-productivity"],
-#mws-cat-components:checked ~ .mws-filter label[for="mws-cat-components"] { background: var(--mws-accent); color: #fff; }
-#mws-cat-all:focus-visible ~ .mws-filter label[for="mws-cat-all"],
-#mws-cat-embedded:focus-visible ~ .mws-filter label[for="mws-cat-embedded"],
-#mws-cat-audio:focus-visible ~ .mws-filter label[for="mws-cat-audio"],
-#mws-cat-games:focus-visible ~ .mws-filter label[for="mws-cat-games"],
-#mws-cat-tools:focus-visible ~ .mws-filter label[for="mws-cat-tools"],
-#mws-cat-productivity:focus-visible ~ .mws-filter label[for="mws-cat-productivity"],
-#mws-cat-components:focus-visible ~ .mws-filter label[for="mws-cat-components"] { outline: 2px solid var(--mws-focus); outline-offset: 2px; }
-@media (forced-colors: active) { #mws-cat-all:checked ~ .mws-filter label[for="mws-cat-all"],
-#mws-cat-embedded:checked ~ .mws-filter label[for="mws-cat-embedded"],
-#mws-cat-audio:checked ~ .mws-filter label[for="mws-cat-audio"],
-#mws-cat-games:checked ~ .mws-filter label[for="mws-cat-games"],
-#mws-cat-tools:checked ~ .mws-filter label[for="mws-cat-tools"],
-#mws-cat-productivity:checked ~ .mws-filter label[for="mws-cat-productivity"],
-#mws-cat-components:checked ~ .mws-filter label[for="mws-cat-components"] { forced-color-adjust: none; background: Highlight; color: HighlightText; } }
+#mws-cat-all:checked ~ .mws-filter-bar label[for="mws-cat-all"],
+#mws-cat-embedded:checked ~ .mws-filter-bar label[for="mws-cat-embedded"],
+#mws-cat-audio:checked ~ .mws-filter-bar label[for="mws-cat-audio"],
+#mws-cat-games:checked ~ .mws-filter-bar label[for="mws-cat-games"],
+#mws-cat-tools:checked ~ .mws-filter-bar label[for="mws-cat-tools"],
+#mws-cat-productivity:checked ~ .mws-filter-bar label[for="mws-cat-productivity"],
+#mws-cat-components:checked ~ .mws-filter-bar label[for="mws-cat-components"] { background: var(--mws-accent); color: #fff; }
+#mws-cat-all:focus-visible ~ .mws-filter-bar label[for="mws-cat-all"],
+#mws-cat-embedded:focus-visible ~ .mws-filter-bar label[for="mws-cat-embedded"],
+#mws-cat-audio:focus-visible ~ .mws-filter-bar label[for="mws-cat-audio"],
+#mws-cat-games:focus-visible ~ .mws-filter-bar label[for="mws-cat-games"],
+#mws-cat-tools:focus-visible ~ .mws-filter-bar label[for="mws-cat-tools"],
+#mws-cat-productivity:focus-visible ~ .mws-filter-bar label[for="mws-cat-productivity"],
+#mws-cat-components:focus-visible ~ .mws-filter-bar label[for="mws-cat-components"] { outline: 2px solid var(--mws-focus); outline-offset: 2px; }
+@media (max-width: 620px) { #mws-cat-all:focus-visible ~ .mws-filter-bar label[for="mws-cat-all"],
+#mws-cat-embedded:focus-visible ~ .mws-filter-bar label[for="mws-cat-embedded"],
+#mws-cat-audio:focus-visible ~ .mws-filter-bar label[for="mws-cat-audio"],
+#mws-cat-games:focus-visible ~ .mws-filter-bar label[for="mws-cat-games"],
+#mws-cat-tools:focus-visible ~ .mws-filter-bar label[for="mws-cat-tools"],
+#mws-cat-productivity:focus-visible ~ .mws-filter-bar label[for="mws-cat-productivity"],
+#mws-cat-components:focus-visible ~ .mws-filter-bar label[for="mws-cat-components"] { outline-offset: -2px; } }
+@media (forced-colors: active) { #mws-cat-all:checked ~ .mws-filter-bar label[for="mws-cat-all"],
+#mws-cat-embedded:checked ~ .mws-filter-bar label[for="mws-cat-embedded"],
+#mws-cat-audio:checked ~ .mws-filter-bar label[for="mws-cat-audio"],
+#mws-cat-games:checked ~ .mws-filter-bar label[for="mws-cat-games"],
+#mws-cat-tools:checked ~ .mws-filter-bar label[for="mws-cat-tools"],
+#mws-cat-productivity:checked ~ .mws-filter-bar label[for="mws-cat-productivity"],
+#mws-cat-components:checked ~ .mws-filter-bar label[for="mws-cat-components"] { forced-color-adjust: none; background: Highlight; color: HighlightText; } }
 #mws-cat-embedded:checked ~ .col-wrap .application-item:not([data-category="embedded"]),
 #mws-cat-audio:checked ~ .col-wrap .application-item:not([data-category="audio"]),
 #mws-cat-games:checked ~ .col-wrap .application-item:not([data-category="games"]),
@@ -255,7 +290,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
 
                 </style>
                 <script>function mwsImg(img,failed){if(failed&&img.dataset.fallback){var f=img.dataset.fallback;delete img.dataset.fallback;img.removeAttribute('width');img.removeAttribute('height');img.src=f;return;}var box=img.closest('.application-header');if(box)box.classList.add('is-loaded');}</script>
-                <input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-all" checked><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-embedded"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-audio"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-games"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-tools"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-productivity"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-components"><div class="mws-filter" role="group" aria-label="Filter by category"><label for="mws-cat-all">All</label><label for="mws-cat-embedded">Embedded</label><label for="mws-cat-audio">Audio & music</label><label for="mws-cat-games">Games</label><label for="mws-cat-tools">Developer tools</label><label for="mws-cat-productivity">Productivity</label><label for="mws-cat-components">Components</label></div>
+                <input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-all" checked><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-embedded"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-audio"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-games"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-tools"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-productivity"><input type="radio" class="mws-radio" name="mws-cat" id="mws-cat-components"><div class="mws-sentinel" aria-hidden="true"></div><div class="mws-filter-bar"><div class="mws-filter" role="group" aria-label="Filter by category"><label for="mws-cat-all">All</label><label for="mws-cat-embedded">Embedded</label><label for="mws-cat-audio">Audio & music</label><label for="mws-cat-games">Games</label><label for="mws-cat-tools">Developer tools</label><label for="mws-cat-productivity">Productivity</label><label for="mws-cat-components">Components</label></div></div>
                 <div class="col-wrap">
                     <!-- Assisted, Remote and Autonomous Rail Vehicles -->
                     <div id="assisted-remote-and-autonomous-rail-vehicles" class="application-item highlight" data-category="embedded">
@@ -903,9 +938,11 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                     </div><!-- .application-item -->
 
                 </div><!-- .col-wrap -->
+                <script>(function(){var g=document.currentScript.closest('.mws-gallery');if(!g)return;var bar=g.querySelector('.mws-filter-bar'),s=g.querySelector('.mws-sentinel');if(!bar||!s)return;function top(){return parseFloat(getComputedStyle(bar).top)||0;}var tick=false;function check(){tick=false;bar.classList.toggle('is-stuck',s.getBoundingClientRect().top<top());}addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(check);}},{passive:true});addEventListener('resize',check);check();var row=bar.querySelector('.mws-filter');[].forEach.call(g.querySelectorAll('.mws-radio'),function(r){r.addEventListener('change',function(){var l=row&&row.querySelector('label[for="'+r.id+'"]');if(l&&row.scrollWidth>row.clientWidth){row.scrollTo({left:l.offsetLeft-(row.clientWidth-l.offsetWidth)/2,behavior:'smooth'});}if(!bar.classList.contains('is-stuck'))return;var y=s.getBoundingClientRect().top+scrollY-top();scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});});})();</script>
             </section><!-- .applications -->
 
-            </div>
+                </div>
+            </section>
         </main>
 
         <footer>

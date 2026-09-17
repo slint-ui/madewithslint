@@ -20,6 +20,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
   --mws-accent: var(--blue-cta, #1B63D6);
   --mws-focus: var(--ice, #006E9F);
   --mws-image-bg: var(--ink-2, #E8EDF1);
+  --mws-band: var(--ink, #F6F8FA);
   --mws-display: var(--display, system-ui, sans-serif);
   --mws-sans: var(--sans, system-ui, sans-serif);
   --mws-mono: var(--mono, ui-monospace, monospace);
@@ -27,13 +28,32 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
 
 /* ---- category filter: radios drive it, so it works without script ---- */
 .mws-gallery .mws-radio { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; }
+/* The bar sticks under the page header while the cards scroll past, as the
+   platform tabs do on slint.dev. A page with a sticky header sets
+   --mws-sticky-top to its height. Once stuck, a translucent full-width band
+   sits behind the filter so the cards don't show through around it. */
+.mws-gallery .mws-sentinel { height: 1px; }
+.mws-gallery .mws-filter-bar { position: sticky; top: var(--mws-sticky-top, 0px); z-index: 20; display: flex;
+  justify-content: center; margin: 0 0 18px; padding: 12px 0; }
+.mws-gallery .mws-filter-bar.is-stuck::before { content: ""; position: absolute; z-index: -1; inset: 0 auto 0 50%;
+  width: 100vw; transform: translateX(-50%); background: color-mix(in srgb, var(--mws-band) 86%, transparent);
+  backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--mws-line); }
 .mws-gallery .mws-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; width: fit-content;
-  max-width: 100%; margin: 0 auto 30px; padding: 4px; border: 1px solid var(--mws-line); border-radius: 22px;
+  max-width: 100%; margin: 0; padding: 4px; border: 1px solid var(--mws-line); border-radius: 22px;
   background: var(--mws-card); box-sizing: border-box; }
 .mws-gallery .mws-filter label { display: inline-flex; align-items: center; min-height: 34px; padding: 7px 16px;
   border-radius: 999px; cursor: pointer; font-family: var(--mws-mono); font-size: 12.5px; font-weight: 500;
   color: var(--mws-muted); transition: background .18s, color .18s; }
 .mws-gallery .mws-filter label:hover { color: var(--mws-text); background: rgba(127, 142, 150, 0.12); }
+/* On a phone seven labels wrap to three rows, and a stuck three-row bar takes
+   a fifth of the screen. One row that scrolls sideways instead; the checked
+   label is scrolled into view when it changes. */
+@media (max-width: 620px) {
+  .mws-gallery .mws-filter { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; border-radius: 999px;
+    scrollbar-width: none; overscroll-behavior-x: contain; }
+  .mws-gallery .mws-filter::-webkit-scrollbar { display: none; }
+  .mws-gallery .mws-filter label { flex: none; white-space: nowrap; }
+}
 
 /* ---- masonry: CSS columns, reading order runs down each column ---- */
 .mws-gallery .col-wrap { display: block; column-count: 3; column-gap: 18px; }
@@ -95,7 +115,7 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
 .mws-gallery .application-cta .app-act:hover { color: var(--mws-text); background: rgba(127, 142, 150, 0.12); }
 /* the label stays in the link for screen readers; the icon is what shows */
 .mws-gallery .app-act-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; font-weight: 500; }
 .mws-gallery a:focus-visible { outline: 2px solid var(--mws-focus);
   outline-offset: 2px; }
 

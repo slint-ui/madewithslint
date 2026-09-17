@@ -74,9 +74,16 @@
             .hero p { margin: 18px auto 0; max-width: 56ch; font-size: 18px; color: var(--muted); }
             .hero .btn { margin-top: 34px; }
 
-            .gallery { padding-bottom: clamp(64px, 8vw, 120px); }
+            /* The gallery sits on a dark band, as on slint.dev/madewithslint: the
+               band redefines the colour tokens with slint.dev's dark-chapter values,
+               and the gallery (cards, filter, placeholders) follows them. */
+            .gallery-band { --ink: #151D21; --ink-2: #1A242A; --card: #202D35; --line: rgba(255, 255, 255, 0.10);
+                            --line-2: rgba(255, 255, 255, 0.18); --text: #EEF3F5; --muted: #9FB0B8;
+                            --blue-ink: #6EA2FF; --blue-cta: #1B63D6; --ice: #0DB1FF;
+                            background: #151D21; color: var(--text);
+                            padding-block: clamp(64px, 8vw, 120px); }
 
-            footer { border-top: 1px solid var(--line); background: #fff; font-size: 14px; color: var(--muted); }
+            footer { border-top: 0; background: #fff; font-size: 14px; color: var(--muted); }
             footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;
                            padding-block: 28px; }
             footer nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
@@ -108,9 +115,11 @@
                 <a class="btn btn-lg" href="https://slint.dev/submit-application.html">Submit your app &rarr;</a>
             </section>
 
-            <div class="gallery wrap">
-                <?applications?>
-            </div>
+            <section class="gallery-band" aria-label="Applications built with Slint">
+                <div class="wrap">
+                    <?applications?>
+                </div>
+            </section>
         </main>
 
         <footer>
