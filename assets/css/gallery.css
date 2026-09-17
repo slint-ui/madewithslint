@@ -45,14 +45,26 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
   border-radius: 999px; cursor: pointer; font-family: var(--mws-mono); font-size: 12.5px; font-weight: 500;
   color: var(--mws-muted); transition: background .18s, color .18s; }
 .mws-gallery .mws-filter label:hover { color: var(--mws-text); background: rgba(127, 142, 150, 0.12); }
-/* On a phone seven labels wrap to three rows, and a stuck three-row bar takes
-   a fifth of the screen. One row that scrolls sideways instead; the checked
-   label is scrolled into view when it changes. */
+/* On a phone seven labels wrap to three rows, too tall for a bar that stays on
+   screen, and a sideways-scrolling row gives no sign there is more. The
+   generated script adds a native select built from the same labels instead:
+   one row, and the phone's own picker. The radios still drive the filter; the
+   select only sets them, and on phones the radios leave the tab order and
+   accessibility tree so nothing is announced twice. */
+.mws-gallery .mws-select { display: none; }
 @media (max-width: 620px) {
-  .mws-gallery .mws-filter { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; border-radius: 999px;
-    scrollbar-width: none; overscroll-behavior-x: contain; }
-  .mws-gallery .mws-filter::-webkit-scrollbar { display: none; }
-  .mws-gallery .mws-filter label { flex: none; white-space: nowrap; }
+  .mws-gallery .mws-filter { display: none; }
+  /* doubled classes, (0,5,1): a host page may style every select -- slint.dev's
+     dark chapters set a background shorthand at (0,3,3), wiping the chevron */
+  .mws-gallery.mws-gallery .mws-filter-bar.mws-filter-bar select.mws-select { display: block; box-sizing: border-box; width: min(340px, 100%);
+    min-height: 44px; margin: 0 auto; padding: 10px 44px 10px 18px; border: 1px solid var(--mws-line-2);
+    border-radius: 999px; color: var(--mws-text); font-family: var(--mws-mono); font-size: 14px; cursor: pointer;
+    appearance: none; -webkit-appearance: none; background-color: var(--mws-card);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238493a1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 18px center; }
+  .mws-gallery .mws-filter-bar select.mws-select:focus-visible { outline: 2px solid var(--mws-focus); outline-offset: 2px; }
+  .mws-gallery .mws-radio { visibility: hidden; }
+}
 }
 
 /* ---- masonry: CSS columns, reading order runs down each column ---- */

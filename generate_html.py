@@ -200,6 +200,7 @@ LOADER_JS = (
 # is-stuck class), and when a category is picked from the stuck bar, bring the
 # top of the results back into view -- otherwise a shorter list leaves the
 # reader scrolled past it. The page sets --mws-sticky-top to its header height.
+# For phones it also adds a select built from the labels (see gallery.css).
 STICKY_JS = (
     "(function(){var g=document.currentScript.closest('.mws-gallery');if(!g)return;"
     "var bar=g.querySelector('.mws-filter-bar'),s=g.querySelector('.mws-sentinel');if(!bar||!s)return;"
@@ -208,10 +209,14 @@ STICKY_JS = (
     "bar.classList.toggle('is-stuck',s.getBoundingClientRect().top<top());}"
     "addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(check);}},{passive:true});"
     "addEventListener('resize',check);check();"
-    "var row=bar.querySelector('.mws-filter');"
+    # phones: a native select built from the labels, which checks the matching radio
+    "var sel=document.createElement('select');sel.className='mws-select';sel.setAttribute('aria-label','Filter by category');"
+    "[].forEach.call(bar.querySelectorAll('label[for]'),function(l){var r=document.getElementById(l.htmlFor);if(!r)return;"
+    "var o=new Option(l.textContent.trim(),r.id);o.selected=r.checked;sel.add(o);});"
+    "sel.addEventListener('change',function(){var r=document.getElementById(sel.value);if(!r)return;"
+    "r.checked=true;r.dispatchEvent(new Event('change',{bubbles:true}));});bar.appendChild(sel);"
     "[].forEach.call(g.querySelectorAll('.mws-radio'),function(r){r.addEventListener('change',function(){"
-    "var l=row&&row.querySelector('label[for=\"'+r.id+'\"]');"
-    "if(l&&row.scrollWidth>row.clientWidth){row.scrollTo({left:l.offsetLeft-(row.clientWidth-l.offsetWidth)/2,behavior:'smooth'});}"
+    "sel.value=r.id;"
     "if(!bar.classList.contains('is-stuck'))return;"
     "var y=s.getBoundingClientRect().top+scrollY-top();"
     "scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});});"
@@ -239,7 +244,7 @@ def filter_html(categories):
         f'#mws-cat-{k}:checked ~ .col-wrap .application-item:not([data-category="{k}"])' for k in categories)
     css = (f'{on} {{ background: var(--mws-accent); color: #fff; }}\n'
            f'{focus} {{ outline: 2px solid var(--mws-focus); outline-offset: 2px; }}\n'
-           f'@media (max-width: 620px) {{ {focus} {{ outline-offset: -2px; }} }}\n'
+
            f'@media (forced-colors: active) {{ {on} {{ forced-color-adjust: none; background: Highlight; color: HighlightText; }} }}\n'
            f'{hide} {{ display: none; }}\n')
     # The bar is what sticks; the sentinel just above it tells STICKY_JS when it has.
