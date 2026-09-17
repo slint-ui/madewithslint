@@ -65,7 +65,6 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
   .mws-gallery .mws-filter-bar select.mws-select:focus-visible { outline: 2px solid var(--mws-focus); outline-offset: 2px; }
   .mws-gallery .mws-radio { visibility: hidden; }
 }
-}
 
 /* ---- masonry: CSS columns, reading order runs down each column ---- */
 .mws-gallery .col-wrap { display: block; column-count: 3; column-gap: 18px; }
