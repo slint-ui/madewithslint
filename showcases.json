@@ -1,5 +1,22 @@
 [
   {
+    "app_title": "Concat",
+    "app_company": "Jareer A.",
+    "app_description": "A free, open-source video editor and CapCut alternative for desktop and Android: auto-captions, keyframes, 170+ GPU effects and 4K export.",
+    "app_quote": "",
+    "app_quote_author": "",
+    "image_src": "https://madewithslint.com/assets/img/madewithslint-concat.png",
+    "image_alt": "Screenshot of the Concat video editor with a clip, captions and an effect on the timeline",
+    "class_style": "highlight",
+    "category": "productivity",
+    "git_link": "https://github.com/jub0t/Concat",
+    "preview_link": "",
+    "doc_link": "https://concatenate.pages.dev",
+    "license_text": "AGPLv3",
+    "license_type": "open-source",
+    "story_link": "https://www.reddit.com/r/ClaudeAI/comments/1wgu8g3/i_used_claude_to_write_a_capcut_replacement_and/"
+  },
+  {
     "app_title": "Assisted, Remote and Autonomous Rail Vehicles",
     "app_company": "OTIV BV",
     "app_description": "OTIV is pioneering rail automation through technology for assisted, remote and autonomous driving in rail. The products OTIV.ONE, OTIV.TWO, OTIV.THREE, and OTIV.FOUR empower industrial companies, railway undertakings, infrastructure managers and OEM's to increase safety and efficiency of rail vehicles.",
