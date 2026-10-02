@@ -39,6 +39,11 @@
     "width": 800,
     "height": 523
   },
+  "concat": {
+    "source": "https://madewithslint.com/assets/img/madewithslint-concat.png",
+    "width": 800,
+    "height": 445
+  },
   "coop": {
     "source": "https://madewithslint.com/assets/img/madewithslint-coop-widgets.png",
     "width": 800,
