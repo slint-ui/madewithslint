@@ -69,6 +69,11 @@
     "width": 800,
     "height": 1422
   },
+  "finchgram": {
+    "source": "https://raw.githubusercontent.com/FinchGram/FinchGram/main/docs/screenshots/workbench-light-chats.png",
+    "width": 800,
+    "height": 500
+  },
   "flectar-mail": {
     "source": "https://raw.githubusercontent.com/flectar/mail/main/resources/screenshots/desktop-light.png",
     "width": 800,

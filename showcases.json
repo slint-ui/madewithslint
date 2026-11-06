@@ -85,6 +85,23 @@
     "story_link": "https://slint.dev/success/viiri-audio.html"
   },
   {
+    "app_title": "FinchGram",
+    "app_company": "Yumin Gui",
+    "app_description": "An unofficial open-source Telegram client for macOS, built with Rust and Slint.",
+    "app_quote": "",
+    "app_quote_author": "",
+    "image_src": "https://raw.githubusercontent.com/FinchGram/FinchGram/main/docs/screenshots/workbench-light-chats.png",
+    "image_alt": "Screenshot of FinchGram in the light Workbench theme, with a chat list, open tabs, and a conversation",
+    "class_style": "col-4-row-1",
+    "category": "productivity",
+    "git_link": "https://github.com/FinchGram/FinchGram",
+    "preview_link": "",
+    "doc_link": "https://www.finchgram.com",
+    "license_text": "GPLv3",
+    "license_type": "open-source",
+    "story_link": ""
+  },
+  {
     "app_title": "WSL Dashboard",
     "app_company": "owu",
     "app_description": "A lightweight, low-memory dashboard for managing WSL (Windows Subsystem for Linux) instances, built with Rust and Slint.",
