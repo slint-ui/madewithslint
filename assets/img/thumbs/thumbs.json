@@ -69,6 +69,11 @@
     "width": 800,
     "height": 1422
   },
+  "featherplay": {
+    "source": "https://madewithslint.com/assets/img/madewithslint-featherplay.png",
+    "width": 800,
+    "height": 500
+  },
   "flectar-mail": {
     "source": "https://raw.githubusercontent.com/flectar/mail/main/resources/screenshots/desktop-light.png",
     "width": 800,
