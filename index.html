@@ -956,6 +956,21 @@ section.mws-gallery { margin: 0; padding: 0; text-align: left;
                         </div>
                     </div><!-- .application-item -->
 
+                    <!-- featherplay -->
+                    <div id="featherplay" class="application-item col-4-row-1" data-category="audio">
+                        <div class="application-content">
+                            <div class="application-header">
+                                <a href="https://github.com/candygoogy/featherplay" target="_blank" rel="noopener"><img src="https://madewithslint.com/assets/img/thumbs/featherplay.webp" alt="Screenshot of featherplay's Home page in the dark theme, with the sidebar, a now-playing card and the player bar" width="800" height="500" loading="lazy" decoding="async" data-fallback="https://madewithslint.com/assets/img/madewithslint-featherplay.png" onload="mwsImg(this)" onerror="mwsImg(this, true)"></a>
+                            </div>
+                            <div class="application-body">
+                                <h3 class="application-title">featherplay</h3>
+                                <h4 class="application-company">candygoogy</h4>
+                                <p class="application-description">A light, native Windows player for YouTube Music, with media keys, taskbar controls, a tray mini player, synced lyrics and scrobbling.</p>
+                                <div class="application-actions"><a class="application-primary" href="https://github.com/candygoogy/featherplay" target="_blank" rel="noopener">View source <svg class="app-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><div class="application-cta"><a href="https://featherplay.candygoogy.dev" target="_blank" rel="noopener" class="app-act" title="Visit website"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg><span class="app-act-label">Visit website</span></a></div></div>
+                            </div>
+                        </div>
+                    </div><!-- .application-item -->
+
                 </div><!-- .col-wrap -->
                 <script>(function(){var g=document.currentScript.closest('.mws-gallery');if(!g)return;var bar=g.querySelector('.mws-filter-bar'),s=g.querySelector('.mws-sentinel');if(!bar||!s)return;function top(){return parseFloat(getComputedStyle(bar).top)||0;}var tick=false;function check(){tick=false;bar.classList.toggle('is-stuck',s.getBoundingClientRect().top<top());}addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(check);}},{passive:true});addEventListener('resize',check);check();var sel=document.createElement('select');sel.className='mws-select';sel.setAttribute('aria-label','Filter by category');[].forEach.call(bar.querySelectorAll('label[for]'),function(l){var r=document.getElementById(l.htmlFor);if(!r)return;var o=new Option(l.textContent.trim(),r.id);o.selected=r.checked;sel.add(o);});sel.addEventListener('change',function(){var r=document.getElementById(sel.value);if(!r)return;r.checked=true;r.dispatchEvent(new Event('change',{bubbles:true}));});bar.appendChild(sel);[].forEach.call(g.querySelectorAll('.mws-radio'),function(r){r.addEventListener('change',function(){sel.value=r.id;if(!bar.classList.contains('is-stuck'))return;var y=s.getBoundingClientRect().top+scrollY-top();scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});});})();</script>
             </section><!-- .applications -->

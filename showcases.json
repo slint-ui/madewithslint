@@ -714,5 +714,21 @@
     "license_text": "Proprietary License",
     "license_type": "closed",
     "story_link": ""
+  },
+  {
+    "app_title": "featherplay",
+    "app_company": "candygoogy",
+    "app_description": "A light, native Windows player for YouTube Music, with media keys, taskbar controls, a tray mini player, synced lyrics and scrobbling.",
+    "app_quote": "",
+    "image_src": "https://madewithslint.com/assets/img/madewithslint-featherplay.png",
+    "image_alt": "Screenshot of featherplay's Home page in the dark theme, with the sidebar, a now-playing card and the player bar",
+    "class_style": "col-4-row-1",
+    "category": "audio",
+    "git_link": "https://github.com/candygoogy/featherplay",
+    "preview_link": "",
+    "doc_link": "https://featherplay.candygoogy.dev",
+    "license_text": "MIT",
+    "license_type": "open-source",
+    "story_link": ""
   }
 ]
