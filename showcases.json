@@ -714,5 +714,21 @@
     "license_text": "Proprietary License",
     "license_type": "closed",
     "story_link": ""
+  },
+  {
+    "app_title": "dither-slint",
+    "app_company": "LilaccFlowerr",
+    "app_description": "50+ Slint components drawn in ordered dithering, with hover, press and idle effects made of the same dots. A port of Mvkweb's dither-sdk.",
+    "app_quote": "",
+    "image_src": "assets/img/madewithslint-dither-slint.png",
+    "image_alt": "Screenshot of dither-slint components: dithered buttons, a chart and a gradient background",
+    "class_style": "col-4-row-1",
+    "category": "components",
+    "git_link": "https://github.com/LilaccFlowerr/dither-slint",
+    "preview_link": "https://lilaccflowerr.github.io/dither-slint/",
+    "doc_link": "",
+    "license_text": "GPL-3.0",
+    "license_type": "open-source",
+    "story_link": ""
   }
 ]
