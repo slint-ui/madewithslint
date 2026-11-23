@@ -64,6 +64,11 @@
     "width": 408,
     "height": 600
   },
+  "dither-slint": {
+    "source": "assets/img/madewithslint-dither-slint.png",
+    "width": 800,
+    "height": 489
+  },
   "ev-charger": {
     "source": "https://slint.dev/success/sksignet-evcharger/ready_screen_light.png",
     "width": 800,
