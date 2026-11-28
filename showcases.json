@@ -17,6 +17,23 @@
     "story_link": "https://www.reddit.com/r/ClaudeAI/comments/1wgu8g3/i_used_claude_to_write_a_capcut_replacement_and/"
   },
   {
+    "app_title": "Echo",
+    "app_company": "Resister0",
+    "app_description": "Free, open-source game clipping for Windows and Linux: save your last moments with one key and share links that play in Discord.",
+    "app_quote": "",
+    "app_quote_author": "",
+    "image_src": "https://madewithslint.com/assets/img/madewithslint-echo.png",
+    "image_alt": "Screenshot of Echo's clip library with game clips sorted by day and a sidebar of game folders",
+    "class_style": "col-3-row-1",
+    "category": "productivity",
+    "git_link": "https://github.com/Resister0/echoclip",
+    "preview_link": "",
+    "doc_link": "https://echoclip.link",
+    "license_text": "GPLv3",
+    "license_type": "open-source",
+    "story_link": ""
+  },
+  {
     "app_title": "Assisted, Remote and Autonomous Rail Vehicles",
     "app_company": "OTIV BV",
     "app_description": "OTIV is pioneering rail automation through technology for assisted, remote and autonomous driving in rail. The products OTIV.ONE, OTIV.TWO, OTIV.THREE, and OTIV.FOUR empower industrial companies, railway undertakings, infrastructure managers and OEM's to increase safety and efficiency of rail vehicles.",
