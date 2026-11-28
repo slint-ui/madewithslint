@@ -64,6 +64,11 @@
     "width": 408,
     "height": 600
   },
+  "echo": {
+    "source": "https://madewithslint.com/assets/img/madewithslint-echo.png",
+    "width": 800,
+    "height": 434
+  },
   "ev-charger": {
     "source": "https://slint.dev/success/sksignet-evcharger/ready_screen_light.png",
     "width": 800,
